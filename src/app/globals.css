@@ -1,1 +1,55 @@
+/* src/app/globals.css */
+
+/* ✅ Tailwind v4 plugin */
 @import "tailwindcss";
+
+/* 🌐 Base Global Styles */
+body {
+  background-color: #edf2f4; /* Soft light background */
+  color: #2b2d42;             /* Primary body text */
+  font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  margin: 0;
+  padding: 0;
+  line-height: 1.65;
+}
+
+/* ✅ Link Styles */
+a {
+  color: #d90429;
+  text-decoration: none;
+  transition: color 0.2s ease-in-out;
+}
+
+a:hover {
+  color: #ef233c; /* lighter red for hover */
+  text-decoration: underline;
+}
+
+/* ✅ Headings */
+h1, h2, h3, h4, h5, h6 {
+  color: #2b2d42;
+  font-weight: 700;
+  margin-bottom: 0.5em;
+}
+
+/* ✅ Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #edf2f4;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #2b2d42;
+  border-radius: 4px;
+  border: 2px solid #edf2f4;
+}
+
+/* ✅ Text Selection */
+::selection {
+  background-color: #ef233c;
+  color: #ffffff;
+}

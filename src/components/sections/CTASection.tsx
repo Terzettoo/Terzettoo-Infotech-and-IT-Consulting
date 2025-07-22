@@ -1,20 +1,26 @@
-// src/components/sections/CTASection.tsx
 'use client'
 import { motion } from 'framer-motion'
 import { ArrowRight, MessageSquare, Calendar, CheckCircle } from 'lucide-react'
 import Link from 'next/link'
 
 const CTASection = () => {
+  const benefits = [
+    'Free consultation and project estimation',
+    'Dedicated project manager and team',
+    'Regular progress updates and demos',
+    'Post-launch support and maintenance',
+  ]
+
   return (
-    <section className="py-20 bg-gradient-to-br from-blue-600 via-blue-700 to-purple-800 relative overflow-hidden">
-      {/* Background Elements */}
-      <div className="absolute inset-0">
-        <div className="absolute top-10 left-10 w-20 h-20 bg-white/10 rounded-full blur-xl"></div>
-        <div className="absolute bottom-20 right-20 w-32 h-32 bg-purple-400/20 rounded-full blur-2xl"></div>
-        <div className="absolute top-1/2 left-1/3 w-16 h-16 bg-blue-300/20 rounded-full blur-lg"></div>
+    <section className="py-20 bg-[#edf2f4] text-[#2b2d42] relative overflow-hidden">
+      {/* Decoration floats */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-10 left-10 w-[60px] h-[60px] bg-[#d90429]/10 rounded-full blur-2xl" />
+        <div className="absolute bottom-20 right-20 w-[100px] h-[100px] bg-[#ef233c]/10 rounded-full blur-3xl" />
+        <div className="absolute top-1/2 left-[40%] w-16 h-16 bg-white/30 rounded-full blur-2xl" />
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           
           {/* Left Content */}
@@ -24,31 +30,30 @@ const CTASection = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6 leading-tight">
-              Ready to Transform Your 
-              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 to-orange-300">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">
+              Ready to Transform Your{" "}
+              <span className="block underline decoration-wavy decoration-[#d90429] decoration-2">
                 Business Ideas?
               </span>
             </h2>
-            
-            <p className="text-xl text-blue-100 mb-8 leading-relaxed">
-              Let&apos;s discuss your project and create something amazing together. 
+
+            <p className="text-lg mb-8 text-[#8d99ae] leading-relaxed">
+              Let&apos;s discuss your project and create something amazing together.
               Our team of experts is ready to bring your vision to life with cutting-edge technology.
             </p>
 
             {/* Benefits List */}
-            <div className="space-y-3 mb-8">
-              {["Free consultation and project estimation", "Dedicated project manager and team", "Regular progress updates and demos", "Post-launch support and maintenance"].map((benefit, index) => (
+            <div className="space-y-3 mb-8 text-sm">
+              {benefits.map((item, index) => (
                 <motion.div
-                  key={benefit}
+                  key={item}
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
                   transition={{ duration: 0.6, delay: index * 0.1 }}
-                  className="flex items-center text-blue-100"
+                  className="flex items-center text-[#2b2d42]"
                 >
-                  <CheckCircle className="h-5 w-5 text-green-400 mr-3 flex-shrink-0" />
-                  <span>{benefit}</span>
+                  <CheckCircle className="h-5 w-5 mr-3 text-[#d90429]" />
+                  <span>{item}</span>
                 </motion.div>
               ))}
             </div>
@@ -57,104 +62,94 @@ const CTASection = () => {
             <div className="flex flex-col sm:flex-row gap-4">
               <Link
                 href="/contact"
-                className="inline-flex items-center justify-center px-8 py-4 bg-white text-blue-700 font-bold rounded-xl hover:bg-gray-50 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
+                className="inline-flex items-center justify-center px-8 py-4 bg-[#d90429] text-white font-bold rounded-xl hover:bg-[#ef233c] transition-all duration-300 transform hover:scale-105 shadow-md"
               >
                 Start Your Project
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Link>
-              
               <Link
                 href="/company/portfolio"
-                className="inline-flex items-center justify-center px-8 py-4 border-2 border-white/30 text-white font-semibold rounded-xl hover:bg-white/10 transition-all duration-300 backdrop-blur-sm"
+                className="inline-flex items-center justify-center px-8 py-4 border-2 border-[#d90429] text-[#d90429] font-semibold rounded-xl hover:bg-[#ef233c]/10 transition-all duration-300"
               >
                 View Our Work
               </Link>
             </div>
 
-            {/* Contact Info */}
-            <div className="flex flex-col sm:flex-row gap-6 mt-8 pt-8 border-t border-white/20">
-              <div className="flex items-center text-blue-100">
+            {/* Additional Contact Prompts */}
+            <div className="flex flex-col sm:flex-row gap-6 mt-8 pt-8 border-t border-[#8d99ae]/30 text-sm">
+              <div className="flex items-center">
                 <MessageSquare className="h-5 w-5 mr-2" />
                 <span>hello@terzettoo.com</span>
               </div>
-              <div className="flex items-center text-blue-100">
+              <div className="flex items-center">
                 <Calendar className="h-5 w-5 mr-2" />
                 <span>Schedule a free consultation</span>
               </div>
             </div>
           </motion.div>
 
-          {/* Right Content - Interactive Element */}
+          {/* Right Card – Process Steps */}
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="relative"
           >
             <div className="relative max-w-md mx-auto">
-              {/* Main Card */}
-              <div className="bg-white/95 backdrop-blur-sm rounded-3xl p-8 shadow-2xl">
+              <div className="bg-white border border-[#8d99ae]/20 shadow-xl rounded-2xl p-8">
+                {/* Card Heading */}
                 <div className="text-center mb-6">
-                  <h3 className="text-2xl font-bold text-gray-900 mb-2">
+                  <h3 className="text-2xl font-bold mb-2 text-[#2b2d42]">
                     Let&apos;s Get Started
                   </h3>
-                  <p className="text-gray-600">
+                  <p className="text-sm text-[#8d99ae]">
                     Get your free project consultation
                   </p>
                 </div>
 
-                {/* Process Steps */}
-                <div className="space-y-4">
-                  <div className="flex items-center p-3 bg-blue-50 rounded-xl">
-                    <div className="w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center text-sm font-bold mr-3">
-                      1
+                {/* Steps */}
+                <div className="space-y-4 text-sm">
+                  {['Share your idea', 'Get detailed proposal', 'Start building'].map((label, i) => (
+                    <div
+                      key={i}
+                      className="flex items-center p-3 bg-[#edf2f4] rounded-xl"
+                    >
+                      <div className="w-8 h-8 bg-[#d90429] text-white rounded-full flex items-center justify-center font-bold mr-3">
+                        {i + 1}
+                      </div>
+                      <span className="text-[#2b2d42] font-medium">{label}</span>
                     </div>
-                    <span className="text-gray-800 font-medium">Share your idea</span>
-                  </div>
-                  
-                  <div className="flex items-center p-3 bg-purple-50 rounded-xl">
-                    <div className="w-8 h-8 bg-purple-600 text-white rounded-full flex items-center justify-center text-sm font-bold mr-3">
-                      2
-                    </div>
-                    <span className="text-gray-800 font-medium">Get detailed proposal</span>
-                  </div>
-                  
-                  <div className="flex items-center p-3 bg-green-50 rounded-xl">
-                    <div className="w-8 h-8 bg-green-600 text-white rounded-full flex items-center justify-center text-sm font-bold mr-3">
-                      3
-                    </div>
-                    <span className="text-gray-800 font-medium">Start building</span>
-                  </div>
+                  ))}
                 </div>
 
-                <div className="mt-6 pt-6 border-t border-gray-200">
-                  <div className="text-center">
-                    <div className="text-sm text-gray-500 mb-2">Trusted by 50+ companies</div>
-                    <div className="flex justify-center space-x-2">
-                      {[...Array(5)].map((_, i) => (
-                        <div key={i} className="w-8 h-8 bg-gray-200 rounded-lg"></div>
-                      ))}
-                    </div>
+                {/* Footer: Trust Badges or Logos */}
+                <div className="mt-6 pt-6 border-t border-[#8d99ae]/20 text-center">
+                  <p className="text-xs text-[#8d99ae] mb-2">Trusted by 50+ companies</p>
+                  <div className="flex justify-center space-x-2">
+                    {[...Array(5)].map((_, i) => (
+                      <div
+                        key={i}
+                        className="w-8 h-8 bg-[#d90429]/10 border border-[#8d99ae]/20 rounded-lg"
+                      />
+                    ))}
                   </div>
                 </div>
               </div>
 
-              {/* Floating Elements */}
+              {/* Floating Emojis */}
               <motion.div
                 animate={{ y: [-10, 10, -10] }}
                 transition={{ duration: 4, repeat: Infinity }}
-                className="absolute -top-6 -right-6 w-12 h-12 bg-yellow-400 rounded-xl shadow-lg flex items-center justify-center"
+                className="absolute -top-6 -right-6 w-12 h-12 bg-[#d90429] text-white rounded-xl shadow-lg flex items-center justify-center"
               >
-                <span className="text-2xl">🚀</span>
+                🚀
               </motion.div>
-              
+
               <motion.div
                 animate={{ y: [10, -10, 10] }}
                 transition={{ duration: 3, repeat: Infinity, delay: 1 }}
-                className="absolute -bottom-4 -left-4 w-10 h-10 bg-green-400 rounded-xl shadow-lg flex items-center justify-center"
+                className="absolute -bottom-4 -left-4 w-10 h-10 bg-green-500 rounded-xl shadow-lg flex items-center justify-center text-white"
               >
-                <span className="text-lg">💡</span>
+                💡
               </motion.div>
             </div>
           </motion.div>

@@ -1,4 +1,3 @@
-// src/app/company/faq/page.tsx
 'use client'
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
@@ -12,17 +11,20 @@ const faqCategories = [
     faqs: [
       {
         question: "What services does Terzettoo offer?",
-        answer: "We offer comprehensive software development services including custom website development, mobile app development, API development & integration, testing & QA, DevOps & deployment, and database design & management."
+        answer:
+          "We offer comprehensive software development services including custom website development, mobile app development, API development & integration, testing & QA, DevOps & deployment, and database design & management.",
       },
       {
         question: "How long has Terzettoo been in business?",
-        answer: "Terzettoo has been delivering high-quality software solutions for over 5 years, with a team of experienced developers who have worked on 150+ successful projects."
+        answer:
+          "Terzettoo has been delivering high-quality software solutions for over 5 years, with a team of experienced developers who have worked on 150+ successful projects.",
       },
       {
         question: "What industries do you work with?",
-        answer: "We work with diverse industries including e-commerce, healthcare, fintech, education, real estate, and startups. Our flexible approach allows us to adapt to any business domain."
-      }
-    ]
+        answer:
+          "We work with diverse industries including e-commerce, healthcare, fintech, education, real estate, and startups. Our flexible approach allows us to adapt to any business domain.",
+      },
+    ],
   },
   {
     id: 'pricing',
@@ -31,17 +33,20 @@ const faqCategories = [
     faqs: [
       {
         question: "How do you price your projects?",
-        answer: "Our pricing is project-based and depends on complexity, timeline, and specific requirements. We provide detailed quotes after understanding your needs through a free consultation."
+        answer:
+          "Our pricing is project-based and depends on complexity, timeline, and specific requirements. We provide detailed quotes after understanding your needs through a free consultation.",
       },
       {
         question: "Do you offer payment plans?",
-        answer: "Yes, we offer flexible payment plans. Typically, we work with milestone-based payments: 30% upfront, 40% at mid-project, and 30% upon completion."
+        answer:
+          "Yes, we offer flexible payment plans. Typically, we work with milestone payments: 30% upfront, 40% mid-way, and 30% on delivery.",
       },
       {
         question: "Are there any hidden costs?",
-        answer: "No, we believe in transparent pricing. All costs are clearly outlined in our project proposal, including development, testing, deployment, and any third-party service fees."
-      }
-    ]
+        answer:
+          "No, we believe in transparent pricing. All costs are clearly outlined in our project proposal, including development, testing, deployment, and any applicable third-party fees.",
+      },
+    ],
   },
   {
     id: 'process',
@@ -50,17 +55,20 @@ const faqCategories = [
     faqs: [
       {
         question: "What is your development process?",
-        answer: "We follow an agile development methodology: Discovery & Planning → Design & Prototyping → Development → Testing → Deployment → Maintenance. We provide regular updates throughout the process."
+        answer:
+          "We follow an agile development methodology: Discovery → Design → Development → QA → Deployment → Maintenance, with regular communication throughout.",
       },
       {
         question: "How do you ensure code quality?",
-        answer: "We maintain high code quality through peer reviews, automated testing, continuous integration, and adherence to industry best practices. Every project undergoes thorough testing before delivery."
+        answer:
+          "We use modern tools like CI/CD, peer review, automated testing, and follow clean code practices to ensure reliability and maintainability.",
       },
       {
         question: "Do you provide post-launch support?",
-        answer: "Yes, we offer comprehensive post-launch support including bug fixes, updates, performance monitoring, and feature enhancements. Support packages are tailored to your needs."
-      }
-    ]
+        answer:
+          "Yes, we provide support packages that include bug fixes, updates, monitoring, and ongoing improvements.",
+      },
+    ],
   },
   {
     id: 'timeline',
@@ -69,18 +77,21 @@ const faqCategories = [
     faqs: [
       {
         question: "How long does a typical project take?",
-        answer: "Project timelines vary based on complexity. Simple websites take 2-4 weeks, complex web applications take 2-4 months, and mobile apps typically take 3-6 months."
+        answer:
+          "Simple sites: 2–4 weeks, complex apps: 2–4 months, full platforms/mobile apps: 3–6 months, depending on scope.",
       },
       {
         question: "Can you work with tight deadlines?",
-        answer: "We understand that some projects have urgent timelines. We can accommodate rush projects with proper resource allocation, though this may affect pricing."
+        answer:
+          "Absolutely. We offer expedited delivery tailored to your project needs, timelines, and approval capacity.",
       },
       {
         question: "How do you handle project delays?",
-        answer: "We maintain buffer time in our schedules and communicate proactively about any potential delays. If delays occur due to our side, we work overtime to get back on track without additional costs."
-      }
-    ]
-  }
+        answer:
+          "We maintain a buffer for edge cases and communicate transparently. If delay is on us, we’ll meet the deadline at no extra cost.",
+      },
+    ],
+  },
 ]
 
 export default function FAQPage() {
@@ -92,55 +103,52 @@ export default function FAQPage() {
   }
 
   return (
-    <div className="pt-20 pb-16 bg-white dark:bg-gray-900">
+    <div className="pt-20 pb-16 bg-[#edf2f4] text-[#2b2d42]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
-        {/* Header */}
+
+        {/* FAQ Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           className="text-center mb-12"
         >
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
-            Frequently Asked Questions
-          </h1>
-          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-            Find answers to common questions about our services, process, and pricing. 
-            Can&apos;t find what you&apos;re looking for? Contact us directly.
+          <h1 className="text-4xl md:text-5xl font-bold mb-4">Frequently Asked Questions</h1>
+          <p className="text-lg text-[#8d99ae] max-w-3xl mx-auto">
+            Find answers to common questions about services, process, pricing, and delivery. Can’t find what you need? Contact us directly.
           </p>
         </motion.div>
 
+        {/* Grid with Sidebar + Content */}
         <div className="grid lg:grid-cols-4 gap-8">
-          {/* Category Sidebar */}
+          
+          {/* Sidebar Filters */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
             className="lg:col-span-1"
           >
-            <div className="sticky top-24">
-              <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">Categories</h3>
-              <div className="space-y-2">
-                {faqCategories.map((category) => (
-                  <button
-                    key={category.id}
-                    onClick={() => setSelectedCategory(category.id)}
-                    className={`w-full flex items-center p-3 rounded-xl transition-all duration-300 text-left ${
-                      selectedCategory === category.id
-                        ? 'bg-blue-600 text-white shadow-lg'
-                        : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700'
-                    }`}
-                  >
-                    <category.icon className="h-5 w-5 mr-3" />
-                    <span className="font-medium">{category.title}</span>
-                  </button>
-                ))}
-              </div>
+            <div className="sticky top-24 space-y-2">
+              <h3 className="text-lg font-semibold mb-4">Categories</h3>
+              {faqCategories.map((category) => (
+                <button
+                  key={category.id}
+                  onClick={() => setSelectedCategory(category.id)}
+                  className={`w-full flex items-center p-3 rounded-xl transition text-left ${
+                    selectedCategory === category.id
+                      ? 'bg-[#d90429] text-white shadow-md'
+                      : 'bg-white border border-[#8d99ae]/30 text-[#2b2d42] hover:bg-[#ef233c]/10'
+                  }`}
+                >
+                  <category.icon className="h-5 w-5 mr-3" />
+                  <span className="font-medium">{category.title}</span>
+                </button>
+              ))}
             </div>
           </motion.div>
 
-          {/* FAQ Content */}
+          {/* Question List */}
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             animate={{ opacity: 1, x: 0 }}
@@ -156,52 +164,48 @@ export default function FAQPage() {
                 transition={{ duration: 0.5 }}
               >
                 {faqCategories
-                  .filter(category => category.id === selectedCategory)
+                  .filter((c) => c.id === selectedCategory)
                   .map((category) => (
                     <div key={category.id}>
                       <div className="flex items-center mb-8">
-                        <category.icon className="h-8 w-8 text-blue-600 mr-3" />
-                        <h2 className="text-2xl font-bold text-gray-900 dark:text-white">
-                          {category.title}
-                        </h2>
+                        <category.icon className="h-8 w-8 mr-3 text-[#d90429]" />
+                        <h2 className="text-2xl font-bold">{category.title}</h2>
                       </div>
-                      
+
                       <div className="space-y-4">
-                        {category.faqs.map((faq, index) => {
-                          const faqKey = `${category.id}-${index}`
+                        {category.faqs.map((faq, idx) => {
+                          const key = `${category.id}-${idx}`
                           return (
                             <div
-                              key={faqKey}
-                              className="bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700"
+                              key={key}
+                              className="bg-white border border-[#8d99ae]/20 rounded-xl shadow-sm"
                             >
                               <button
-                                onClick={() => toggleFAQ(faqKey)}
-                                className="w-full flex items-center justify-between p-6 text-left hover:bg-gray-50 dark:hover:bg-gray-700/50 rounded-xl transition-colors"
+                                onClick={() => toggleFAQ(key)}
+                                className="w-full flex justify-between items-center p-6 text-left rounded-xl hover:bg-[#ef233c]/5 transition"
                               >
-                                <h3 className="text-lg font-semibold text-gray-900 dark:text-white pr-4">
+                                <h3 className="text-lg font-semibold pr-4">
                                   {faq.question}
                                 </h3>
-                                <ChevronDown 
-                                  className={`h-5 w-5 text-gray-500 transform transition-transform duration-200 ${
-                                    openFAQ === faqKey ? 'rotate-180' : ''
+                                <ChevronDown
+                                  className={`h-5 w-5 text-[#d90429] transition-transform ${
+                                    openFAQ === key ? 'rotate-180' : ''
                                   }`}
                                 />
                               </button>
-                              
+
+                              {/* FAQ Answer */}
                               <AnimatePresence>
-                                {openFAQ === faqKey && (
+                                {openFAQ === key && (
                                   <motion.div
                                     initial={{ height: 0, opacity: 0 }}
                                     animate={{ height: 'auto', opacity: 1 }}
                                     exit={{ height: 0, opacity: 0 }}
                                     transition={{ duration: 0.3 }}
-                                    className="overflow-hidden"
+                                    className="overflow-hidden border-t border-[#8d99ae]/20"
                                   >
-                                    <div className="px-6 pb-6">
-                                      <div className="w-full h-px bg-gray-200 dark:bg-gray-700 mb-4"></div>
-                                      <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
-                                        {faq.answer}
-                                      </p>
+                                    <div className="px-6 pb-6 pt-4 text-[#8d99ae] text-sm">
+                                      {faq.answer}
                                     </div>
                                   </motion.div>
                                 )}
@@ -217,25 +221,25 @@ export default function FAQPage() {
           </motion.div>
         </div>
 
-        {/* Contact CTA */}
+        {/* Final CTA */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.5 }}
-          className="mt-16 text-center bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl p-8"
+          transition={{ duration: 0.8, delay: 0.4 }}
+          className="mt-20 text-center"
         >
-          <h3 className="text-2xl font-bold text-white mb-4">
-            Still have questions?
-          </h3>
-          <p className="text-blue-100 mb-6">
-            We&apos;re here to help! Get in touch with our team for personalized assistance.
-          </p>
-          <a
-            href="/contact"
-            className="inline-flex items-center px-6 py-3 bg-white text-blue-600 font-semibold rounded-xl hover:bg-gray-50 transition-colors"
-          >
-            Contact Us
-          </a>
+          <div className="bg-[#d90429] text-white rounded-2xl p-8 max-w-3xl mx-auto shadow-md">
+            <h3 className="text-2xl font-bold mb-3">Still have questions?</h3>
+            <p className="mb-5">
+              We&apos;re here to help. Reach out to our team for personalized assistance.
+            </p>
+            <a
+              href="/contact"
+              className="inline-flex items-center px-6 py-3 bg-white text-[#d90429] font-semibold rounded-xl hover:bg-[#ef233c]/10 transition"
+            >
+              Contact Us
+            </a>
+          </div>
         </motion.div>
       </div>
     </div>

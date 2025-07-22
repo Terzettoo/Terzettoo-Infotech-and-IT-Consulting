@@ -1,62 +1,104 @@
-// src/app/services/page.tsx
 'use client'
+
 import { motion } from 'framer-motion'
-import { Globe, Smartphone, Zap, Shield, Cloud, Database } from 'lucide-react'
+import {
+  Globe,
+  Smartphone,
+  Zap,
+  Shield,
+  Cloud,
+  Database,
+} from 'lucide-react'
 
 const services = [
   {
     icon: Globe,
     title: 'Custom Website Development',
-    description: 'Responsive, fast, and SEO-optimized websites built with modern frameworks like Next.js, React, and Vue.js.',
-    features: ['Responsive Design', 'SEO Optimization', 'Performance Focused', 'Custom CMS Integration']
+    description:
+      'Responsive, fast, and SEO-optimized websites built with modern frameworks like Next.js, React, and Vue.js.',
+    features: [
+      'Responsive Design',
+      'SEO Optimization',
+      'Performance Focused',
+      'Custom CMS Integration',
+    ],
   },
   {
     icon: Smartphone,
     title: 'Mobile App Development',
-    description: 'Native and cross-platform mobile applications for iOS and Android using React Native and Flutter.',
-    features: ['Cross-platform', 'Native Performance', 'App Store Optimization', 'Push Notifications']
+    description:
+      'Native and cross-platform mobile applications for iOS and Android using React Native and Flutter.',
+    features: [
+      'Cross-platform',
+      'Native Performance',
+      'App Store Optimization',
+      'Push Notifications',
+    ],
   },
   {
     icon: Zap,
     title: 'API Development & Integration',
-    description: 'RESTful and GraphQL APIs with seamless third-party integrations and microservices architecture.',
-    features: ['RESTful APIs', 'GraphQL', 'Third-party Integration', 'Microservices']
+    description:
+      'RESTful and GraphQL APIs with seamless third-party integrations and microservices architecture.',
+    features: [
+      'RESTful APIs',
+      'GraphQL',
+      'Third-party Integration',
+      'Microservices',
+    ],
   },
   {
     icon: Shield,
     title: 'Testing & Quality Assurance',
-    description: 'Comprehensive testing strategies including unit testing, integration testing, and automated QA processes.',
-    features: ['Unit Testing', 'Integration Testing', 'Automated QA', 'Performance Testing']
+    description:
+      'Comprehensive testing strategies including unit testing, integration testing, and automated QA processes.',
+    features: [
+      'Unit Testing',
+      'Integration Testing',
+      'Automated QA',
+      'Performance Testing',
+    ],
   },
   {
     icon: Cloud,
     title: 'DevOps & Deployment',
-    description: 'CI/CD pipelines, cloud infrastructure setup, and automated deployment solutions for scalable applications.',
-    features: ['CI/CD Pipelines', 'Cloud Infrastructure', 'Automated Deployment', 'Monitoring & Analytics']
+    description:
+      'CI/CD pipelines, cloud infrastructure setup, and automated deployment solutions for scalable applications.',
+    features: [
+      'CI/CD Pipelines',
+      'Cloud Infrastructure',
+      'Automated Deployment',
+      'Monitoring & Analytics',
+    ],
   },
   {
     icon: Database,
     title: 'Database Design & Management',
-    description: 'Scalable database solutions with optimization, backup strategies, and data migration services.',
-    features: ['Database Design', 'Performance Optimization', 'Data Migration', 'Backup Solutions']
-  }
+    description:
+      'Scalable database solutions with optimization, backup strategies, and data migration services.',
+    features: [
+      'Database Design',
+      'Performance Optimization',
+      'Data Migration',
+      'Backup Solutions',
+    ],
+  },
 ]
 
 export default function ServicesPage() {
   return (
-    <div className="pt-20 pb-16 bg-white dark:bg-gray-900">
+    <div className="pt-20 pb-16 bg-[#edf2f4] text-[#2b2d42]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
+
+        {/* Page Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
-            Our Services
-          </h1>
-          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+          <h1 className="text-4xl md:text-5xl font-bold mb-4">Our Services</h1>
+          <p className="text-xl text-[#8d99ae] max-w-3xl mx-auto">
             We offer comprehensive software development services to help your business grow and succeed in the digital world.
           </p>
         </motion.div>
@@ -69,29 +111,30 @@ export default function ServicesPage() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: index * 0.1 }}
-              className="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 dark:border-gray-700 hover:border-blue-200 dark:hover:border-blue-800"
+              className="bg-white p-8 rounded-2xl shadow-md border border-[#8d99ae]/20 hover:shadow-lg transition-all duration-300"
             >
+              {/* Icon + Heading */}
               <div className="flex items-center mb-6">
-                <div className="p-3 bg-blue-100 dark:bg-blue-900/30 rounded-xl mr-4">
-                  <service.icon className="h-6 w-6 text-blue-600 dark:text-blue-400" />
+                <div className="p-3 bg-[#ef233c]/10 rounded-xl mr-4">
+                  <service.icon className="h-6 w-6 text-[#d90429]" />
                 </div>
-                <h3 className="text-xl font-semibold text-gray-900 dark:text-white">
-                  {service.title}
-                </h3>
+                <h3 className="text-xl font-semibold">{service.title}</h3>
               </div>
-              
-              <p className="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
+
+              {/* Description */}
+              <p className="text-[#8d99ae] mb-4">
                 {service.description}
               </p>
-              
-              <div className="space-y-2">
-                {service.features.map((feature, idx) => (
-                  <div key={idx} className="flex items-center text-sm text-gray-600 dark:text-gray-400">
-                    <div className="w-1.5 h-1.5 bg-blue-600 rounded-full mr-3"></div>
+
+              {/* Features */}
+              <ul className="space-y-2 text-sm text-[#2b2d42]">
+                {service.features.map((feature, i) => (
+                  <li key={i} className="flex items-center">
+                    <span className="w-2 h-2 bg-[#d90429] rounded-full mr-3" />
                     {feature}
-                  </div>
+                  </li>
                 ))}
-              </div>
+              </ul>
             </motion.div>
           ))}
         </div>
