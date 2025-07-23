@@ -14,10 +14,10 @@ const Navbar = () => {
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-2">
-            <div className="w-8 h-8 bg-[#d90429] rounded-lg flex items-center justify-center text-white font-bold text-sm">
-              T
+            <div className="w-8 h-8 rounded-lg flex items-center justify-center text-white font-bold text-sm">
+              <img src="/logo.png" className='w-4' alt="Logo of Terzettoo" />
             </div>
-            <span className="text-xl font-bold text-[#2b2d42]">Terzettoo</span>
+            <span className="text-xl font-bold text-[#d90429]">terzettoo</span>
           </Link>
 
           {/* Desktop Menu */}
@@ -72,7 +72,7 @@ const Navbar = () => {
             {/* CTA Button */}
             <Link
               href="/contact"
-              className="bg-[#d90429] text-white px-4 py-2 rounded-lg font-medium hover:bg-[#ef233c] transition"
+              className="bg-[#d90429] !text-white px-4 py-2 rounded-lg font-medium hover:bg-[#ef233c] transition"
             >
               Contact
             </Link>

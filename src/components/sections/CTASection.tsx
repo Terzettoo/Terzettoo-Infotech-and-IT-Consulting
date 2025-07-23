@@ -62,7 +62,7 @@ const CTASection = () => {
             <div className="flex flex-col sm:flex-row gap-4">
               <Link
                 href="/contact"
-                className="inline-flex items-center justify-center px-8 py-4 bg-[#d90429] text-white font-bold rounded-xl hover:bg-[#ef233c] transition-all duration-300 transform hover:scale-105 shadow-md"
+                className="inline-flex items-center justify-center px-8 py-4 bg-[#d90429] !text-white font-bold rounded-xl hover:bg-[#ef233c] transition-all duration-300 transform hover:scale-105 shadow-md"
               >
                 Start Your Project
                 <ArrowRight className="ml-2 h-5 w-5" />

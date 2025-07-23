@@ -116,7 +116,7 @@ const ServicesOverview = () => {
         >
           <Link
             href="/services"
-            className="inline-flex items-center gap-2 px-8 py-4 bg-[#d90429] text-white font-bold rounded-xl hover:bg-[#ef233c] transition-all duration-300 transform hover:scale-105 shadow-lg"
+            className="inline-flex items-center gap-2 px-8 py-4 bg-[#d90429] !text-white font-bold rounded-xl hover:bg-[#ef233c] transition-all duration-300 transform hover:scale-105 shadow-lg"
           >
             View All Services
             <ArrowRight className="h-5 w-5" />

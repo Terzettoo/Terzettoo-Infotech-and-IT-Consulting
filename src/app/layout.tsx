@@ -13,14 +13,19 @@ export const metadata = {
     'software development, web development, mobile apps, API development, DevOps, database design',
   authors: [{ name: 'Terzettoo' }],
   viewport: 'width=device-width, initial-scale=1',
+  icons: {
+    icon: '/logo.png',
+  },
 }
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode
+}) {
   return (
     <html lang="en" className="scroll-smooth">
-      <body
-        className={`${inter.className} min-h-screen bg-[#edf2f4] text-[#2b2d42] antialiased`}
-      >
+      <body className={`${inter.className} min-h-screen bg-[#edf2f4] text-[#2b2d42] antialiased`}>
         <Navbar />
         <main className="flex-1">{children}</main>
         <Footer />

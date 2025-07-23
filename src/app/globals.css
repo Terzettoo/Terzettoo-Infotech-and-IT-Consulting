@@ -22,7 +22,7 @@ a {
 
 a:hover {
   color: #ef233c; /* lighter red for hover */
-  text-decoration: underline;
+  /* text-decoration: underline; */
 }
 
 /* ✅ Headings */
