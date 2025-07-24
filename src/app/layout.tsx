@@ -7,15 +7,54 @@ const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
   title: 'Terzettoo - Premium Software Solutions',
-  description:
-    'Professional software development company specializing in web development, mobile apps, API integration, and DevOps solutions.',
-  keywords:
-    'software development, web development, mobile apps, API development, DevOps, database design',
+  description: 'Terzettoo is your trusted partner for premium software solutions. We specialize in custom web development, mobile apps, API integration, and DevOps solutions. Transform your business with our expert digital services.',
+  keywords: 'Terzettoo, software development company, web development, mobile apps, API development, DevOps, custom software solutions, digital transformation, software consulting, IT services',
   authors: [{ name: 'Terzettoo' }],
-  viewport: 'width=device-width, initial-scale=1',
   icons: {
     icon: '/logo.png',
   },
+  openGraph: {
+    type: 'website',
+    locale: 'en_US',
+    url: 'https://terzettoo.com',
+    siteName: 'Terzettoo',
+    title: 'Terzettoo - Premium Software Solutions',
+    description: 'Terzettoo is your trusted partner for premium software solutions. Transform your business with our expert digital services.',
+    images: [
+      {
+        url: '/og-image.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Terzettoo - Premium Software Solutions',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Terzettoo - Premium Software Solutions',
+    description: 'Terzettoo is your trusted partner for premium software solutions. Transform your business with our expert digital services.',
+    images: ['/og-image.jpg'],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+  verification: {
+    google: 'add-your-google-site-verification-here',
+  },
+  metadataBase: new URL('https://terzettoo.com'),
+}
+
+export const viewport = {
+  width: 'device-width',
+  initialScale: 1,
 }
 
 export default function RootLayout({
@@ -25,6 +64,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="scroll-smooth">
+      <head>
+        <link rel="icon" href="/logo.png" type="image/png" />
+        {/* Optional: use .ico for better browser support */}
+        {/* <link rel="icon" href="/favicon.ico" /> */}
+      </head>
       <body className={`${inter.className} min-h-screen bg-[#edf2f4] text-[#2b2d42] antialiased`}>
         <Navbar />
         <main className="flex-1">{children}</main>
@@ -33,3 +77,4 @@ export default function RootLayout({
     </html>
   )
 }
+

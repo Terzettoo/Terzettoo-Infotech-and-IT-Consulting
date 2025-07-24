@@ -1,15 +1,15 @@
-'use client'
-import { motion } from 'framer-motion'
-import { ArrowRight, MessageSquare, Calendar, CheckCircle } from 'lucide-react'
-import Link from 'next/link'
+"use client";
+import { motion } from "framer-motion";
+import { ArrowRight, MessageSquare, Calendar, CheckCircle } from "lucide-react";
+import Link from "next/link";
 
 const CTASection = () => {
   const benefits = [
-    'Free consultation and project estimation',
-    'Dedicated project manager and team',
-    'Regular progress updates and demos',
-    'Post-launch support and maintenance',
-  ]
+    "Free consultation and project estimation",
+    "Dedicated project manager and team",
+    "Regular progress updates and demos",
+    "Post-launch support and maintenance",
+  ];
 
   return (
     <section className="py-20 bg-[#edf2f4] text-[#2b2d42] relative overflow-hidden">
@@ -22,7 +22,6 @@ const CTASection = () => {
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
-          
           {/* Left Content */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
@@ -31,15 +30,13 @@ const CTASection = () => {
             transition={{ duration: 0.8 }}
           >
             <h2 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">
-              Ready to Transform Your{" "}
-              <span className="block underline decoration-wavy decoration-[#d90429] decoration-2">
-                Business Ideas?
-              </span>
+              Ready to Transform Your Business Ideas?
             </h2>
 
             <p className="text-lg mb-8 text-[#8d99ae] leading-relaxed">
-              Let&apos;s discuss your project and create something amazing together.
-              Our team of experts is ready to bring your vision to life with cutting-edge technology.
+              Let&apos;s discuss your project and create something amazing
+              together. Our team of experts is ready to bring your vision to
+              life with cutting-edge technology.
             </p>
 
             {/* Benefits List */}
@@ -79,7 +76,7 @@ const CTASection = () => {
             <div className="flex flex-col sm:flex-row gap-6 mt-8 pt-8 border-t border-[#8d99ae]/30 text-sm">
               <div className="flex items-center">
                 <MessageSquare className="h-5 w-5 mr-2" />
-                <span>hello@terzettoo.com</span>
+                <span>admin@terzettoo.com</span>
               </div>
               <div className="flex items-center">
                 <Calendar className="h-5 w-5 mr-2" />
@@ -108,7 +105,11 @@ const CTASection = () => {
 
                 {/* Steps */}
                 <div className="space-y-4 text-sm">
-                  {['Share your idea', 'Get detailed proposal', 'Start building'].map((label, i) => (
+                  {[
+                    "Share your idea",
+                    "Get detailed proposal",
+                    "Start building",
+                  ].map((label, i) => (
                     <div
                       key={i}
                       className="flex items-center p-3 bg-[#edf2f4] rounded-xl"
@@ -116,14 +117,18 @@ const CTASection = () => {
                       <div className="w-8 h-8 bg-[#d90429] text-white rounded-full flex items-center justify-center font-bold mr-3">
                         {i + 1}
                       </div>
-                      <span className="text-[#2b2d42] font-medium">{label}</span>
+                      <span className="text-[#2b2d42] font-medium">
+                        {label}
+                      </span>
                     </div>
                   ))}
                 </div>
 
                 {/* Footer: Trust Badges or Logos */}
                 <div className="mt-6 pt-6 border-t border-[#8d99ae]/20 text-center">
-                  <p className="text-xs text-[#8d99ae] mb-2">Trusted by 50+ companies</p>
+                  <p className="text-xs text-[#8d99ae] mb-2">
+                    Trusted by 50+ companies
+                  </p>
                   <div className="flex justify-center space-x-2">
                     {[...Array(5)].map((_, i) => (
                       <div
@@ -156,7 +161,7 @@ const CTASection = () => {
         </div>
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default CTASection
+export default CTASection;

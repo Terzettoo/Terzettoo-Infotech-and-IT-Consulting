@@ -24,15 +24,15 @@ const Footer = () => {
             <div className="space-y-2 text-sm text-[#8d99ae]">
               <div className="flex items-center">
                 <Mail className="h-4 w-4 mr-2" />
-                hello@terzettoo.com
+                admin@terzettoo.com
               </div>
               <div className="flex items-center">
                 <Phone className="h-4 w-4 mr-2" />
-                +1 (555) 123-4567
+                +91 70690 13316
               </div>
               <div className="flex items-center">
                 <MapPin className="h-4 w-4 mr-2" />
-                Tech District, TC 12345
+                Ahmedabad, India
               </div>
             </div>
           </div>
@@ -106,7 +106,7 @@ const Footer = () => {
 
         {/* Bottom Bar */}
         <div className="border-t border-[#8d99ae]/30 mt-10 pt-6 flex flex-col md:flex-row justify-between items-center text-sm text-[#8d99ae]">
-          <p>© 2024 Terzettoo. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} Terzettoo. All rights reserved.</p>
           <div className="flex space-x-6 mt-4 md:mt-0">
             <Link href="/privacy" className="hover:text-[#2b2d42]">Privacy Policy</Link>
             <Link href="/terms" className="hover:text-[#2b2d42]">Terms of Service</Link>

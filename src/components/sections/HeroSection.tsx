@@ -1,14 +1,13 @@
-'use client'
-import { motion } from 'framer-motion'
-import { ArrowRight, Code, Smartphone, Database } from 'lucide-react'
-import Link from 'next/link'
+"use client";
+import { motion } from "framer-motion";
+import { ArrowRight, Code, Smartphone, Database } from "lucide-react";
+import Link from "next/link";
 
 const HeroSection = () => {
   return (
     <section className="pt-20 pb-16 bg-[#edf2f4] min-h-screen flex items-center">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
-
           {/* Left Content */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
@@ -17,16 +16,13 @@ const HeroSection = () => {
             className="text-center lg:text-left text-[#2b2d42]"
           >
             <h1 className="text-5xl lg:text-6xl font-bold leading-tight mb-6">
-              Premium{" "}
-              <span className="underline decoration-wavy decoration-[#d90429]">
-                Software Solutions
-              </span>{" "}
-              for Modern Businesses
+              Premium Software Solutions for Modern Businesses
             </h1>
 
             <p className="text-xl text-[#2b2d42]/80 mb-8 leading-relaxed">
-              We craft innovative, scalable, and robust software solutions that drive your business forward. 
-              From web applications to mobile apps, we deliver excellence in every project.
+              We craft innovative, scalable, and robust software solutions that
+              drive your business forward. From web applications to mobile apps,
+              we deliver excellence in every project.
             </p>
 
             {/* CTA Buttons */}
@@ -50,12 +46,14 @@ const HeroSection = () => {
             {/* Stats */}
             <div className="grid grid-cols-3 gap-6 text-center">
               {[
-                ['150+', 'Projects Delivered'],
-                ['50+', 'Happy Clients'],
-                ['5+', 'Years Experience'],
+                ["150+", "Projects Delivered"],
+                ["50+", "Happy Clients"],
+                ["5+", "Years Experience"],
               ].map(([count, label], i) => (
                 <div key={i}>
-                  <div className="text-3xl font-bold text-[#2b2d42]">{count}</div>
+                  <div className="text-3xl font-bold text-[#2b2d42]">
+                    {count}
+                  </div>
                   <div className="text-sm text-[#8d99ae]">{label}</div>
                 </div>
               ))}
@@ -98,7 +96,7 @@ const HeroSection = () => {
         </div>
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default HeroSection
+export default HeroSection;
