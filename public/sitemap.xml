@@ -1,27 +1,232 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- Main Pages -->
   <url>
     <loc>https://terzettoo.com/</loc>
     <priority>1.0</priority>
+    <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>https://terzettoo.com/services</loc>
     <priority>0.9</priority>
+    <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>https://terzettoo.com/contact</loc>
     <priority>0.9</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://terzettoo.com/blog</loc>
+    <priority>0.8</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://terzettoo.com/career</loc>
+    <priority>0.8</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+
+  <!-- Company Pages -->
+  <url>
+    <loc>https://terzettoo.com/company/about</loc>
+    <priority>0.8</priority>
+    <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://terzettoo.com/company/portfolio</loc>
     <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://terzettoo.com/company/about</loc>
-    <priority>0.8</priority>
+    <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>https://terzettoo.com/company/faq</loc>
     <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
   </url>
-</urlset> 
+
+  <!-- Mobile Development Services -->
+  <url>
+    <loc>https://terzettoo.com/mobile-app-development</loc>
+    <priority>0.8</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://terzettoo.com/android-app-development</loc>
+    <priority>0.8</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://terzettoo.com/ios-app-development</loc>
+    <priority>0.8</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://terzettoo.com/ipad-app-development</loc>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://terzettoo.com/ios-development</loc>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://terzettoo.com/react-app-development</loc>
+    <priority>0.8</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://terzettoo.com/flutter-development</loc>
+    <priority>0.8</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+
+  <!-- Web Development Services -->
+  <url>
+    <loc>https://terzettoo.com/web-development</loc>
+    <priority>0.8</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://terzettoo.com/frontend-development</loc>
+    <priority>0.8</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://terzettoo.com/react-js-development</loc>
+    <priority>0.8</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://terzettoo.com/ecommerce-portal-development</loc>
+    <priority>0.8</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://terzettoo.com/shopping-cart-development</loc>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://terzettoo.com/shopify-development</loc>
+    <priority>0.8</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://terzettoo.com/wordpress-development</loc>
+    <priority>0.8</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+
+  <!-- Backend Development Services -->
+  <url>
+    <loc>https://terzettoo.com/java-development</loc>
+    <priority>0.8</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://terzettoo.com/php-development</loc>
+    <priority>0.8</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://terzettoo.com/python-web-development</loc>
+    <priority>0.8</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://terzettoo.com/dotnet-web-development</loc>
+    <priority>0.8</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+
+  <!-- AI & Advanced Technology Services -->
+  <url>
+    <loc>https://terzettoo.com/ai-ml</loc>
+    <priority>0.8</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://terzettoo.com/data-analytics</loc>
+    <priority>0.8</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://terzettoo.com/computer-vision</loc>
+    <priority>0.8</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://terzettoo.com/chatbot-development</loc>
+    <priority>0.8</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+
+  <!-- Cloud & Infrastructure Services -->
+  <url>
+    <loc>https://terzettoo.com/amazon-web-services-aws-development</loc>
+    <priority>0.8</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+
+  <!-- Design & Marketing Services -->
+  <url>
+    <loc>https://terzettoo.com/ui-ux-development</loc>
+    <priority>0.8</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://terzettoo.com/digital-marketing</loc>
+    <priority>0.8</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://terzettoo.com/seo-services</loc>
+    <priority>0.8</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://terzettoo.com/ppc-advertising</loc>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://terzettoo.com/social-media-marketing</loc>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://terzettoo.com/content-marketing-and-strategy</loc>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://terzettoo.com/graphic-design-services</loc>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+
+  <!-- Enterprise Solutions -->
+  <url>
+    <loc>https://terzettoo.com/erp-implementation-and-customization</loc>
+    <priority>0.8</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+
+  <!-- Blog Posts (examples - you'll need to add actual blog posts) -->
+  <!-- <url>
+    <loc>https://terzettoo.com/smart-digital-marketing-that-drives-real-growth</loc>
+    <priority>0.6</priority>
+    <changefreq>yearly</changefreq>
+  </url>
+  <url>
+    <loc>https://terzettoo.com/how-ai-is-revolutionizing-business-operations</loc>
+    <priority>0.6</priority>
+    <changefreq>yearly</changefreq>
+  </url>
+  <url>
+    <loc>https://terzettoo.com/why-mobile-app-are-business-necessity</loc>
+    <priority>0.6</priority>
+    <changefreq>yearly</changefreq>
+  </url> -->
+</urlset>
