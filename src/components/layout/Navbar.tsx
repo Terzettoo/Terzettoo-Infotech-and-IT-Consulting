@@ -9,6 +9,7 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false)
   const [isServicesOpen, setIsServicesOpen] = useState(false)
   const [isCompanyOpen, setIsCompanyOpen] = useState(false)
+  const [isScrolled, setIsScrolled] = useState(false)
   const servicesRef = useRef<HTMLDivElement>(null)
   const companyRef = useRef<HTMLDivElement>(null)
   const [mobileServiceOpen, setMobileServiceOpen] = useState<Record<string, boolean>>({})
@@ -58,6 +59,19 @@ const Navbar = () => {
     ]
   }
 
+  useEffect(() => {
+    const handleScroll = () => {
+      const heroSection = document.getElementById('hero-section')
+      if (heroSection) {
+        const heroHeight = heroSection.offsetHeight
+        setIsScrolled(window.scrollY > heroHeight)
+      }
+    }
+
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
   // Close dropdowns when clicking outside
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
@@ -68,7 +82,7 @@ const Navbar = () => {
         setIsCompanyOpen(false)
       }
     }
-    
+
     document.addEventListener('mousedown', handleClickOutside)
     return () => document.removeEventListener('mousedown', handleClickOutside)
   }, [])
@@ -82,7 +96,7 @@ const Navbar = () => {
   }
 
   return (
-    <nav className="fixed top-0 left-0 w-full z-50 bg-[#edf2f4] text-[#2b2d42] border-b border-[#8d99ae]/40 shadow-sm">
+    <nav className={`fixed top-0 left-0 w-full z-50 transition-colors duration-300 ${isScrolled ? 'bg-white text-[#2b2d42] shadow-md' : 'bg-[#d90429] text-white'}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
@@ -90,12 +104,15 @@ const Navbar = () => {
             <div className="w-8 h-8 rounded-lg flex items-center justify-center text-white font-bold text-sm">
               <Image src="/logo.png" alt="Logo of Terzettoo" width={16} height={16} />
             </div>
-            <span className="text-xl font-bold text-[#d90429]">terzettoo</span>
+            <span className={`text-xl font-bold ${isScrolled ? 'text-[#d90429]' : 'text-white'}`}>terzettoo</span>
           </Link>
 
           {/* Desktop Menu */}
           <div className="hidden lg:flex items-center space-x-8">
-            <Link href="/" className="hover:text-[#ef233c] transition-colors">
+            <Link 
+              href="/" 
+              className={`transition-colors ${isScrolled ? 'text-[#6b7280] hover:text-[#2b2d42]' : '!text-white hover:opacity-80'}`}
+            >
               Home
             </Link>
 
@@ -108,7 +125,7 @@ const Navbar = () => {
             >
               <button
                 onClick={() => setIsServicesOpen(!isServicesOpen)}
-                className="flex items-center hover:text-[#ef233c] transition-colors"
+                className={`flex items-center transition-colors ${isScrolled ? 'text-[#6b7280] hover:text-[#2b2d42]' : 'text-white hover:opacity-80'}`}
               >
                 Services
                 <ChevronDown
@@ -164,7 +181,7 @@ const Navbar = () => {
             >
               <button
                 onClick={() => setIsCompanyOpen(!isCompanyOpen)}
-                className="flex items-center hover:text-[#ef233c] transition-colors"
+                className={`flex items-center transition-colors ${isScrolled ? 'text-[#6b7280] hover:text-[#2b2d42]' : 'text-white hover:opacity-80'}`}
               >
                 Company
                 <ChevronDown
@@ -208,7 +225,7 @@ const Navbar = () => {
 
             <Link 
               href="/blog" 
-              className="hover:text-[#ef233c] transition-colors"
+              className={`transition-colors ${isScrolled ? 'text-[#6b7280] hover:text-[#2b2d42]' : '!text-white hover:opacity-80'}`}
             >
               Blog
             </Link>
@@ -216,7 +233,11 @@ const Navbar = () => {
             {/* CTA Button */}
             <Link
               href="/contact"
-              className="bg-[#d90429] !text-white px-4 py-2 rounded-lg font-medium hover:bg-[#ef233c] transition"
+              className={`px-4 py-2 rounded-lg font-medium transition ${
+                isScrolled 
+                  ? 'bg-[#d90429] !text-white hover:bg-[#ef233c]' 
+                  : 'bg-white text-[#d90429] hover:bg-gray-100'
+              }`}
             >
               Contact
             </Link>
@@ -225,7 +246,7 @@ const Navbar = () => {
           {/* Mobile Toggle */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="lg:hidden p-2 text-[#2b2d42] hover:bg-[#edf2f4]/50 rounded-lg transition"
+            className={`lg:hidden p-2 rounded-lg transition ${isScrolled ? 'text-[#2b2d42]' : 'text-white'}`}
             aria-label="Toggle menu"
           >
             {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
@@ -241,12 +262,12 @@ const Navbar = () => {
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3 }}
-            className="lg:hidden bg-[#edf2f4] border-t border-[#8d99ae]/30 shadow-xl"
+            className={`lg:hidden ${isScrolled ? 'bg-white' : 'bg-[#d90429]'} border-t ${isScrolled ? 'border-[#8d99ae]/30' : 'border-white/20'} shadow-xl`}
           >
             <div className="px-4 py-4 space-y-2 max-h-[80vh] overflow-y-auto">
               <Link
                 href="/"
-                className="block px-4 py-2 rounded-lg text-[#2b2d42] hover:bg-[#d90429]/10 transition"
+                className={`block px-4 py-2 rounded-lg transition ${isScrolled ? 'text-[#6b7280] hover:text-[#2b2d42] hover:bg-[#d90429]/10' : 'text-white hover:bg-white/10'}`}
                 onClick={() => setIsOpen(false)}
               >
                 Home
@@ -254,13 +275,13 @@ const Navbar = () => {
               
               {/* Mobile Services */}
               <div className="space-y-1">
-                <div className="px-4 py-2 font-semibold text-[#d90429] text-sm">
+                <div className={`px-4 py-2 font-semibold text-sm ${isScrolled ? 'text-[#d90429]' : 'text-white'}`}>
                   SERVICES
                 </div>
                 {Object.entries(serviceCategories).map(([category, services]) => (
-                  <div key={category} className="border-b border-[#8d99ae]/20 last:border-0">
+                  <div key={category} className={`border-b ${isScrolled ? 'border-[#8d99ae]/20' : 'border-white/20'} last:border-0`}>
                     <button
-                      className="flex items-center justify-between w-full px-4 py-2 text-left text-[#2b2d42] hover:bg-[#d90429]/10 transition rounded"
+                      className={`flex items-center justify-between w-full px-4 py-2 text-left transition rounded ${isScrolled ? 'text-[#6b7280] hover:text-[#2b2d42] hover:bg-[#d90429]/10' : 'text-white hover:bg-white/10'}`}
                       onClick={() => toggleMobileCategory(category)}
                     >
                       <span className="text-sm font-medium">{category}</span>
@@ -276,7 +297,11 @@ const Navbar = () => {
                           <Link
                             key={idx}
                             href={service.href}
-                            className="block px-4 py-1 text-sm text-[#2b2d42] hover:bg-[#d90429]/10 transition rounded"
+                            className={`block px-4 py-1 text-sm transition rounded ${
+                              isScrolled 
+                                ? 'text-[#6b7280] hover:text-[#2b2d42] hover:bg-[#d90429]/10' 
+                                : 'text-white/80 hover:bg-white/10 hover:text-white'
+                            }`}
                             onClick={() => setIsOpen(false)}
                           >
                             {service.label}
@@ -290,35 +315,35 @@ const Navbar = () => {
 
               <Link
                 href="/company/about"
-                className="block px-4 py-2 rounded-lg text-[#2b2d42] hover:bg-[#d90429]/10 transition"
+                className={`block px-4 py-2 rounded-lg transition ${isScrolled ? 'text-[#6b7280] hover:text-[#2b2d42] hover:bg-[#d90429]/10' : 'text-white hover:bg-white/10'}`}
                 onClick={() => setIsOpen(false)}
               >
                 About Us
               </Link>
               <Link
                 href="/company/portfolio"
-                className="block px-4 py-2 rounded-lg text-[#2b2d42] hover:bg-[#d90429]/10 transition"
+                className={`block px-4 py-2 rounded-lg transition ${isScrolled ? 'text-[#6b7280] hover:text-[#2b2d42] hover:bg-[#d90429]/10' : 'text-white hover:bg-white/10'}`}
                 onClick={() => setIsOpen(false)}
               >
                 Portfolio
               </Link>
               <Link
                 href="/career"
-                className="block px-4 py-2 rounded-lg text-[#2b2d42] hover:bg-[#d90429]/10 transition"
+                className={`block px-4 py-2 rounded-lg transition ${isScrolled ? 'text-[#6b7280] hover:text-[#2b2d42] hover:bg-[#d90429]/10' : 'text-white hover:bg-white/10'}`}
                 onClick={() => setIsOpen(false)}
               >
                 Career
               </Link>
               <Link
                 href="/blog"
-                className="block px-4 py-2 rounded-lg text-[#2b2d42] hover:bg-[#d90429]/10 transition"
+                className={`block px-4 py-2 rounded-lg transition ${isScrolled ? 'text-[#6b7280] hover:text-[#2b2d42] hover:bg-[#d90429]/10' : 'text-white hover:bg-white/10'}`}
                 onClick={() => setIsOpen(false)}
               >
                 Blog
               </Link>
               <Link
                 href="/company/faq"
-                className="block px-4 py-2 rounded-lg text-[#2b2d42] hover:bg-[#d90429]/10 transition"
+                className={`block px-4 py-2 rounded-lg transition ${isScrolled ? 'text-[#6b7280] hover:text-[#2b2d42] hover:bg-[#d90429]/10' : 'text-white hover:bg-white/10'}`}
                 onClick={() => setIsOpen(false)}
               >
                 FAQ
@@ -326,7 +351,11 @@ const Navbar = () => {
 
               <Link
                 href="/contact"
-                className="block px-4 py-2 text-center bg-[#d90429] text-white font-medium rounded-lg hover:bg-[#ef233c] transition"
+                className={`block px-4 py-2 text-center font-medium rounded-lg transition ${
+                  isScrolled 
+                    ? 'bg-[#d90429] text-white hover:bg-[#ef233c]' 
+                    : 'bg-white text-[#d90429] hover:bg-gray-100'
+                }`}
                 onClick={() => setIsOpen(false)}
               >
                 Contact

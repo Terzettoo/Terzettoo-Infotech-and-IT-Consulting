@@ -94,7 +94,7 @@ export default function ServicePageTemplate({ content }: ServicePageTemplateProp
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link
                   href="/contact"
-                  className="inline-flex items-center justify-center px-8 py-4 bg-[#d90429] text-white font-bold rounded-xl hover:bg-[#ef233c] transition-all duration-300 transform hover:scale-105 shadow-lg"
+                  className="inline-flex items-center justify-center px-8 py-4 bg-[#d90429] !text-white font-bold rounded-xl hover:bg-[#ef233c] transition-all duration-300 transform hover:scale-105 shadow-lg"
                 >
                   {content.hero.primaryCTA}
                   <ArrowRight className="ml-2 h-5 w-5" />
@@ -348,7 +348,7 @@ export default function ServicePageTemplate({ content }: ServicePageTemplateProp
               </Link>
               <Link
                 href="/company/portfolio"
-                className="inline-flex items-center justify-center px-8 py-4 border-2 border-white text-white font-semibold rounded-xl hover:bg-white/10 transition-all duration-300"
+                className="inline-flex items-center justify-center px-8 py-4 border-2 border-white !text-white font-semibold rounded-xl hover:bg-white/10 transition-all duration-300"
               >
                 View Our Work
               </Link>

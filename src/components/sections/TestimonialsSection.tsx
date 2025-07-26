@@ -1,8 +1,10 @@
-'use client'
+"use client"
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { Star, Quote } from 'lucide-react'
+import Image from 'next/image'
 
+// Testimonials data with image and alt
 const testimonials = [
   {
     id: 1,
@@ -12,6 +14,8 @@ const testimonials = [
     rating: 5,
     text: 'Terzettoo delivered an exceptional e-commerce platform that exceeded our expectations. Their attention to detail and technical expertise is unmatched. Our sales increased by 40% within the first month!',
     project: 'E-commerce Platform',
+    image: '/image/testimonial_image/sarah.webp',
+    alt: 'Photo of Sarah Johnson',
   },
   {
     id: 2,
@@ -21,6 +25,8 @@ const testimonials = [
     rating: 5,
     text: 'The mobile app they developed for us is simply outstanding. Clean code, beautiful UI, and perfect performance. They understood our vision and brought it to life flawlessly.',
     project: 'Healthcare Mobile App',
+    image: '/image/testimonial_image/michael.png',
+    alt: 'Photo of Michael Chen',
   },
   {
     id: 3,
@@ -30,6 +36,8 @@ const testimonials = [
     rating: 5,
     text: 'Working with Terzettoo was a game-changer for our startup. They delivered a scalable fintech solution on time and within budget. Their expertise in API integration saved us months of development.',
     project: 'Fintech API Platform',
+    image: '/image/testimonial_image/emily.jpg',
+    alt: 'Photo of Emily Rodriguez',
   },
   {
     id: 4,
@@ -39,6 +47,8 @@ const testimonials = [
     rating: 5,
     text: "Incredible team! They built our learning management system with features we didn’t even know we needed. The platform handles thousands of users seamlessly.",
     project: 'Learning Management System',
+    image: '/image/testimonial_image/david.jpg',
+    alt: 'Photo of David Kim',
   },
   {
     id: 5,
@@ -48,6 +58,8 @@ const testimonials = [
     rating: 5,
     text: 'The inventory management system they created revolutionized our operations. Real-time tracking, automated alerts, and comprehensive reporting — everything works perfectly.',
     project: 'Inventory Management System',
+    image: '/image/testimonial_image/lisa.jpg',
+    alt: 'Photo of Lisa Thompson',
   },
 ]
 
@@ -87,7 +99,7 @@ const TestimonialsSection = () => {
           key={currentIndex}
           initial={{ opacity: 0, x: 40 }}
           animate={{ opacity: 1, x: 0 }}
-         transition={{ duration: 0.6 }}
+          transition={{ duration: 0.6 }}
           className="max-w-4xl mx-auto"
         >
           <div className="bg-white border border-[#8d99ae]/20 rounded-3xl p-8 md:p-12 shadow-xl relative">
@@ -111,13 +123,16 @@ const TestimonialsSection = () => {
               &ldquo;{current.text}&rdquo;
             </blockquote>
 
-            {/* Client Info */}
+            {/* Client Info with Image */}
             <div className="flex justify-center items-center gap-4 text-center">
-              <div className="w-16 h-16 rounded-full bg-[#d90429] text-white font-bold text-lg flex items-center justify-center">
-                {current.name
-                  .split(' ')
-                  .map((n) => n[0])
-                  .join('')}
+              <div className="w-16 h-16 rounded-full overflow-hidden">
+                <Image
+                  src={current.image}
+                  alt={current.alt}
+                  width={64}
+                  height={64}
+                  className="object-cover"
+                />
               </div>
               <div>
                 <div className="text-lg font-semibold text-[#2b2d42]">{current.name}</div>
@@ -172,4 +187,4 @@ const TestimonialsSection = () => {
   )
 }
 
-export default TestimonialsSection
+export default TestimonialsSection;
