@@ -1,1 +1,0 @@
-// companyClient.tsx component

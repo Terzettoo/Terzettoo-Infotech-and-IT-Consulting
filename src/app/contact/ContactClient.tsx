@@ -37,7 +37,7 @@ export default function ContactClient() {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const { register, handleSubmit, formState: { errors }, reset } = useForm<FormData>()
 
-  const onSubmit = async (_data: FormData) => {
+  const onSubmit = async () => {
     setIsSubmitting(true)
     await new Promise(resolve => setTimeout(resolve, 2000))
     setIsSubmitted(true)

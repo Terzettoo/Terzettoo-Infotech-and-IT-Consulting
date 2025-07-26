@@ -1,4 +1,5 @@
 'use client'
+import Image from 'next/image'
 import { useState, useRef, useEffect } from 'react'
 import Link from 'next/link'
 import { Menu, X, ChevronDown } from 'lucide-react'
@@ -87,7 +88,7 @@ const Navbar = () => {
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-2">
             <div className="w-8 h-8 rounded-lg flex items-center justify-center text-white font-bold text-sm">
-              <img src="/logo.png" className="w-4" alt="Logo of Terzettoo" />
+              <Image src="/logo.png" alt="Logo of Terzettoo" width={16} height={16} />
             </div>
             <span className="text-xl font-bold text-[#d90429]">terzettoo</span>
           </Link>

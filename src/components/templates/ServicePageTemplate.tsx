@@ -2,7 +2,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { ArrowRight, CheckCircle, Star, Users, Clock, Award } from 'lucide-react'
+import { ArrowRight, CheckCircle } from 'lucide-react'
 import Link from 'next/link'
 import { LucideIcon } from 'lucide-react'
 
