@@ -1,10 +1,9 @@
-"use client"
-import { useState, useEffect } from 'react'
+'use client'
 import { motion } from 'framer-motion'
 import { Star, Quote } from 'lucide-react'
 import Image from 'next/image'
+import { useEffect, useRef, useState } from 'react'
 
-// Testimonials data with image and alt
 const testimonials = [
   {
     id: 1,
@@ -45,7 +44,7 @@ const testimonials = [
     company: 'EduLearn Platform',
     role: 'Founder',
     rating: 5,
-    text: "Incredible team! They built our learning management system with features we didn’t even know we needed. The platform handles thousands of users seamlessly.",
+    text: "Incredible team! They built our learning management system with features we didn't even know we needed. The platform handles thousands of users seamlessly.",
     project: 'Learning Management System',
     image: '/image/testimonial_image/david.jpg',
     alt: 'Photo of David Kim',
@@ -65,22 +64,41 @@ const testimonials = [
 
 const TestimonialsSection = () => {
   const [currentIndex, setCurrentIndex] = useState(0)
+  const containerRef = useRef<HTMLDivElement>(null)
+  const intervalRef = useRef<NodeJS.Timeout | null>(null)
+
+  // Duplicate testimonials to create infinite loop effect
+  const duplicatedTestimonials = [...testimonials, ...testimonials]
 
   useEffect(() => {
-    const interval = setInterval(
-      () => setCurrentIndex((prev) => (prev + 1) % testimonials.length),
-      6000
-    )
-    return () => clearInterval(interval)
-  }, [])
+    const startAutoScroll = () => {
+      intervalRef.current = setInterval(() => {
+        setCurrentIndex(prev => (prev + 1) % testimonials.length)
+      }, 3000) // Change slide every 3 seconds
+    }
 
-  const current = testimonials[currentIndex]
+    startAutoScroll()
+
+    return () => {
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current)
+      }
+    }
+  }, [testimonials.length])
+
+  // Calculate the transform value for the slider
+  const getTransformValue = () => {
+    if (containerRef.current) {
+      const cardWidth = containerRef.current.offsetWidth / 3 // Assuming 3 cards visible at a time
+      return -currentIndex * cardWidth
+    }
+    return 0
+  }
 
   return (
-    <section className="py-20 bg-[#edf2f4] text-[#2b2d42]">
+    <section className="py-20 bg-[#edf2f4] text-[#2b2d42] overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-
-        {/* Section Header */}
+        {/* Section Heading */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -94,97 +112,82 @@ const TestimonialsSection = () => {
           </p>
         </motion.div>
 
-        {/* Current Testimonial */}
-        <motion.div
-          key={currentIndex}
-          initial={{ opacity: 0, x: 40 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.6 }}
-          className="max-w-4xl mx-auto"
+        {/* Testimonials Carousel */}
+        <div
+          ref={containerRef}
+          className="relative h-[400px] overflow-hidden"
         >
-          <div className="bg-white border border-[#8d99ae]/20 rounded-3xl p-8 md:p-12 shadow-xl relative">
-
-            {/* Quote Icon */}
-            <div className="absolute top-6 left-6 opacity-10">
-              <Quote className="h-16 w-16 text-[#d90429]" />
-            </div>
-
-            {/* Star Rating */}
-            <div className="flex justify-center mb-6">
-              <div className="flex space-x-1">
-                {[...Array(current.rating)].map((_, i) => (
-                  <Star key={i} className="h-6 w-6 text-yellow-400 fill-current" />
-                ))}
-              </div>
-            </div>
-
-            {/* Testimonial Text */}
-            <blockquote className="text-xl md:text-2xl text-center text-[#2b2d42] leading-relaxed mb-8 relative z-10">
-              &ldquo;{current.text}&rdquo;
-            </blockquote>
-
-            {/* Client Info with Image */}
-            <div className="flex justify-center items-center gap-4 text-center">
-              <div className="w-16 h-16 rounded-full overflow-hidden">
-                <Image
-                  src={current.image}
-                  alt={current.alt}
-                  width={64}
-                  height={64}
-                  className="object-cover"
-                />
-              </div>
-              <div>
-                <div className="text-lg font-semibold text-[#2b2d42]">{current.name}</div>
-                <div className="text-sm text-[#8d99ae]">
-                  {current.role} at {current.company}
+          <motion.div
+            className="absolute top-0 left-0 flex gap-8 w-full"
+            style={{
+              transform: `translateX(${getTransformValue()}px)`,
+              transition: 'transform 0.5s ease-in-out',
+              width: `${duplicatedTestimonials.length * (100 / 3)}%` // 3 cards visible at a time
+            }}
+          >
+            {duplicatedTestimonials.map((testimonial, index) => (
+              <motion.div
+                key={`${testimonial.id}-${index}`}
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6 }}
+                viewport={{ once: true }}
+                className="bg-white border border-[#8d99ae]/20 rounded-3xl p-6 md:p-8 shadow-lg flex flex-col justify-between"
+                style={{ width: `calc(100% / ${duplicatedTestimonials.length})` }}
+              >
+                {/* Quote Icon */}
+                <div className="absolute top-5 left-5 opacity-10">
+                  <Quote className="h-12 w-12 text-[#d90429]" />
                 </div>
-                <div className="text-sm font-medium text-[#d90429]">
-                  {current.project}
-                </div>
-              </div>
-            </div>
-          </div>
-        </motion.div>
 
-        {/* Pagination Dots */}
-        <div className="flex justify-center mt-12 gap-3">
+                {/* Star Rating */}
+                <div className="flex mb-4 space-x-1">
+                  {[...Array(testimonial.rating)].map((_, i) => (
+                    <Star key={i} className="h-5 w-5 text-yellow-400 fill-current" />
+                  ))}
+                </div>
+
+                {/* Testimonial Text */}
+                <p className="text-[#2b2d42] text-base leading-relaxed mb-6">
+                  “{testimonial.text}”
+                </p>
+
+                {/* Client Info */}
+                <div className="flex items-center gap-4 mt-auto">
+                  <div className="w-14 h-14 rounded-full overflow-hidden">
+                    <Image
+                      src={testimonial.image}
+                      alt={testimonial.alt}
+                      width={56}
+                      height={56}
+                      className="object-cover"
+                    />
+                  </div>
+                  <div>
+                    <div className="text-base font-semibold text-[#2b2d42]">{testimonial.name}</div>
+                    <div className="text-sm text-[#8d99ae]">{testimonial.role} at {testimonial.company}</div>
+                    <div className="text-sm text-[#d90429] font-medium">{testimonial.project}</div>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+
+        {/* Navigation Dots */}
+        <div className="flex justify-center mt-8 gap-2">
           {testimonials.map((_, index) => (
             <button
               key={index}
               onClick={() => setCurrentIndex(index)}
-              className={`h-3 rounded-full transition-all duration-300 ${
-                index === currentIndex
-                  ? 'w-8 bg-[#d90429]'
-                  : 'w-3 bg-white border border-[#8d99ae]/40 hover:bg-[#ef233c]/20'
-              }`}
+              className={`w-3 h-3 rounded-full ${currentIndex === index ? 'bg-[#d90429]' : 'bg-[#8d99ae]'}`}
+              aria-label={`Go to testimonial ${index + 1}`}
             />
           ))}
         </div>
-
-        {/* Stats */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          viewport={{ once: true }}
-          className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-20 text-center"
-        >
-          {[
-            { label: 'Projects Completed', value: '150+' },
-            { label: 'Happy Clients', value: '50+' },
-            { label: 'Success Rate', value: '99%' },
-            { label: 'Support Available', value: '24/7' },
-          ].map((stat, i) => (
-            <div key={i}>
-              <div className="text-4xl font-bold text-[#2b2d42]">{stat.value}</div>
-              <div className="text-sm text-[#8d99ae]">{stat.label}</div>
-            </div>
-          ))}
-        </motion.div>
       </div>
     </section>
   )
 }
 
-export default TestimonialsSection;
+export default TestimonialsSection

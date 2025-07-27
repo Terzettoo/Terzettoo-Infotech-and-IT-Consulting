@@ -3,6 +3,7 @@ import HeroSection from '@/components/sections/HeroSection'
 import ServicesOverview from '@/components/sections/ServicesOverview'
 import TestimonialsSection from '@/components/sections/TestimonialsSection'
 import CTASection from '@/components/sections/CTASection'
+import StatsSection from '@/components/sections/StatsSection'
 
 export const metadata = {
   title: 'Terzettoo - Innovative Software Solutions for Modern Businesses',
@@ -19,6 +20,7 @@ export default function HomePage() {
     <>
       <HeroSection />
       <ServicesOverview />
+      <StatsSection/>
       <TestimonialsSection />
       <CTASection />
     </>
