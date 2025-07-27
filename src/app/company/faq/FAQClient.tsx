@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { ChevronDown, MessageCircle, Clock, DollarSign, Code } from 'lucide-react'
+import { ChevronDown, MessageCircle, DollarSign, Code, Shield, Database, Phone } from 'lucide-react'
 
 const faqCategories = [
   {
@@ -15,15 +15,47 @@ const faqCategories = [
         answer:
           "We offer comprehensive software development services including custom website development, mobile app development, API development & integration, testing & QA, DevOps & deployment, and database design & management.",
       },
-      {
-        question: "How long has Terzettoo been in business?",
-        answer:
-          "Terzettoo has been delivering high-quality software solutions for over 5 years, with a team of experienced developers who have worked on 150+ successful projects.",
-      },
+      // {
+      //   question: "How long has Terzettoo been in business?",
+      //   answer:
+      //     "Terzettoo has been delivering high-quality software solutions for over 5 years, with a team of experienced developers who have worked on 150+ successful projects.",
+      // },
       {
         question: "What industries do you work with?",
         answer:
           "We work with diverse industries including e-commerce, healthcare, fintech, education, real estate, and startups. Our flexible approach allows us to adapt to any business domain.",
+      },
+      {
+        question: "Do you work with startups?",
+        answer:
+          "Absolutely! We love working with startups and offer special packages for early-stage companies, including MVP development and scalable architecture planning.",
+      },
+    ],
+  },
+  {
+    id: 'technology',
+    title: 'Technology Stack',
+    icon: Code,
+    faqs: [
+      {
+        question: "What technologies do you specialize in?",
+        answer:
+          "Our core stack includes React/Next.js for frontend, Node.js/Python for backend, React Native/Flutter for mobile, AWS/Azure for cloud, and PostgreSQL/MongoDB for databases.",
+      },
+      {
+        question: "Do you work with legacy systems?",
+        answer:
+          "Yes, we have experience modernizing legacy systems through refactoring, microservices architecture, or complete rewrites when necessary.",
+      },
+      {
+        question: "Can you integrate with our existing systems?",
+        answer:
+          "Definitely. We specialize in API integrations with CRMs, ERPs, payment gateways, and other third-party services.",
+      },
+      {
+        question: "Do you provide AI/ML solutions?",
+        answer:
+          "Yes, we offer AI/ML integration services including recommendation engines, predictive analytics, and computer vision solutions.",
       },
     ],
   },
@@ -52,7 +84,7 @@ const faqCategories = [
   {
     id: 'process',
     title: 'Development Process',
-    icon: Code,
+    icon: Database,
     faqs: [
       {
         question: "What is your development process?",
@@ -69,27 +101,32 @@ const faqCategories = [
         answer:
           "Yes, we provide support packages that include bug fixes, updates, monitoring, and ongoing improvements.",
       },
+      {
+        question: "How often will we receive updates?",
+        answer:
+          "We provide weekly progress reports and can schedule bi-weekly demo calls to review the current state of your project.",
+      },
     ],
   },
   {
-    id: 'timeline',
-    title: 'Timeline & Delivery',
-    icon: Clock,
+    id: 'security',
+    title: 'Security & Compliance',
+    icon: Shield,
     faqs: [
       {
-        question: "How long does a typical project take?",
+        question: "How do you handle data security?",
         answer:
-          "Simple sites: 2–4 weeks, complex apps: 2–4 months, full platforms/mobile apps: 3–6 months, depending on scope.",
+          "We implement industry-standard security measures including encryption, role-based access control, regular security audits, and penetration testing.",
       },
       {
-        question: "Can you work with tight deadlines?",
+        question: "Are you GDPR compliant?",
         answer:
-          "Absolutely. We offer expedited delivery tailored to your project needs, timelines, and approval capacity.",
+          "Yes, we ensure all our solutions are GDPR compliant and can help you implement necessary data protection measures.",
       },
       {
-        question: "How do you handle project delays?",
+        question: "Do you sign NDAs?",
         answer:
-          "We maintain a buffer for edge cases and communicate transparently. If delay is on us, we’ll meet the deadline at no extra cost.",
+          "Absolutely. We take client confidentiality seriously and are happy to sign NDAs before any project discussion.",
       },
     ],
   },
@@ -105,23 +142,26 @@ export default function FAQClient() {
 
   return (
     <div className="pt-20 pb-16 bg-[#edf2f4] text-[#2b2d42]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-16">
 
         {/* FAQ Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="text-center mb-12"
+          className="text-center mb-16"
         >
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">Frequently Asked Questions</h1>
-          <p className="text-lg text-[#8d99ae] max-w-3xl mx-auto">
-            Find answers to common questions about services, process, pricing, and delivery. Can’t find what you need? Contact us directly.
+          <h1 className="text-4xl md:text-5xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-[#d90429] to-[#ef233c]">
+            Frequently Asked Questions
+          </h1>
+          <p className="text-xl text-[#5f6c7b] max-w-3xl mx-auto">
+            Everything you need to know about working with Terzettoo. Can&apos;t find what you&apos;re looking for? 
+            <a href="/contact" className="text-[#d90429] hover:underline ml-1">Contact us directly.</a>
           </p>
         </motion.div>
 
         {/* Grid with Sidebar + Content */}
-        <div className="grid lg:grid-cols-4 gap-8">
+        <div className="grid lg:grid-cols-5 gap-8">
           
           {/* Sidebar Filters */}
           <motion.div
@@ -131,18 +171,23 @@ export default function FAQClient() {
             className="lg:col-span-1"
           >
             <div className="sticky top-24 space-y-2">
-              <h3 className="text-lg font-semibold mb-4">Categories</h3>
+              <h3 className="text-lg font-semibold mb-4 px-2">Browse by Category</h3>
               {faqCategories.map((category) => (
                 <button
                   key={category.id}
-                  onClick={() => setSelectedCategory(category.id)}
-                  className={`w-full flex items-center p-3 rounded-xl transition text-left ${
+                  onClick={() => {
+                    setSelectedCategory(category.id)
+                    setOpenFAQ(null)
+                  }}
+                  className={`w-full flex items-center p-4 rounded-xl transition-all text-left group ${
                     selectedCategory === category.id
-                      ? 'bg-[#d90429] text-white shadow-md'
-                      : 'bg-white border border-[#8d99ae]/30 text-[#2b2d42] hover:bg-[#ef233c]/10'
+                      ? 'bg-gradient-to-r from-[#d90429] to-[#ef233c] text-white shadow-lg'
+                      : 'bg-white border border-[#e2e8f0] text-[#2b2d42] hover:border-[#d90429]/30 hover:shadow-md'
                   }`}
                 >
-                  <category.icon className="h-5 w-5 mr-3" />
+                  <category.icon className={`h-5 w-5 mr-3 ${
+                    selectedCategory === category.id ? 'text-white' : 'text-[#d90429] group-hover:text-[#ef233c]'
+                  }`} />
                   <span className="font-medium">{category.title}</span>
                 </button>
               ))}
@@ -154,7 +199,7 @@ export default function FAQClient() {
             initial={{ opacity: 0, x: 30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
-            className="lg:col-span-3"
+            className="lg:col-span-4"
           >
             <AnimatePresence mode="wait">
               <motion.div
@@ -163,13 +208,16 @@ export default function FAQClient() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
                 transition={{ duration: 0.5 }}
+                className="bg-white rounded-2xl shadow-sm border border-[#e2e8f0] p-6"
               >
                 {faqCategories
                   .filter((c) => c.id === selectedCategory)
                   .map((category) => (
                     <div key={category.id}>
                       <div className="flex items-center mb-8">
-                        <category.icon className="h-8 w-8 mr-3 text-[#d90429]" />
+                        <div className="p-3 rounded-xl bg-gradient-to-r from-[#d90429] to-[#ef233c] mr-4">
+                          <category.icon className="h-6 w-6 text-white" />
+                        </div>
                         <h2 className="text-2xl font-bold">{category.title}</h2>
                       </div>
 
@@ -179,17 +227,17 @@ export default function FAQClient() {
                           return (
                             <div
                               key={key}
-                              className="bg-white border border-[#8d99ae]/20 rounded-xl shadow-sm"
+                              className="overflow-hidden rounded-xl border border-[#e2e8f0] hover:border-[#d90429]/30 transition-all"
                             >
                               <button
                                 onClick={() => toggleFAQ(key)}
-                                className="w-full flex justify-between items-center p-6 text-left rounded-xl hover:bg-[#ef233c]/5 transition"
+                                className="w-full flex justify-between items-center p-6 text-left hover:bg-[#f8f9fa] transition-colors"
                               >
-                                <h3 className="text-lg font-semibold pr-4">
+                                <h3 className="text-lg font-semibold pr-4 text-[#2b2d42]">
                                   {faq.question}
                                 </h3>
                                 <ChevronDown
-                                  className={`h-5 w-5 text-[#d90429] transition-transform ${
+                                  className={`h-5 w-5 text-[#d90429] transition-transform duration-300 ${
                                     openFAQ === key ? 'rotate-180' : ''
                                   }`}
                                 />
@@ -202,10 +250,10 @@ export default function FAQClient() {
                                     initial={{ height: 0, opacity: 0 }}
                                     animate={{ height: 'auto', opacity: 1 }}
                                     exit={{ height: 0, opacity: 0 }}
-                                    transition={{ duration: 0.3 }}
-                                    className="overflow-hidden border-t border-[#8d99ae]/20"
+                                    transition={{ duration: 0.3, ease: 'easeInOut' }}
+                                    className="overflow-hidden"
                                   >
-                                    <div className="px-6 pb-6 pt-4 text-[#8d99ae] text-sm">
+                                    <div className="px-6 pb-6 pt-2 text-[#5f6c7b]">
                                       {faq.answer}
                                     </div>
                                   </motion.div>
@@ -227,22 +275,31 @@ export default function FAQClient() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
-          className="mt-20 text-center"
+          className="mt-20"
         >
-          <div className="bg-[#d90429] text-white rounded-2xl p-8 max-w-3xl mx-auto shadow-md">
-            <h3 className="text-2xl font-bold mb-3">Still have questions?</h3>
-            <p className="mb-5">
-              We&apos;re here to help. Reach out to our team for personalized assistance.
+          <div className="bg-gradient-to-r bg-white shadow-2xl text-[#ff0000] rounded-2xl p-10 text-center ">
+            <h3 className="text-3xl font-bold mb-4">Still have questions?</h3>
+            <p className="text-xl mb-6 max-w-2xl mx-auto">
+              We&apos;re here to help. Get in touch with our team for personalized answers to your specific needs.
             </p>
-            <a
-              href="/contact"
-              className="inline-flex items-center px-6 py-3 bg-white text-[#d90429] font-semibold rounded-xl hover:bg-[#ef233c]/10 transition"
-            >
-              Contact Us
-            </a>
+            <div className="flex flex-col sm:flex-row justify-center gap-4">
+              <a
+                href="/contact"
+                className="inline-flex items-center justify-center px-8 py-4 bg-white text-[#d90429] font-bold rounded-xl hover:bg-gray-100 transition shadow-md hover:shadow-lg"
+              >
+                Contact Our Team
+              </a>
+              <a
+                href="tel:+917069013316"
+                className="inline-flex items-center justify-center px-8 py-4 bg-transparent border-2 border-white text-white font-bold rounded-xl hover:bg-white hover:text-[#d90429] transition shadow-md hover:shadow-lg"
+              >
+                <Phone className="h-5 w-5 mr-2" />
+                Call Now
+              </a>
+            </div>
           </div>
         </motion.div>
       </div>
     </div>
   )
-} 
+}

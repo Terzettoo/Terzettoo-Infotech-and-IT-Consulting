@@ -3,7 +3,8 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { useForm } from 'react-hook-form'
-import { Mail, Phone, MapPin, Clock, Send, CheckCircle } from 'lucide-react'
+import { Mail, Phone, Send, CheckCircle } from 'lucide-react'
+import Image from 'next/image'
 
 interface FormData {
   name: string
@@ -47,197 +48,213 @@ export default function ContactClient() {
   }
 
   return (
-    <div className="pt-20 pb-16 bg-[#edf2f4] text-[#2b2d42]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="text-center mb-16"
-        >
-          <h1 className="text-4xl md:text-5xl font-bold mb-6">Get In Touch</h1>
-          <p className="text-xl text-[#8d99ae] max-w-3xl mx-auto">
-            Let&apos;s discuss how we can help you achieve your business goals with our software solutions.
+    <div className="bg-[#edf2f4] text-[#2b2d42]">
+      {/* Hero Section */}
+      <div className="relative h-[45vh] mt-16 w-full">
+        <Image
+          src="/image/Others/contactHero.jpg" // Replace with your actual image path
+          alt="Contact Header"
+          className="object-cover w-full h-full"
+          fill
+          priority
+        />
+        <div className="absolute inset-0 bg-black/40 flex flex-col justify-center items-center text-white px-4 text-center">
+          <h2 className="text-3xl md:text-4xl font-bold !text-white mb-2">Thank you for your interest. Let’s Talk!</h2>
+          <p className="text-base md:text-lg max-w-2xl">
+            Please fill the below form and we will get in touch with you within 24 hours.
           </p>
-        </motion.div>
-
-        {/* Form & Contact Grid */}
-        <div className="grid lg:grid-cols-2 gap-16">
-
-          {/* Contact Info */}
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-          >
-            <h2 className="text-2xl font-bold mb-8">Let&apos;s Start a Conversation</h2>
-            <div className="space-y-6 text-[#2b2d42]">
-              {[
-                {
-                  Icon: Mail,
-                  title: 'Email Us',
-                  lines: ['admin@terzettoo.com'],
-                  bg: '#ef233c1a',
-                },
-                {
-                  Icon: Phone,
-                  title: 'Call Us',
-                  lines: ['+91 70690 13316', '+91 63566 33868'],
-                  bg: '#d904291a',
-                },
-                {
-                  Icon: MapPin,
-                  title: 'Address',
-                  lines: ['Ahmedabad, Gujarat, India'],
-                  bg: '#8d99ae1a',
-                },
-                {
-                  Icon: Clock,
-                  title: 'Business Hours',
-                  lines: ['Always open for business'],
-                  bg: '#fddc8a',
-                },
-              ].map(({ Icon, title, lines, bg }, i) => (
-                <div key={i} className="flex items-start">
-                  <div className="p-3 rounded-xl" style={{ background: bg }}>
-                    <Icon className="h-6 w-6 text-[#d90429]" />
-                  </div>
-                  <div className="ml-4">
-                    <h3 className="text-lg font-semibold">{title}</h3>
-                    {lines.map((line, idx) => (
-                      <p key={idx} className="text-sm text-[#8d99ae]">{line}</p>
-                    ))}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </motion.div>
-
-          {/* Form Side */}
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-            className="bg-white rounded-2xl shadow-xl p-8"
-          >
-            {isSubmitted ? (
-              <motion.div
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                className="text-center py-12"
-              >
-                <CheckCircle className="text-green-500 w-16 h-16 mx-auto mb-4" />
-                <h3 className="text-2xl font-bold mb-2">Thank You!</h3>
-                <p className="text-[#8d99ae]">
-                  We&apos;ve received your message and will get back to you within 24 hours.
-                </p>
-              </motion.div>
-            ) : (
-              <form onSubmit={handleSubmit(onSubmit)} className="space-y-6 text-[#2b2d42]">
-                {/* Name & Email */}
-                <div className="grid md:grid-cols-2 gap-6">
-                  <div>
-                    <label className="block text-sm font-medium mb-2">Full Name *</label>
-                    <input
-                      {...register('name', { required: 'Name is required' })}
-                      className="w-full px-4 py-3 border border-[#8d99ae]/30 rounded-xl focus:ring-2 focus:ring-[#d90429] bg-white"
-                      placeholder="John Doe"
-                    />
-                    {errors.name && <p className="text-sm text-red-600 mt-1">{errors.name.message}</p>}
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium mb-2">Email Address *</label>
-                    <input
-                      {...register('email', {
-                        required: 'Email is required',
-                        pattern: {
-                          value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-                          message: 'Invalid email address',
-                        },
-                      })}
-                      className="w-full px-4 py-3 border border-[#8d99ae]/30 rounded-xl focus:ring-2 focus:ring-[#d90429] bg-white"
-                      placeholder="you@example.com"
-                    />
-                    {errors.email && <p className="text-sm text-red-600 mt-1">{errors.email.message}</p>}
-                  </div>
-                </div>
-
-                {/* Company */}
-                <div>
-                  <label className="block text-sm font-medium mb-2">Company (Optional)</label>
-                  <input
-                    {...register('company')}
-                    className="w-full px-4 py-3 border border-[#8d99ae]/30 rounded-xl focus:ring-2 focus:ring-[#d90429] bg-white"
-                    placeholder="Your Company Name"
-                  />
-                </div>
-
-                {/* Service & Budget */}
-                <div className="grid md:grid-cols-2 gap-6">
-                  <div>
-                    <label className="block text-sm font-medium mb-2">Service Needed *</label>
-                    <select
-                      {...register('service', { required: 'Please select a service' })}
-                      className="w-full px-4 py-3 border border-[#8d99ae]/30 rounded-xl focus:ring-2 focus:ring-[#d90429] bg-white"
-                    >
-                      <option value="">Select a service</option>
-                      {services.map((service) => (
-                        <option key={service} value={service}>{service}</option>
-                      ))}
-                    </select>
-                    {errors.service && <p className="text-sm text-red-600 mt-1">{errors.service.message}</p>}
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium mb-2">Project Budget *</label>
-                    <select
-                      {...register('budget', { required: 'Please select a budget range' })}
-                      className="w-full px-4 py-3 border border-[#8d99ae]/30 rounded-xl focus:ring-2 focus:ring-[#d90429] bg-white"
-                    >
-                      <option value="">Select budget range</option>
-                      {budgetRanges.map((range) => (
-                        <option key={range} value={range}>{range}</option>
-                      ))}
-                    </select>
-                    {errors.budget && <p className="text-sm text-red-600 mt-1">{errors.budget.message}</p>}
-                  </div>
-                </div>
-
-                {/* Message */}
-                <div>
-                  <label className="block text-sm font-medium mb-2">Project Details *</label>
-                  <textarea
-                    {...register('message', { required: 'Please describe your project' })}
-                    rows={6}
-                    className="w-full px-4 py-3 border border-[#8d99ae]/30 rounded-xl focus:ring-2 focus:ring-[#d90429] bg-white"
-                    placeholder="Tell us about your project, goals, timeline, and any specific requirements..."
-                  />
-                  {errors.message && <p className="text-sm text-red-600 mt-1">{errors.message.message}</p>}
-                </div>
-
-                {/* Submit */}
-                <button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className="w-full flex items-center justify-center px-6 py-4 bg-[#d90429] text-white font-semibold rounded-xl hover:bg-[#ef233c] transition disabled:opacity-50 disabled:cursor-not-allowed"
-                >
-                  {isSubmitting ? (
-                    <>
-                      <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-2" />
-                      Sending...
-                    </>
-                  ) : (
-                    <>
-                      <Send className="h-5 w-5 mr-2" />
-                      Send Message
-                    </>
-                  )}
-                </button>
-              </form>
-            )}
-          </motion.div>
         </div>
+      </div>
+
+      {/* Main Content */}
+      <div className="pt-12 pb-16 bg-[#f8f9fa]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-[#2b2d42]">
+            Contact Us
+          </h2>
+
+          {/* Grid Layout */}
+          <div className="grid lg:grid-cols-2 bg-white rounded-2xl overflow-hidden shadow-xl">
+
+            {/* LEFT SIDE: Contact Info */}
+            <div className="bg-[#ff5050] text-white px-8 py-12 flex flex-col justify-between space-y-10">
+              <div>
+                <h3 className="text-2xl font-bold mb-4">Our Location</h3>
+                <p className="leading-relaxed">
+                  Ahmedabad, Gujarat, India - 380005
+                </p>
+              </div>
+
+              <div>
+                <h3 className="text-2xl font-bold mb-4">Quick Contact</h3>
+                <div className="mb-4">
+                  <p className="font-semibold">Email Here</p>
+                  <p className="flex items-center gap-2">
+                    <Mail className="w-4 h-4" /> admin@terzettoo.com
+                  </p>
+                </div>
+                <div>
+                  <p className="font-semibold">Call Here</p>
+                  <p className="flex items-center gap-2">
+                    <Phone className="w-4 h-4" /> +91 70690 13316
+                  </p>
+                  <p className="flex items-center gap-2">
+                    <Phone className="w-4 h-4" /> +91 63566 33868
+                  </p>
+                </div>
+              </div>
+
+              <div>
+                <h3 className="text-2xl font-bold mb-4">Office Hour</h3>
+                <p>Always Open for Businesses</p>
+              </div>
+
+              <div className="text-white space-y-4">
+                <p className="text-white/90">
+                  Need help or have a question? We&apos;re just a message away.
+                  Our expert team is always available to guide you — feel free to connect anytime.
+                </p>
+              </div>
+
+
+            </div>
+
+            {/* RIGHT SIDE: Contact Form */}
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 0.3 }}
+              className="px-8 py-12"
+            >
+              {isSubmitted ? (
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  className="text-center py-12"
+                >
+                  <CheckCircle className="text-green-500 w-16 h-16 mx-auto mb-4" />
+                  <h3 className="text-2xl font-bold mb-2">Thank You!</h3>
+          <p className="text-[#8d99ae]">
+            We&apos;ve received your message and will get back to you within 24 hours.
+          </p>
+                </motion.div>
+              ) : (
+                <form onSubmit={handleSubmit(onSubmit)} className="space-y-6 text-[#2b2d42]">
+                  {/* Name & Email */}
+                  <div className="grid md:grid-cols-2 gap-6">
+                    <div>
+                      <label className="block text-sm font-medium mb-2">Full Name *</label>
+                      <input
+                        {...register('name', { required: 'Name is required' })}
+                        className="w-full px-4 py-3 border border-[#8d99ae]/30 rounded-xl focus:ring-2 focus:ring-[#d90429] bg-white"
+                        placeholder="John Doe"
+                      />
+                      {errors.name && <p className="text-sm text-red-600 mt-1">{errors.name.message}</p>}
+                    </div>
+                    <div>
+                      <label className="block text-sm font-medium mb-2">Email Address *</label>
+                      <input
+                        {...register('email', {
+                          required: 'Email is required',
+                          pattern: {
+                            value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                            message: 'Invalid email address',
+                          },
+                        })}
+                        className="w-full px-4 py-3 border border-[#8d99ae]/30 rounded-xl focus:ring-2 focus:ring-[#d90429] bg-white"
+                        placeholder="you@example.com"
+                      />
+                      {errors.email && <p className="text-sm text-red-600 mt-1">{errors.email.message}</p>}
+                    </div>
+                  </div>
+
+                  {/* Company */}
+                  <div>
+                    <label className="block text-sm font-medium mb-2">Company (Optional)</label>
+                    <input
+                      {...register('company')}
+                      className="w-full px-4 py-3 border border-[#8d99ae]/30 rounded-xl focus:ring-2 focus:ring-[#d90429] bg-white"
+                      placeholder="Your Company Name"
+                    />
+                  </div>
+
+                  {/* Service & Budget */}
+                  <div className="grid md:grid-cols-2 gap-6">
+                    <div>
+                      <label className="block text-sm font-medium mb-2">Service Needed *</label>
+                      <select
+                        {...register('service', { required: 'Please select a service' })}
+                        className="w-full px-4 py-3 border border-[#8d99ae]/30 rounded-xl focus:ring-2 focus:ring-[#d90429] bg-white"
+                      >
+                        <option value="">Select a service</option>
+                        {services.map((service) => (
+                          <option key={service} value={service}>{service}</option>
+                        ))}
+                      </select>
+                      {errors.service && <p className="text-sm text-red-600 mt-1">{errors.service.message}</p>}
+                    </div>
+                    <div>
+                      <label className="block text-sm font-medium mb-2">Project Budget *</label>
+                      <select
+                        {...register('budget', { required: 'Please select a budget range' })}
+                        className="w-full px-4 py-3 border border-[#8d99ae]/30 rounded-xl focus:ring-2 focus:ring-[#d90429] bg-white"
+                      >
+                        <option value="">Select budget range</option>
+                        {budgetRanges.map((range) => (
+                          <option key={range} value={range}>{range}</option>
+                        ))}
+                      </select>
+                      {errors.budget && <p className="text-sm text-red-600 mt-1">{errors.budget.message}</p>}
+                    </div>
+                  </div>
+
+                  {/* Message */}
+                  <div>
+                    <label className="block text-sm font-medium mb-2">Project Details *</label>
+                    <textarea
+                      {...register('message', { required: 'Please describe your project' })}
+                      rows={3}
+                      className="w-full px-4 py-3 border border-[#8d99ae]/30 rounded-xl focus:ring-2 focus:ring-[#d90429] bg-white"
+                      placeholder="Tell us about your project, goals, timeline, and any specific requirements..."
+                    />
+                    {errors.message && <p className="text-sm text-red-600 mt-1">{errors.message.message}</p>}
+                  </div>
+
+                  {/* Submit */}
+                  <button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="w-full cursor-pointer flex items-center justify-center px-6 py-4 bg-[#ff5050] text-white font-semibold rounded-xl hover:bg-[#ef233c] transition disabled:opacity-50 disabled:cursor-not-allowed"
+                  >
+                    {isSubmitting ? (
+                      <>
+                        <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-2" />
+                        Sending...
+                      </>
+                    ) : (
+                      <>
+                        <Send className="h-5 w-5 mr-2" />
+                        Send Message
+                      </>
+                    )}
+                  </button>
+                </form>
+              )}
+            </motion.div>
+          </div>
+        </div>
+      </div>
+
+      {/* Google Map Section */}
+      <div className="w-full h-[400px]">
+        <iframe
+          title="Ahmedabad Location"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3670.607220990693!2d72.51637761541935!3d23.068163221063004!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395e84f9336e9e25%3A0x48e776a22152891c!2sAhmedabad%2C%20Gujarat!5e0!3m2!1sen!2sin!4v1603274567227!5m2!1sen!2sin"
+          className="w-full h-full border-0"
+          loading="lazy"
+          allowFullScreen
+        ></iframe>
       </div>
     </div>
   )
-} 
+}
