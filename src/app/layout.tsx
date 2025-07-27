@@ -11,7 +11,7 @@ export const metadata = {
   keywords: 'Terzettoo, software development company, web development, mobile apps, API development, DevOps, custom software solutions, digital transformation, software consulting, IT services',
   authors: [{ name: 'Terzettoo' }],
   icons: {
-    icon: '/logo.png',
+    icon: '/Terzettoo_logo_remove_BG.png',
   },
   openGraph: {
     type: 'website',
@@ -65,7 +65,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <head>
-        <link rel="icon" href="/logo.png" type="image/png" />
+        <link rel="icon" href="/Terzettoo_logo_remove_BG.png" type="image/png" />
         {/* Optional: use .ico for better browser support */}
         {/* <link rel="icon" href="/favicon.ico" /> */}
       </head>

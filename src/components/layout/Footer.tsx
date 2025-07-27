@@ -1,6 +1,6 @@
 'use client'
 import Link from 'next/link'
-import { Mail, Phone, MapPin, ArrowRight } from 'lucide-react'
+import { Mail, Phone, MapPin, ArrowRight, Linkedin, Instagram, Twitter, Facebook, Youtube } from 'lucide-react'
 
 const Footer = () => {
   return (
@@ -34,6 +34,55 @@ const Footer = () => {
                 <MapPin className="h-4 w-4 mr-2" />
                 Ahmedabad, India
               </div>
+            </div>
+
+            {/* Social Media Links */}
+            <div className="mt-6 flex space-x-4">
+              <Link 
+                href="https://linkedin.com/company/terzettoo" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-[#8d99ae] hover:text-[#d90429] transition"
+                aria-label="LinkedIn"
+              >
+                <Linkedin className="h-5 w-5" />
+              </Link>
+              <Link 
+                href="https://www.instagram.com/terzettoo_official/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-[#8d99ae] hover:text-[#d90429] transition"
+                aria-label="Instagram"
+              >
+                <Instagram className="h-5 w-5" />
+              </Link>
+              <Link 
+                href="https://twitter.com/terzettoo" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-[#8d99ae] hover:text-[#d90429] transition"
+                aria-label="Twitter"
+              >
+                <Twitter className="h-5 w-5" />
+              </Link>
+              <Link 
+                href="https://facebook.com/terzettoo" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-[#8d99ae] hover:text-[#d90429] transition"
+                aria-label="Facebook"
+              >
+                <Facebook className="h-5 w-5" />
+              </Link>
+              <Link 
+                href="https://youtube.com/terzettoo" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-[#8d99ae] hover:text-[#d90429] transition"
+                aria-label="YouTube"
+              >
+                <Youtube className="h-5 w-5" />
+              </Link>
             </div>
           </div>
 

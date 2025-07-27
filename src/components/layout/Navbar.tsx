@@ -2,14 +2,22 @@
 import Image from 'next/image'
 import { useState, useRef, useEffect } from 'react'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import { Menu, X, ChevronDown } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 
 const Navbar = () => {
+  const pathname = usePathname()
+  // Add any other special pages that should have the same behavior as home and about
+  const isSpecialPage = pathname === '/' || pathname === '/company/about'
+  
+  // Scroll threshold in pixels - adjust this value as needed
+  const SCROLL_THRESHOLD = 100
+  
   const [isOpen, setIsOpen] = useState(false)
   const [isServicesOpen, setIsServicesOpen] = useState(false)
   const [isCompanyOpen, setIsCompanyOpen] = useState(false)
-  const [isScrolled, setIsScrolled] = useState(false)
+  const [isScrolled, setIsScrolled] = useState(!isSpecialPage)
   const servicesRef = useRef<HTMLDivElement>(null)
   const companyRef = useRef<HTMLDivElement>(null)
   const [mobileServiceOpen, setMobileServiceOpen] = useState<Record<string, boolean>>({})
@@ -59,18 +67,23 @@ const Navbar = () => {
     ]
   }
 
+  // Handle scroll behavior for special pages
   useEffect(() => {
-    const handleScroll = () => {
-      const heroSection = document.getElementById('hero-section')
-      if (heroSection) {
-        const heroHeight = heroSection.offsetHeight
-        setIsScrolled(window.scrollY > heroHeight)
-      }
+    if (!isSpecialPage) {
+      setIsScrolled(true)
+      return
     }
 
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > SCROLL_THRESHOLD)
+    }
+
+    // Set initial state
+    handleScroll()
+    
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
+  }, [isSpecialPage, pathname])
 
   // Close dropdowns when clicking outside
   useEffect(() => {
@@ -95,43 +108,95 @@ const Navbar = () => {
     }))
   }
 
+  // Determine navbar styles based on route and scroll state
+  const navbarBackground = isSpecialPage
+    ? (isScrolled ? 'bg-white text-[#2b2d42] shadow-md' : 'bg-[#d90429] text-white')
+    : 'bg-white text-[#2b2d42] shadow-md'
+
+  const logoStyles = isSpecialPage
+    ? {
+      width: isScrolled ? 0 : 32,
+      opacity: isScrolled ? 0 : 1,
+      marginRight: isScrolled ? 0 : 8
+    }
+    : {
+      width: 32,
+      opacity: 1,
+      marginRight: 8
+    }
+
+  const textStyles = isSpecialPage
+    ? {
+      marginLeft: isScrolled ? -1 : 0,
+      color: isScrolled ? 'text-[#d90429]' : 'text-white'
+    }
+    : {
+      marginLeft: 0,
+      color: 'text-[#d90429]'
+    }
+
   return (
-    <nav className={`fixed top-0 left-0 w-full z-50 transition-colors duration-300 ${isScrolled ? 'bg-white text-[#2b2d42] shadow-md' : 'bg-[#d90429] text-white'}`}>
+    <nav className={`fixed top-0 left-0 w-full z-50 transition-colors duration-300 ${navbarBackground}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
-          <Link href="/" className="flex items-center space-x-2">
-            <div className="w-8 h-8 rounded-lg flex items-center justify-center text-white font-bold text-sm">
-              <Image src="/logo.png" alt="Logo of Terzettoo" width={16} height={16} />
-            </div>
-            <span className={`text-xl font-bold ${isScrolled ? 'text-[#d90429]' : 'text-white'}`}>terzettoo</span>
+          <Link href="/" className="flex items-center space-x-2 overflow-hidden">
+            <motion.div
+              initial={false}
+              animate={logoStyles}
+              transition={{ duration: 0.3, ease: "easeInOut" }}
+              className="h-8 flex items-center justify-center"
+            >
+              <Image
+                src="/Terzettoo_logo_remove_BG.png"
+                alt="Logo of Terzettoo"
+                width={25}
+                height={25}
+                className="object-contain"
+              />
+            </motion.div>
+            <motion.span
+              className={`text-xl font-bold ${textStyles.color}`}
+              initial={false}
+              animate={{
+                marginLeft: textStyles.marginLeft
+              }}
+              transition={{ duration: 0.3, ease: "easeInOut" }}
+            >
+              Terzettoo
+            </motion.span>
           </Link>
 
           {/* Desktop Menu */}
           <div className="hidden lg:flex items-center space-x-8">
-            <Link 
-              href="/" 
-              className={`transition-colors ${isScrolled ? 'text-[#6b7280] hover:text-[#2b2d42]' : '!text-white hover:opacity-80'}`}
+            <Link
+              href="/"
+              className={`transition-colors ${isSpecialPage
+                ? (isScrolled ? 'text-[#6b7280] hover:text-[#2b2d42]' : '!text-white hover:opacity-80')
+                : 'text-[#6b7280] hover:text-[#2b2d42]'
+                }`}
             >
               Home
             </Link>
 
             {/* Services Mega Menu */}
-            <div 
-              className="relative" 
+            <div
+              className="relative"
               ref={servicesRef}
               onMouseEnter={() => setIsServicesOpen(true)}
               onMouseLeave={() => setIsServicesOpen(false)}
             >
               <button
                 onClick={() => setIsServicesOpen(!isServicesOpen)}
-                className={`flex items-center transition-colors ${isScrolled ? 'text-[#6b7280] hover:text-[#2b2d42]' : 'text-white hover:opacity-80'}`}
+                className={`flex items-center transition-colors ${isSpecialPage
+                  ? (isScrolled ? 'text-[#6b7280] hover:text-[#2b2d42]' : 'text-white hover:opacity-80')
+                  : 'text-[#6b7280] hover:text-[#2b2d42]'
+                  }`}
               >
                 Services
                 <ChevronDown
-                  className={`ml-1 h-4 w-4 transition-transform ${
-                    isServicesOpen ? 'rotate-180' : ''
-                  }`}
+                  className={`ml-1 h-4 w-4 transition-transform ${isServicesOpen ? 'rotate-180' : ''
+                    }`}
                 />
               </button>
 
@@ -173,21 +238,23 @@ const Navbar = () => {
             </div>
 
             {/* Company Dropdown */}
-            <div 
-              className="relative" 
+            <div
+              className="relative"
               ref={companyRef}
               onMouseEnter={() => setIsCompanyOpen(true)}
               onMouseLeave={() => setIsCompanyOpen(false)}
             >
               <button
                 onClick={() => setIsCompanyOpen(!isCompanyOpen)}
-                className={`flex items-center transition-colors ${isScrolled ? 'text-[#6b7280] hover:text-[#2b2d42]' : 'text-white hover:opacity-80'}`}
+                className={`flex items-center transition-colors ${isSpecialPage
+                  ? (isScrolled ? 'text-[#6b7280] hover:text-[#2b2d42]' : 'text-white hover:opacity-80')
+                  : 'text-[#6b7280] hover:text-[#2b2d42]'
+                  }`}
               >
                 Company
                 <ChevronDown
-                  className={`ml-1 h-4 w-4 transition-transform ${
-                    isCompanyOpen ? 'rotate-180' : ''
-                  }`}
+                  className={`ml-1 h-4 w-4 transition-transform ${isCompanyOpen ? 'rotate-180' : ''
+                    }`}
                 />
               </button>
 
@@ -210,9 +277,8 @@ const Navbar = () => {
                       <Link
                         key={idx}
                         href={item.href}
-                        className={`block px-4 py-2 text-[#2b2d42] hover:bg-[#ef233c]/10 hover:text-[#d90429] transition ${
-                          idx === 0 ? 'rounded-t-lg' : idx === 3 ? 'rounded-b-lg' : ''
-                        }`}
+                        className={`block px-4 py-2 text-[#2b2d42] hover:bg-[#ef233c]/10 hover:text-[#d90429] transition ${idx === 0 ? 'rounded-t-lg' : idx === 3 ? 'rounded-b-lg' : ''
+                          }`}
                         onClick={() => setIsCompanyOpen(false)}
                       >
                         {item.label}
@@ -223,9 +289,12 @@ const Navbar = () => {
               </AnimatePresence>
             </div>
 
-            <Link 
-              href="/blog" 
-              className={`transition-colors ${isScrolled ? 'text-[#6b7280] hover:text-[#2b2d42]' : '!text-white hover:opacity-80'}`}
+            <Link
+              href="/blog"
+              className={`transition-colors ${isSpecialPage
+                ? (isScrolled ? 'text-[#6b7280] hover:text-[#2b2d42]' : '!text-white hover:opacity-80')
+                : 'text-[#6b7280] hover:text-[#2b2d42]'
+                }`}
             >
               Blog
             </Link>
@@ -233,11 +302,12 @@ const Navbar = () => {
             {/* CTA Button */}
             <Link
               href="/contact"
-              className={`px-4 py-2 rounded-lg font-medium transition ${
-                isScrolled 
-                  ? 'bg-[#d90429] !text-white hover:bg-[#ef233c]' 
-                  : 'bg-white text-[#d90429] hover:bg-gray-100'
-              }`}
+              className={`px-4 py-2 rounded-lg font-medium transition ${isSpecialPage
+                ? (isScrolled
+                  ? 'bg-[#d90429] !text-white hover:bg-[#ef233c]'
+                  : 'bg-white text-[#d90429] hover:bg-gray-100')
+                : 'bg-[#d90429] !text-white hover:bg-[#ef233c]'
+                }`}
             >
               Contact
             </Link>
@@ -246,7 +316,10 @@ const Navbar = () => {
           {/* Mobile Toggle */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className={`lg:hidden p-2 rounded-lg transition ${isScrolled ? 'text-[#2b2d42]' : 'text-white'}`}
+            className={`lg:hidden p-2 rounded-lg transition ${isSpecialPage
+              ? (isScrolled ? 'text-[#2b2d42]' : 'text-white')
+              : 'text-[#2b2d42]'
+              }`}
             aria-label="Toggle menu"
           >
             {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
@@ -262,33 +335,54 @@ const Navbar = () => {
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3 }}
-            className={`lg:hidden ${isScrolled ? 'bg-white' : 'bg-[#d90429]'} border-t ${isScrolled ? 'border-[#8d99ae]/30' : 'border-white/20'} shadow-xl`}
+            className={`lg:hidden ${isSpecialPage
+              ? (isScrolled ? 'bg-white' : 'bg-[#d90429]')
+              : 'bg-white'
+              } border-t ${isSpecialPage
+                ? (isScrolled ? 'border-[#8d99ae]/30' : 'border-white/20')
+                : 'border-[#8d99ae]/30'
+              } shadow-xl`}
           >
             <div className="px-4 py-4 space-y-2 max-h-[80vh] overflow-y-auto">
               <Link
                 href="/"
-                className={`block px-4 py-2 rounded-lg transition ${isScrolled ? 'text-[#6b7280] hover:text-[#2b2d42] hover:bg-[#d90429]/10' : 'text-white hover:bg-white/10'}`}
+                className={`block px-4 py-2 rounded-lg transition ${isSpecialPage
+                  ? (isScrolled
+                    ? 'text-[#6b7280] hover:text-[#2b2d42] hover:bg-[#d90429]/10'
+                    : 'text-white hover:bg-white/10')
+                  : 'text-[#6b7280] hover:text-[#2b2d42] hover:bg-[#d90429]/10'
+                  }`}
                 onClick={() => setIsOpen(false)}
               >
                 Home
               </Link>
-              
+
               {/* Mobile Services */}
               <div className="space-y-1">
-                <div className={`px-4 py-2 font-semibold text-sm ${isScrolled ? 'text-[#d90429]' : 'text-white'}`}>
+                <div className={`px-4 py-2 font-semibold text-sm ${isSpecialPage
+                  ? (isScrolled ? 'text-[#d90429]' : 'text-white')
+                  : 'text-[#d90429]'
+                  }`}>
                   SERVICES
                 </div>
                 {Object.entries(serviceCategories).map(([category, services]) => (
-                  <div key={category} className={`border-b ${isScrolled ? 'border-[#8d99ae]/20' : 'border-white/20'} last:border-0`}>
+                  <div key={category} className={`border-b ${isSpecialPage
+                    ? (isScrolled ? 'border-[#8d99ae]/20' : 'border-white/20')
+                    : 'border-[#8d99ae]/20'
+                    } last:border-0`}>
                     <button
-                      className={`flex items-center justify-between w-full px-4 py-2 text-left transition rounded ${isScrolled ? 'text-[#6b7280] hover:text-[#2b2d42] hover:bg-[#d90429]/10' : 'text-white hover:bg-white/10'}`}
+                      className={`flex items-center justify-between w-full px-4 py-2 text-left transition rounded ${isSpecialPage
+                        ? (isScrolled
+                          ? 'text-[#6b7280] hover:text-[#2b2d42] hover:bg-[#d90429]/10'
+                          : 'text-white hover:bg-white/10')
+                        : 'text-[#6b7280] hover:text-[#2b2d42] hover:bg-[#d90429]/10'
+                        }`}
                       onClick={() => toggleMobileCategory(category)}
                     >
                       <span className="text-sm font-medium">{category}</span>
                       <ChevronDown
-                        className={`h-4 w-4 transition-transform ${
-                          mobileServiceOpen[category] ? 'rotate-180' : ''
-                        }`}
+                        className={`h-4 w-4 transition-transform ${mobileServiceOpen[category] ? 'rotate-180' : ''
+                          }`}
                       />
                     </button>
                     {mobileServiceOpen[category] && (
@@ -297,11 +391,12 @@ const Navbar = () => {
                           <Link
                             key={idx}
                             href={service.href}
-                            className={`block px-4 py-1 text-sm transition rounded ${
-                              isScrolled 
-                                ? 'text-[#6b7280] hover:text-[#2b2d42] hover:bg-[#d90429]/10' 
-                                : 'text-white/80 hover:bg-white/10 hover:text-white'
-                            }`}
+                            className={`block px-4 py-1 text-sm transition rounded ${isSpecialPage
+                              ? (isScrolled
+                                ? 'text-[#6b7280] hover:text-[#2b2d42] hover:bg-[#d90429]/10'
+                                : 'text-white/80 hover:bg-white/10 hover:text-white')
+                              : 'text-[#6b7280] hover:text-[#2b2d42] hover:bg-[#d90429]/10'
+                              }`}
                             onClick={() => setIsOpen(false)}
                           >
                             {service.label}
@@ -315,35 +410,60 @@ const Navbar = () => {
 
               <Link
                 href="/company/about"
-                className={`block px-4 py-2 rounded-lg transition ${isScrolled ? 'text-[#6b7280] hover:text-[#2b2d42] hover:bg-[#d90429]/10' : 'text-white hover:bg-white/10'}`}
+                className={`block px-4 py-2 rounded-lg transition ${isSpecialPage
+                  ? (isScrolled
+                    ? 'text-[#6b7280] hover:text-[#2b2d42] hover:bg-[#d90429]/10'
+                    : 'text-white hover:bg-white/10')
+                  : 'text-[#6b7280] hover:text-[#2b2d42] hover:bg-[#d90429]/10'
+                  }`}
                 onClick={() => setIsOpen(false)}
               >
                 About Us
               </Link>
               <Link
                 href="/company/portfolio"
-                className={`block px-4 py-2 rounded-lg transition ${isScrolled ? 'text-[#6b7280] hover:text-[#2b2d42] hover:bg-[#d90429]/10' : 'text-white hover:bg-white/10'}`}
+                className={`block px-4 py-2 rounded-lg transition ${isSpecialPage
+                  ? (isScrolled
+                    ? 'text-[#6b7280] hover:text-[#2b2d42] hover:bg-[#d90429]/10'
+                    : 'text-white hover:bg-white/10')
+                  : 'text-[#6b7280] hover:text-[#2b2d42] hover:bg-[#d90429]/10'
+                  }`}
                 onClick={() => setIsOpen(false)}
               >
                 Portfolio
               </Link>
               <Link
                 href="/career"
-                className={`block px-4 py-2 rounded-lg transition ${isScrolled ? 'text-[#6b7280] hover:text-[#2b2d42] hover:bg-[#d90429]/10' : 'text-white hover:bg-white/10'}`}
+                className={`block px-4 py-2 rounded-lg transition ${isSpecialPage
+                  ? (isScrolled
+                    ? 'text-[#6b7280] hover:text-[#2b2d42] hover:bg-[#d90429]/10'
+                    : 'text-white hover:bg-white/10')
+                  : 'text-[#6b7280] hover:text-[#2b2d42] hover:bg-[#d90429]/10'
+                  }`}
                 onClick={() => setIsOpen(false)}
               >
                 Career
               </Link>
               <Link
                 href="/blog"
-                className={`block px-4 py-2 rounded-lg transition ${isScrolled ? 'text-[#6b7280] hover:text-[#2b2d42] hover:bg-[#d90429]/10' : 'text-white hover:bg-white/10'}`}
+                className={`block px-4 py-2 rounded-lg transition ${isSpecialPage
+                  ? (isScrolled
+                    ? 'text-[#6b7280] hover:text-[#2b2d42] hover:bg-[#d90429]/10'
+                    : 'text-white hover:bg-white/10')
+                  : 'text-[#6b7280] hover:text-[#2b2d42] hover:bg-[#d90429]/10'
+                  }`}
                 onClick={() => setIsOpen(false)}
               >
                 Blog
               </Link>
               <Link
                 href="/company/faq"
-                className={`block px-4 py-2 rounded-lg transition ${isScrolled ? 'text-[#6b7280] hover:text-[#2b2d42] hover:bg-[#d90429]/10' : 'text-white hover:bg-white/10'}`}
+                className={`block px-4 py-2 rounded-lg transition ${isSpecialPage
+                  ? (isScrolled
+                    ? 'text-[#6b7280] hover:text-[#2b2d42] hover:bg-[#d90429]/10'
+                    : 'text-white hover:bg-white/10')
+                  : 'text-[#6b7280] hover:text-[#2b2d42] hover:bg-[#d90429]/10'
+                  }`}
                 onClick={() => setIsOpen(false)}
               >
                 FAQ
@@ -351,11 +471,12 @@ const Navbar = () => {
 
               <Link
                 href="/contact"
-                className={`block px-4 py-2 text-center font-medium rounded-lg transition ${
-                  isScrolled 
-                    ? 'bg-[#d90429] text-white hover:bg-[#ef233c]' 
-                    : 'bg-white text-[#d90429] hover:bg-gray-100'
-                }`}
+                className={`block px-4 py-2 text-center font-medium rounded-lg transition ${isSpecialPage
+                  ? (isScrolled
+                    ? 'bg-[#d90429] text-white hover:bg-[#ef233c]'
+                    : 'bg-white text-[#d90429] hover:bg-gray-100')
+                  : 'bg-[#d90429] text-white hover:bg-[#ef233c]'
+                  }`}
                 onClick={() => setIsOpen(false)}
               >
                 Contact

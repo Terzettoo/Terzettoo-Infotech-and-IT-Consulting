@@ -1,166 +1,293 @@
 'use client'
 
-import { motion } from 'framer-motion'
-import { Users, Target, Eye, Award } from 'lucide-react'
+import { useEffect, useRef, useState } from 'react'
+import { motion, useScroll } from 'framer-motion'
+import Image from 'next/image'
+import { Globe, Rocket, Shield, Sparkles, Github, Twitter, Linkedin, Mail, ArrowRight } from 'lucide-react'
 
-const teamMembers = [
-  {
-    name: 'Alex Rodriguez',
-    role: 'CEO & Full-Stack Developer',
-    image: '/team/alex.jpg',
-    bio: '10+ years of experience in software architecture and team leadership.',
-  },
-  {
-    name: 'Sarah Chen',
-    role: 'Lead Frontend Developer',
-    image: '/team/sarah.jpg',
-    bio: 'Expert in React, Next.js, and modern UI/UX design principles.',
-  },
-  {
-    name: 'Michael Kim',
-    role: 'Backend Developer',
-    image: '/team/michael.jpg',
-    bio: 'Specialized in scalable APIs, databases, and cloud infrastructure.',
-  },
-  {
-    name: 'Emma Wilson',
-    role: 'Mobile App Developer',
-    image: '/team/emma.jpg',
-    bio: 'React Native and Flutter expert with 50+ published apps.',
-  },
-]
+import TeamSection from '@/components/sections/TeamSection'
 
-const values = [
-  {
-    icon: Target,
-    title: 'Innovation First',
-    description:
-      'We stay ahead of technology trends to deliver cutting-edge solutions.',
-  },
-  {
-    icon: Users,
-    title: 'Client-Centric',
-    description:
-      'Your success is our success. We build lasting partnerships.',
-  },
-  {
-    icon: Award,
-    title: 'Quality Excellence',
-    description:
-      'We maintain the highest standards in code quality and project delivery.',
-  },
-  {
-    icon: Eye,
-    title: 'Transparency',
-    description:
-      'Clear communication and honest project updates throughout development.',
-  },
-]
 
+// AnimatedNumber component
+const AnimatedNumber = ({
+  value,
+  isInView,
+  isPercentage = false,
+  isRating = false
+}: {
+  value: number
+  isInView: boolean
+  isPercentage?: boolean
+  isRating?: boolean
+}) => {
+  const [displayValue, setDisplayValue] = useState(0)
+
+  useEffect(() => {
+    if (!isInView) {
+      setDisplayValue(0)
+      return
+    }
+
+    const duration = 2000 // Animation duration in ms
+    const startTime = performance.now()
+    const startValue = 0
+    const endValue = value
+
+    const animate = (currentTime: number) => {
+      const elapsedTime = currentTime - startTime
+      const progress = Math.min(elapsedTime / duration, 1)
+
+      const easedProgress = easeOutQuad(progress)
+      const currentValue = startValue + (endValue - startValue) * easedProgress
+
+      setDisplayValue(currentValue)
+
+      if (progress < 1) {
+        requestAnimationFrame(animate)
+      }
+    }
+
+    requestAnimationFrame(animate)
+  }, [isInView, value])
+
+  // Format the displayed value based on type
+  const formattedValue = isRating
+    ? `${displayValue.toFixed(1)}/5`
+    : isPercentage
+      ? `${Math.round(displayValue)}%`
+      : `${Math.round(displayValue)}+`
+
+  return <>{formattedValue}</>
+}
+
+// Easing function for smooth animation
+const easeOutQuad = (t: number) => {
+  return t * (2 - t)
+}
+
+// StatsSection component
+const StatsSection = () => {
+  const ref = useRef<HTMLDivElement>(null)
+  const [isInView, setIsInView] = useState(false)
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start end", "end start"]
+  })
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => setIsInView(entry.isIntersecting),
+      { threshold: 0.1 }
+    )
+    if (ref.current) observer.observe(ref.current)
+    return () => observer.disconnect()
+  }, [])
+
+  const stats = [
+    { value: 150, label: 'Projects Delivered' },
+    { value: 98, label: 'Client Retention' },
+    { value: 4.9, label: 'Average Rating' },
+    { value: 24, label: 'Support Coverage' }
+  ]
+
+  return (
+    <section
+      ref={ref}
+      className="py-16 bg-white -mt-12 shadow-xl rounded-t-3xl relative z-20"
+    >
+      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+          {stats.map((stat, index) => (
+            <motion.div
+              key={stat.label}
+              initial={{ opacity: 0, y: 30 }}
+              animate={{
+                opacity: isInView ? 1 : 0,
+                y: isInView ? 0 : 30
+              }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              className="text-center"
+            >
+              <div className="text-4xl font-bold text-[#d90429] mb-2">
+                <AnimatedNumber
+                  value={stat.value}
+                  isInView={isInView}
+                  isPercentage={stat.label.includes('Retention')}
+                  isRating={stat.label.includes('Rating')}
+                />
+              </div>
+              <div className="text-sm uppercase tracking-wider text-[#8d99ae]">
+                {stat.label}
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}
+
+// Main AboutClient component
 export default function AboutClient() {
   return (
-    <div className="pt-20 pb-16 bg-[#edf2f4] text-[#2b2d42]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="text-center mb-16"
-        >
-          <h1 className="text-5xl font-bold mb-6">About Terzettoo</h1>
-          <p className="text-xl max-w-3xl mx-auto leading-relaxed text-[#8d99ae]">
-            We&apos;re a passionate team of developers, designers, and innovators dedicated to 
-            creating exceptional software solutions that drive business growth.
-          </p>
-        </motion.div>
+    <div className="bg-[#f8fafc] text-[#2b2d42]">
+      {/* Hero Section */}
+      <section className="relative pt-32 pb-24 bg-gradient-to-b from-[#d90429] to-[#d90429] text-white overflow-hidden">
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute inset-0 bg-[url('/pattern.svg')] bg-[length:100px_100px]"></div>
+        </div>
 
-        {/* Mission & Vision */}
-        <div className="grid md:grid-cols-2 gap-12 mb-20">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
           <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="bg-white p-8 rounded-2xl shadow-lg border border-[#8d99ae]/20"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="text-center"
           >
-            <div className="flex items-center mb-4">
-              <Target className="h-8 w-8 text-[#d90429] mr-3" />
-              <h2 className="text-2xl font-bold">Our Mission</h2>
-            </div>
-            <p className="leading-relaxed text-[#8d99ae]">
-              To empower businesses with innovative, scalable, and user-centric software solutions 
-              that solve real-world problems and create meaningful digital experiences.
-            </p>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-            className="bg-white p-8 rounded-2xl shadow-lg border border-[#8d99ae]/20"
-          >
-            <div className="flex items-center mb-4">
-              <Eye className="h-8 w-8 text-[#d90429] mr-3" />
-              <h2 className="text-2xl font-bold">Our Vision</h2>
-            </div>
-            <p className="leading-relaxed text-[#8d99ae]">
-              To be the leading software development partner that transforms ideas into 
-              exceptional digital products, setting new standards for quality and innovation.
+            <h1 className="text-5xl md:text-6xl font-bold mb-6 !text-white">Building Digital Excellence</h1>
+            <p className="text-xl md:text-2xl max-w-4xl mx-auto leading-relaxed opacity-90">
+              We&apos;re a collective of passionate technologists dedicated to crafting exceptional digital experiences that drive real business impact.
             </p>
           </motion.div>
         </div>
+      </section>
 
-        {/* Core Values */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-          className="mb-20"
-        >
-          <h2 className="text-3xl font-bold text-center mb-12">Our Core Values</h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {values.map((value) => (
-              <div
-                key={value.title}
-                className="text-center p-6 bg-white rounded-xl shadow-md border border-[#8d99ae]/20"
-              >
-                <div className="inline-flex items-center justify-center w-12 h-12 bg-[#ef233c]/10 rounded-xl mb-4">
-                  <value.icon className="h-6 w-6 text-[#d90429]" />
-                </div>
-                <h3 className="text-lg font-semibold mb-2">{value.title}</h3>
-                <p className="text-sm text-[#8d99ae]">{value.description}</p>
-              </div>
-            ))}
+      {/* Stats Section */}
+      <StatsSection />
+
+      {/* Our Story */}
+      <section className="py-20 bg-[#f8fafc]">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8 }}
+            >
+              <h2 className="text-3xl md:text-4xl font-bold mb-6">Our Story</h2>
+              <p className="text-lg text-[#6b7280] mb-6 leading-relaxed">
+                Founded in 2025, Terzettoo began as three friends with a shared passion for solving complex problems through technology.
+                Today, we&apos;ve grown into a full-service digital product agency trusted by startups and enterprises alike.
+              </p>
+              <p className="text-lg text-[#6b7280] leading-relaxed">
+                What sets us apart is our commitment to deep technical expertise combined with a product mindset. We don&apos;t just write code -
+                we partner with you to build solutions that create real business value.
+              </p>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8 }}
+              className="relative h-96 rounded-2xl overflow-hidden"
+            >
+              <div className="absolute inset-0 bg-[url('/image/Company/Our_Story.png')] bg-cover bg-center opacity-95"></div>
+            </motion.div>
           </div>
-        </motion.div>
+        </div>
+      </section>
 
-        {/* Meet the Team */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.5 }}
-        >
-          <h2 className="text-3xl font-bold text-center mb-12">Meet Our Team</h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {teamMembers.map((member, i) => (
+
+      {/* Team Section - Using the new component */}
+      <TeamSection />
+
+      {/* Values Section */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="bg-gradient-to-r from-[#d90429] to-[#ef233c] rounded-3xl p-0.5">
+            <div className="bg-white rounded-3xl p-12">
               <motion.div
-                key={member.name}
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.1 * i }}
-                className="text-center"
+                transition={{ duration: 0.8 }}
+                className="text-center mb-16"
               >
-                <div className="relative w-32 h-32 mx-auto mb-4 rounded-full overflow-hidden bg-[#d90429] text-white flex items-center justify-center text-2xl font-bold shadow-md">
-                  {member.name.split(' ').map((n) => n[0]).join('')}
-                </div>
-                <h3 className="text-lg font-semibold mb-1">{member.name}</h3>
-                <p className="text-sm text-[#d90429] font-medium mb-2">{member.role}</p>
-                <p className="text-sm text-[#8d99ae]">{member.bio}</p>
+                <h2 className="text-3xl md:text-4xl font-bold mb-4">Our Core Values</h2>
+                <p className="text-xl text-[#6b7280] max-w-3xl mx-auto">
+                  The principles that guide everything we do
+                </p>
               </motion.div>
-            ))}
+
+              <div className="grid md:grid-cols-2 gap-12">
+                <motion.div
+                  initial={{ opacity: 0, x: -30 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.8 }}
+                  className="flex"
+                >
+                  <div className="mr-6">
+                    <div className="w-12 h-12 bg-[#ef233c]/10 rounded-lg flex items-center justify-center">
+                      <Rocket className="h-6 w-6 text-[#d90429]" />
+                    </div>
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-bold mb-3">Innovation Driven</h3>
+                    <p className="text-[#6b7280]">
+                      We stay at the forefront of technology, constantly exploring new approaches to solve problems in smarter ways.
+                    </p>
+                  </div>
+                </motion.div>
+
+                <motion.div
+                  initial={{ opacity: 0, x: 30 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.8, delay: 0.1 }}
+                  className="flex"
+                >
+                  <div className="mr-6">
+                    <div className="w-12 h-12 bg-[#ef233c]/10 rounded-lg flex items-center justify-center">
+                      <Globe className="h-6 w-6 text-[#d90429]" />
+                    </div>
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-bold mb-3">Client Partnership</h3>
+                    <p className="text-[#6b7280]">
+                      Your success is our success. We work as an extension of your team, invested in achieving your goals.
+                    </p>
+                  </div>
+                </motion.div>
+
+                <motion.div
+                  initial={{ opacity: 0, x: -30 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.8, delay: 0.2 }}
+                  className="flex"
+                >
+                  <div className="mr-6">
+                    <div className="w-12 h-12 bg-[#ef233c]/10 rounded-lg flex items-center justify-center">
+                      <Shield className="h-6 w-6 text-[#d90429]" />
+                    </div>
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-bold mb-3">Relentless Quality</h3>
+                    <p className="text-[#6b7280]">
+                      We take pride in our craft, delivering solutions built to last with clean, maintainable code.
+                    </p>
+                  </div>
+                </motion.div>
+
+                <motion.div
+                  initial={{ opacity: 0, x: 30 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.8, delay: 0.3 }}
+                  className="flex"
+                >
+                  <div className="mr-6">
+                    <div className="w-12 h-12 bg-[#ef233c]/10 rounded-lg flex items-center justify-center">
+                      <Sparkles className="h-6 w-6 text-[#d90429]" />
+                    </div>
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-bold mb-3">Continuous Growth</h3>
+                    <p className="text-[#6b7280]">
+                      We foster a learning culture where every challenge is an opportunity to improve and innovate.
+                    </p>
+                  </div>
+                </motion.div>
+              </div>
+            </div>
           </div>
-        </motion.div>
-      </div>
+        </div>
+      </section>
     </div>
   )
-} 
+}
