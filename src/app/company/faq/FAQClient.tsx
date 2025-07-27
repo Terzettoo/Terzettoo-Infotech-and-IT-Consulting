@@ -285,7 +285,7 @@ export default function FAQClient() {
             <div className="flex flex-col sm:flex-row justify-center gap-4">
               <a
                 href="/contact"
-                className="inline-flex items-center justify-center px-8 py-4 bg-white text-[#d90429] font-bold rounded-xl hover:bg-gray-100 transition shadow-md hover:shadow-lg"
+                className="inline-flex items-center justify-center px-8 py-4 bg-[#d90429] !text-[#ffffff] font-bold rounded-xl hover:bg-[#d90427e9] transition shadow-md hover:shadow-lg"
               >
                 Contact Our Team
               </a>

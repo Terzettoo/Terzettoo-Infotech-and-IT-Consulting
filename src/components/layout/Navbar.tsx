@@ -9,7 +9,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 const Navbar = () => {
   const pathname = usePathname()
   // Add any other special pages that should have the same behavior as home and about
-  const isSpecialPage = pathname === '/' || pathname === '/company/about'
+  const isSpecialPage = pathname === '/' || pathname === '/company/about' || pathname === '/blog'
   
   // Scroll threshold in pixels - adjust this value as needed
   const SCROLL_THRESHOLD = 100

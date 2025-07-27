@@ -1,48 +1,40 @@
-import React from 'react';
+import Head from 'next/head'
+import { CareerClient } from './careerClient'
 
-interface JobOpening {
-  id: number;
-  title: string;
-  location: string;
-  description: string;
-}
-
-const sampleJobs: JobOpening[] = [
-  {
-    id: 1,
-    title: 'Frontend Developer',
-    location: 'Remote',
-    description: 'We are looking for a skilled frontend developer with experience in React and TypeScript.',
-  },
-  {
-    id: 2,
-    title: 'Backend Engineer',
-    location: 'New York, NY',
-    description: 'Join our backend team to build scalable APIs and services using Node.js and Express.',
-  },
-  {
-    id: 3,
-    title: 'UI/UX Designer',
-    location: 'San Francisco, CA',
-    description: 'Creative UI/UX designer needed to design intuitive user interfaces and experiences.',
-  },
-];
-
-const CareerPage: React.FC = () => {
+export default function CareerPage() {
   return (
-    <main className="max-w-4xl mx-auto p-6">
-      <h1 className="text-4xl font-bold mb-8">Career Opportunities</h1>
-      <section>
-        {sampleJobs.map((job) => (
-          <article key={job.id} className="mb-6 border-b pb-4">
-            <h2 className="text-2xl font-semibold">{job.title}</h2>
-            <p className="text-sm text-gray-500">{job.location}</p>
-            <p className="mt-2 text-gray-700">{job.description}</p>
-          </article>
-        ))}
-      </section>
-    </main>
-  );
-};
+    <>
+      <Head>
+        <title>Career Opportunities | Join Our Innovative Team</title>
+        <meta name="description" content="Explore exciting career opportunities with our company." />
+      </Head>
 
-export default CareerPage;
+      {/* Image and Intro Section (outside container for full width) */}
+      <section className="relative w-full h-[40vh] mb-16 mt-16">
+        {/* Background image */}
+        <img
+          src="https://shooliniuniversity.com/blog/wp-content/uploads/2023/11/7-Types-of-IT-Careers-and-How-to-Choose-One.jpeg"
+          alt="Team working together"
+          className="w-full h-full object-cover"
+        />
+
+        {/* Overlay (optional for better text readability) */}
+        <div className="absolute inset-0 bg-black/70" />
+
+        {/* Centered Text Over Image */}
+        <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4">
+          <h1 className="text-4xl font-bold mb-4 !text-white">Build Your Future With Us</h1>
+          <p className="text-xl text-white max-w-3xl">
+            Join our team of innovators and problem-solvers. We're committed to your growth and success while delivering exceptional products to our customers.
+          </p>
+        </div>
+      </section>
+
+
+      {/* Main Content (wrapped in container) */}
+      <main className="max-w-6xl mx-auto px-4 py-8">
+        <CareerClient />
+      </main>
+    </>
+  )
+}
