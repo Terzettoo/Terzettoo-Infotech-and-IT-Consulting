@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
-import { motion, useScroll } from 'framer-motion'
+import { motion } from 'framer-motion'
 import Link from 'next/link'
 import Image from 'next/image'
 
@@ -64,10 +64,11 @@ const easeOutQuad = (t: number) => {
 const StatsSection = () => {
   const ref = useRef<HTMLDivElement>(null)
   const [isInView, setIsInView] = useState(false)
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start end", "end start"]
-  })
+  // Removed unused scrollYProgress
+  // const { scrollYProgress } = useScroll({
+  //   target: ref,
+  //   offset: ["start end", "end start"]
+  // })
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -161,7 +162,7 @@ const SocialReviewsSection = () => {
   return (
     <section className="bg-[#d90429] py-12 text-white relative rounded-b-3xl">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        <h2 className="text-2xl md:text-3xl font-bold text-center mb-8">Trusted by Clients Worldwide</h2>
+        <h2 className="text-2xl md:text-3xl font-bold text-center mb-8 !text-white">Trusted by Clients Worldwide</h2>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
           {reviewData.map((review, index) => (
@@ -195,7 +196,7 @@ const SocialReviewsSection = () => {
               </div>
               
               {/* Review text */}
-              <p className="text-gray-600 text-sm mb-4 italic">"{review.review}"</p>
+              <p className="text-gray-600 text-sm mb-4 italic">&quot;{review.review}&quot;</p>
               
               {/* See full review link */}
               <Link 

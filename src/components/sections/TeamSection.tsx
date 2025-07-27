@@ -1,51 +1,40 @@
 'use client'
 
-import { useState } from 'react'
 import { motion } from 'framer-motion'
 import Image from 'next/image'
-import { Github, Twitter, Linkedin, Mail } from 'lucide-react'
+import { Github, Linkedin, Globe } from 'lucide-react'
 
 const TeamSection = () => {
-  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null)
-
   const teamMembers = [
+
+    {
+      name: 'Bhavin Kapadiya',
+      role: 'Full Stack Developer',
+      image: '/image/Team/Bhavin.JPG',
+      social: {
+        github: 'http://github.com/bhavin522/',
+        linkedin: 'https://www.linkedin.com/in/bhavin-kapadiya-dev/',
+        globe: 'https://bhavin-kapadiya.vercel.app/'
+      }
+    },
     {
       name: 'Jatin Maurya',
-      role: 'CEO & Full-Stack Architect',
-      expertise: ['Tech Strategy', 'System Design', 'Team Leadership'],
-      funFact: 'Built his first app at 14',
+      role: 'Full Stack Developer',
       image: '/image/Team/unnamed.png',
       social: {
-        github: '#',
-        twitter: '#',
-        linkedin: '#',
-        email: '#'
+        github: 'https://github.com/mauryajatin45',
+        linkedin: 'https://www.linkedin.com/in/mauryajatin/',
+        globe: 'https://www.mauryajatin.me'
       }
     },
     {
-      name: 'Sarah Chen',
-      role: 'Lead UI/UX Engineer',
-      expertise: ['React Ecosystem', 'Design Systems', 'Performance'],
-      funFact: 'Former competitive gamer',
-      image: '/team/sarah.jpg',
+      name: 'Jigar Prajapati',
+      role: 'Wordpress and Shopify Developer',
+      image: '/image/Team/Jigar.jpg',
       social: {
-        github: '#',
-        twitter: '#',
-        linkedin: '#',
-        email: '#'
-      }
-    },
-    {
-      name: 'Michael Kim',
-      role: 'Cloud Solutions Architect',
-      expertise: ['AWS/GCP', 'DevOps', 'Database Optimization'],
-      funFact: 'Open-source contributor',
-      image: '/team/michael.jpg',
-      social: {
-        github: '#',
-        twitter: '#',
-        linkedin: '#',
-        email: '#'
+        github: 'https://github.com/jigar8849',
+        linkedin: 'https://www.linkedin.com/in/jigarkumar-prajapati-a6a7b9237/',
+        globe: '#'
       }
     }
   ]
@@ -79,11 +68,11 @@ const TeamSection = () => {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="relative aspect-square max-w-md mx-auto w-full"
+              className="relative w-full max-w-md mx-auto"
+              style={{ aspectRatio: '4 / 5' }} // 4:5 aspect ratio applied
             >
-              {/* Card container */}
               <div className="relative h-full w-full rounded-2xl overflow-hidden group">
-                {/* Profile image with Next.js Image component */}
+                {/* Profile Image */}
                 <div className="absolute inset-0 w-full h-full">
                   <Image
                     src={member.image}
@@ -94,30 +83,43 @@ const TeamSection = () => {
                   />
                 </div>
 
-                {/* Hover overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
-                  {/* Name and role */}
+                {/* Hover Overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-[#d90429]/100 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6 text-white">
+                  {/* Name and Role */}
                   <div className="translate-y-8 group-hover:translate-y-0 transition-transform duration-500">
-                    <h3 className="text-xl font-bold text-white mb-1">{member.name}</h3>
-                    <p className="text-[#ef233c] font-medium">{member.role}</p>
+                    <h3 className="text-xl !text-white font-bold mb-1">{member.name}</h3>
+                    <p className="font-medium">{member.role}</p>
                   </div>
 
-                  {/* Social links - appear on hover */}
+                  {/* Social Links */}
                   <div className="flex gap-3 mt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
-                    <a href={member.social.github} className="w-10 h-10 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center text-white hover:text-[#d90429] transition-colors">
+                    <a
+                      href={member.social.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-10 h-10 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center !text-white hover:text-[#d90429] transition-colors"
+                    >
                       <Github className="h-5 w-5" />
                     </a>
-                    <a href={member.social.twitter} className="w-10 h-10 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center text-white hover:text-[#d90429] transition-colors">
-                      <Twitter className="h-5 w-5" />
-                    </a>
-                    <a href={member.social.linkedin} className="w-10 h-10 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center text-white hover:text-[#d90429] transition-colors">
+                    <a
+                      href={member.social.linkedin}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-10 h-10 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center !text-white hover:text-[#d90429] transition-colors"
+                    >
                       <Linkedin className="h-5 w-5" />
                     </a>
-                    <a href={member.social.email} className="w-10 h-10 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center text-white hover:text-[#d90429] transition-colors">
-                      <Mail className="h-5 w-5" />
+                    <a
+                      href={member.social.globe}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-10 h-10 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center !text-white hover:text-[#d90429] transition-colors"
+                    >
+                      <Globe className="h-5 w-5" />
                     </a>
                   </div>
                 </div>
+
               </div>
             </motion.div>
           ))}

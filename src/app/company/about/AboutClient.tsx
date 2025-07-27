@@ -1,13 +1,11 @@
 'use client'
 
-import { useEffect, useRef, useState } from 'react'
-import { motion, useScroll } from 'framer-motion'
-import Image from 'next/image'
-import { Globe, Rocket, Shield, Sparkles, Github, Twitter, Linkedin, Mail, ArrowRight } from 'lucide-react'
-
+import { motion } from 'framer-motion'
+import { Globe, Rocket, Shield, Sparkles } from 'lucide-react'
 
 import TeamSection from '@/components/sections/TeamSection'
 import StatsSection from '@/components/sections/StatsSection'
+
 
 // Main AboutClient component
 export default function AboutClient() {

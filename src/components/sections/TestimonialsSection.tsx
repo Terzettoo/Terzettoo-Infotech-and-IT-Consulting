@@ -64,32 +64,44 @@ const testimonials = [
 
 const TestimonialsSection = () => {
   const [currentIndex, setCurrentIndex] = useState(0)
+  const [cardsToShow, setCardsToShow] = useState(3)
   const containerRef = useRef<HTMLDivElement>(null)
   const intervalRef = useRef<NodeJS.Timeout | null>(null)
 
-  // Duplicate testimonials to create infinite loop effect
   const duplicatedTestimonials = [...testimonials, ...testimonials]
 
   useEffect(() => {
-    const startAutoScroll = () => {
-      intervalRef.current = setInterval(() => {
-        setCurrentIndex(prev => (prev + 1) % testimonials.length)
-      }, 3000) // Change slide every 3 seconds
-    }
-
-    startAutoScroll()
-
-    return () => {
-      if (intervalRef.current) {
-        clearInterval(intervalRef.current)
+    const updateCardsToShow = () => {
+      const width = window.innerWidth
+      if (width < 640) {
+        setCardsToShow(1)
+      } else if (width < 1024) {
+        setCardsToShow(2)
+      } else {
+        setCardsToShow(3)
       }
     }
-  }, [testimonials.length])
 
-  // Calculate the transform value for the slider
+    updateCardsToShow()
+    window.addEventListener('resize', updateCardsToShow)
+
+    return () => window.removeEventListener('resize', updateCardsToShow)
+  }, [])
+
+  useEffect(() => {
+    intervalRef.current = setInterval(() => {
+      setCurrentIndex(prev => (prev + 1) % testimonials.length)
+    }, 3000)
+
+    return () => {
+      if (intervalRef.current) clearInterval(intervalRef.current)
+    }
+  }, [])
+
   const getTransformValue = () => {
     if (containerRef.current) {
-      const cardWidth = containerRef.current.offsetWidth / 3 // Assuming 3 cards visible at a time
+      const containerWidth = containerRef.current.offsetWidth
+      const cardWidth = containerWidth / cardsToShow
       return -currentIndex * cardWidth
     }
     return 0
@@ -98,7 +110,7 @@ const TestimonialsSection = () => {
   return (
     <section className="py-20 bg-[#edf2f4] text-[#2b2d42] overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Heading */}
+        {/* Heading */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -112,17 +124,14 @@ const TestimonialsSection = () => {
           </p>
         </motion.div>
 
-        {/* Testimonials Carousel */}
-        <div
-          ref={containerRef}
-          className="relative h-[400px] overflow-hidden"
-        >
+        {/* Carousel */}
+        <div ref={containerRef} className="relative h-[420px] overflow-hidden">
           <motion.div
-            className="absolute top-0 left-0 flex gap-8 w-full"
+            className="absolute top-0 left-0 flex gap-8"
             style={{
               transform: `translateX(${getTransformValue()}px)`,
               transition: 'transform 0.5s ease-in-out',
-              width: `${duplicatedTestimonials.length * (100 / 3)}%` // 3 cards visible at a time
+              width: `${(duplicatedTestimonials.length / cardsToShow) * 100}%`
             }}
           >
             {duplicatedTestimonials.map((testimonial, index) => (
@@ -133,26 +142,25 @@ const TestimonialsSection = () => {
                 transition={{ duration: 0.6 }}
                 viewport={{ once: true }}
                 className="bg-white border border-[#8d99ae]/20 rounded-3xl p-6 md:p-8 shadow-lg flex flex-col justify-between"
-                style={{ width: `calc(100% / ${duplicatedTestimonials.length})` }}
+                style={{
+                  width: `${100 / (duplicatedTestimonials.length / cardsToShow)}%`,
+                  minWidth: 0
+                }}
               >
-                {/* Quote Icon */}
                 <div className="absolute top-5 left-5 opacity-10">
                   <Quote className="h-12 w-12 text-[#d90429]" />
                 </div>
 
-                {/* Star Rating */}
                 <div className="flex mb-4 space-x-1">
                   {[...Array(testimonial.rating)].map((_, i) => (
                     <Star key={i} className="h-5 w-5 text-yellow-400 fill-current" />
                   ))}
                 </div>
 
-                {/* Testimonial Text */}
                 <p className="text-[#2b2d42] text-base leading-relaxed mb-6">
                   “{testimonial.text}”
                 </p>
 
-                {/* Client Info */}
                 <div className="flex items-center gap-4 mt-auto">
                   <div className="w-14 h-14 rounded-full overflow-hidden">
                     <Image
@@ -174,13 +182,15 @@ const TestimonialsSection = () => {
           </motion.div>
         </div>
 
-        {/* Navigation Dots */}
+        {/* Dots */}
         <div className="flex justify-center mt-8 gap-2">
           {testimonials.map((_, index) => (
             <button
               key={index}
               onClick={() => setCurrentIndex(index)}
-              className={`w-3 h-3 rounded-full ${currentIndex === index ? 'bg-[#d90429]' : 'bg-[#8d99ae]'}`}
+              className={`w-3 h-3 rounded-full transition-colors duration-300 ${
+                currentIndex === index ? 'bg-[#d90429]' : 'bg-[#8d99ae]'
+              }`}
               aria-label={`Go to testimonial ${index + 1}`}
             />
           ))}
