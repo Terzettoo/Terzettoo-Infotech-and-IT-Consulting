@@ -9,7 +9,7 @@ const digitalMarketingContent: ServiceContent = {
     description: 'Comprehensive digital marketing services to increase brand awareness, drive traffic, and boost conversions.',
     primaryCTA: 'Start Digital Marketing',
     secondaryCTA: 'View Our Campaigns',
-    heroImage: '📣'
+    heroImage: '/image/Services/digital-marketing.jpg'
   },
   overview: {
     title: 'Comprehensive Digital Marketing Services',

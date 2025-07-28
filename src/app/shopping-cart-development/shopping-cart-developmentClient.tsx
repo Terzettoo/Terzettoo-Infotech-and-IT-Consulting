@@ -9,7 +9,7 @@ const shoppingCartDevelopmentContent: ServiceContent = {
     description: 'Develop custom shopping cart solutions that provide smooth, secure, and user-friendly checkout experiences.',
     primaryCTA: 'Start Shopping Cart Project',
     secondaryCTA: 'View Our Solutions',
-    heroImage: '🛒'
+    heroImage: '/image/Services/shopping-cartdevelopment.webp'
   },
   overview: {
     title: 'Comprehensive Shopping Cart Development',

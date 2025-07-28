@@ -9,7 +9,7 @@ const chatbotDevelopmentContent: ServiceContent = {
     description: 'Build AI-powered chatbots to enhance customer engagement, automate support, and streamline business processes.',
     primaryCTA: 'Start Chatbot Project',
     secondaryCTA: 'Explore Chatbot Solutions',
-    heroImage: '💬'
+    heroImage: '/image/Services/chatbot_development.png'
   },
   overview: {
     title: 'Comprehensive Chatbot Development',

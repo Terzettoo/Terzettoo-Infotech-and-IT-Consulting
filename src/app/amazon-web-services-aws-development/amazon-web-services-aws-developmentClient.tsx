@@ -9,7 +9,7 @@ const awsDevelopmentContent: ServiceContent = {
     description: 'Leverage AWS cloud services to build scalable, secure, and cost-effective applications tailored to your business needs.',
     primaryCTA: 'Start AWS Project',
     secondaryCTA: 'View Cloud Solutions',
-    heroImage: '☁️'
+    heroImage: '/image/Services/AWS-Development.png'
   },
   overview: {
     title: 'Comprehensive AWS Development',

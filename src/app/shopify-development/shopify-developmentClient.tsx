@@ -9,7 +9,7 @@ const shopifyDevelopmentContent: ServiceContent = {
     description: 'Build scalable and customizable Shopify stores tailored to your business needs with seamless user experience.',
     primaryCTA: 'Start Shopify Project',
     secondaryCTA: 'View Shopify Stores',
-    heroImage: '🛍️'
+    heroImage: '/image/Services/Shopify-Development.webp'
   },
   overview: {
     title: 'Comprehensive Shopify Development',

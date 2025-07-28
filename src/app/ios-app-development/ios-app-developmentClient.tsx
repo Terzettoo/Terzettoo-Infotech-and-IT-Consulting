@@ -9,7 +9,7 @@ const iosAppDevelopmentContent: ServiceContent = {
     description: 'Develop custom iOS applications with seamless performance and intuitive user experience for iPhone and iPad devices.',
     primaryCTA: 'Start iOS Project',
     secondaryCTA: 'View iOS Apps',
-    heroImage: '📱'
+    heroImage: '/image/Services/ios_app_development.png'
   },
   overview: {
     title: 'Comprehensive iOS App Development',

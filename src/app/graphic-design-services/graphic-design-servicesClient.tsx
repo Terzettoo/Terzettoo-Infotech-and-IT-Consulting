@@ -9,7 +9,7 @@ const graphicDesignServicesContent: ServiceContent = {
     description: 'Deliver visually stunning and brand-aligned graphic design solutions to communicate your message effectively.',
     primaryCTA: 'Start Design Project',
     secondaryCTA: 'View Portfolio',
-    heroImage: '🎨'
+    heroImage: '/image/Services/Graphic-design.jpg'
   },
   overview: {
     title: 'Comprehensive Graphic Design Services',

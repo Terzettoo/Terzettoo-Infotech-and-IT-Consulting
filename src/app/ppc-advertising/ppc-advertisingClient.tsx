@@ -9,7 +9,7 @@ const ppcAdvertisingContent: ServiceContent = {
     description: 'Drive immediate traffic and conversions with expertly managed pay-per-click advertising campaigns.',
     primaryCTA: 'Start PPC Campaign',
     secondaryCTA: 'View Our Work',
-    heroImage: '💰'
+    heroImage: '/image/Services/ppc-managemnt.jpg'
   },
   overview: {
     title: 'Comprehensive PPC Advertising Services',

@@ -7,13 +7,15 @@ import { Menu, X, ChevronDown } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 
 const Navbar = () => {
-  const pathname = usePathname()
-  // Add any other special pages that should have the same behavior as home and about
-  const isSpecialPage = pathname === '/' || pathname === '/company/about' || pathname === '/blog'
-  
+  const pathname = usePathname();
+  const excludedPages = ['/company/portfolio', '/career', '/company/faq', '/contact'];
+
+  // TRUE for all pages EXCEPT those in excludedPages
+  const isSpecialPage = !excludedPages.includes(pathname);
+
   // Scroll threshold in pixels - adjust this value as needed
   const SCROLL_THRESHOLD = 100
-  
+
   const [isOpen, setIsOpen] = useState(false)
   const [isServicesOpen, setIsServicesOpen] = useState(false)
   const [isCompanyOpen, setIsCompanyOpen] = useState(false)
@@ -80,7 +82,7 @@ const Navbar = () => {
 
     // Set initial state
     handleScroll()
-    
+
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [isSpecialPage, pathname])
@@ -348,8 +350,8 @@ const Navbar = () => {
                 href="/"
                 className={`block px-4 py-2 rounded-lg transition ${isSpecialPage
                   ? (isScrolled
-                    ? 'text-[#6b7280] hover:text-[#2b2d42] hover:bg-[#d90429]/10'
-                    : 'text-white hover:bg-white/10')
+                    ? '!text-[#6b7280] hover:text-[#2b2d42] hover:bg-[#d90429]/10'
+                    : '!text-white hover:bg-white/10')
                   : 'text-[#6b7280] hover:text-[#2b2d42] hover:bg-[#d90429]/10'
                   }`}
                 onClick={() => setIsOpen(false)}
@@ -413,7 +415,7 @@ const Navbar = () => {
                 className={`block px-4 py-2 rounded-lg transition ${isSpecialPage
                   ? (isScrolled
                     ? 'text-[#6b7280] hover:text-[#2b2d42] hover:bg-[#d90429]/10'
-                    : 'text-white hover:bg-white/10')
+                    : '!text-white hover:bg-white/10')
                   : 'text-[#6b7280] hover:text-[#2b2d42] hover:bg-[#d90429]/10'
                   }`}
                 onClick={() => setIsOpen(false)}
@@ -425,7 +427,7 @@ const Navbar = () => {
                 className={`block px-4 py-2 rounded-lg transition ${isSpecialPage
                   ? (isScrolled
                     ? 'text-[#6b7280] hover:text-[#2b2d42] hover:bg-[#d90429]/10'
-                    : 'text-white hover:bg-white/10')
+                    : '!text-white hover:bg-white/10')
                   : 'text-[#6b7280] hover:text-[#2b2d42] hover:bg-[#d90429]/10'
                   }`}
                 onClick={() => setIsOpen(false)}
@@ -437,7 +439,7 @@ const Navbar = () => {
                 className={`block px-4 py-2 rounded-lg transition ${isSpecialPage
                   ? (isScrolled
                     ? 'text-[#6b7280] hover:text-[#2b2d42] hover:bg-[#d90429]/10'
-                    : 'text-white hover:bg-white/10')
+                    : '!text-white hover:bg-white/10')
                   : 'text-[#6b7280] hover:text-[#2b2d42] hover:bg-[#d90429]/10'
                   }`}
                 onClick={() => setIsOpen(false)}
@@ -449,7 +451,7 @@ const Navbar = () => {
                 className={`block px-4 py-2 rounded-lg transition ${isSpecialPage
                   ? (isScrolled
                     ? 'text-[#6b7280] hover:text-[#2b2d42] hover:bg-[#d90429]/10'
-                    : 'text-white hover:bg-white/10')
+                    : '!text-white hover:bg-white/10')
                   : 'text-[#6b7280] hover:text-[#2b2d42] hover:bg-[#d90429]/10'
                   }`}
                 onClick={() => setIsOpen(false)}
@@ -461,7 +463,7 @@ const Navbar = () => {
                 className={`block px-4 py-2 rounded-lg transition ${isSpecialPage
                   ? (isScrolled
                     ? 'text-[#6b7280] hover:text-[#2b2d42] hover:bg-[#d90429]/10'
-                    : 'text-white hover:bg-white/10')
+                    : '!text-white hover:bg-white/10')
                   : 'text-[#6b7280] hover:text-[#2b2d42] hover:bg-[#d90429]/10'
                   }`}
                 onClick={() => setIsOpen(false)}
@@ -473,8 +475,8 @@ const Navbar = () => {
                 href="/contact"
                 className={`block px-4 py-2 text-center font-medium rounded-lg transition ${isSpecialPage
                   ? (isScrolled
-                    ? 'bg-[#d90429] text-white hover:bg-[#ef233c]'
-                    : 'bg-white text-[#d90429] hover:bg-gray-100')
+                    ? 'bg-[#d90429] !text-white hover:bg-[#ef233c]'
+                    : '!bg-white text-[#d90429] hover:bg-gray-100')
                   : 'bg-[#d90429] text-white hover:bg-[#ef233c]'
                   }`}
                 onClick={() => setIsOpen(false)}

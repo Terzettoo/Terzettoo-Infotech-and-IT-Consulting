@@ -9,7 +9,7 @@ const dataAnalyticsContent: ServiceContent = {
     description: 'Leverage data analytics to make informed business decisions, optimize operations, and drive growth.',
     primaryCTA: 'Start Data Analytics Project',
     secondaryCTA: 'View Analytics Solutions',
-    heroImage: '📊'
+    heroImage: '/image/Services/data-analyst.jpg'
   },
   overview: {
     title: 'Comprehensive Data Analytics Services',

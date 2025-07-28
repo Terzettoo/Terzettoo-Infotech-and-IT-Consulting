@@ -9,7 +9,7 @@ const erpImplementationContent: ServiceContent = {
     description: 'Implement and customize ERP solutions tailored to your business processes for improved efficiency and productivity.',
     primaryCTA: 'Start ERP Project',
     secondaryCTA: 'View ERP Solutions',
-    heroImage: '⚙️'
+    heroImage: '/image/Services/ERP.jpg'
   },
   overview: {
     title: 'Comprehensive ERP Implementation',

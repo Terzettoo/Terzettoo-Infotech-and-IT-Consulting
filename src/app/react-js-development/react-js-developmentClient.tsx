@@ -9,7 +9,7 @@ const reactJsDevelopmentContent: ServiceContent = {
     description: 'Build fast, scalable, and interactive web applications using React JS with modern development practices.',
     primaryCTA: 'Start React JS Project',
     secondaryCTA: 'View React JS Work',
-    heroImage: '⚛️'
+    heroImage: '/image/Services/ReactJs-Web-App-Development.jpg'
   },
   overview: {
     title: 'Comprehensive React JS Development',

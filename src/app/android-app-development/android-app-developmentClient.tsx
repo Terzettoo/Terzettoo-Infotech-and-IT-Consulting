@@ -9,7 +9,7 @@ const androidAppDevelopmentContent: ServiceContent = {
     description: 'Develop high-quality, scalable Android applications tailored to your business needs. Our expert team ensures seamless performance across all Android devices.',
     primaryCTA: 'Start Android Project',
     secondaryCTA: 'View Android Apps',
-    heroImage: '🤖'
+    heroImage: '/image/Services/android-app-development.webp'
   },
   overview: {
     title: 'Comprehensive Android App Development',

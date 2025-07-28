@@ -9,7 +9,7 @@ const frontendDevelopmentContent: ServiceContent = {
     description: 'Create visually appealing, responsive, and user-friendly frontend applications that deliver seamless user experiences.',
     primaryCTA: 'Start Frontend Project',
     secondaryCTA: 'View Frontend Work',
-    heroImage: '🖥️'
+    heroImage: '/image/Services/frontend-development.png'
   },
   overview: {
     title: 'Comprehensive Frontend Development',

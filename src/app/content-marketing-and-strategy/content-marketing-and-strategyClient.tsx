@@ -9,7 +9,7 @@ const contentMarketingContent: ServiceContent = {
     description: 'Develop compelling content strategies that drive traffic, engage audiences, and convert leads into customers.',
     primaryCTA: 'Start Content Strategy',
     secondaryCTA: 'View Our Work',
-    heroImage: '📢'
+    heroImage: '/image/Services/Content marketing.jpg'
   },
   overview: {
     title: 'Comprehensive Content Marketing Services',

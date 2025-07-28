@@ -9,7 +9,7 @@ const reactNativeContent: ServiceContent = {
     description: 'Build beautiful, high-performance mobile apps for iOS and Android with a single codebase. Leverage React Native for faster development and consistent user experiences.',
     primaryCTA: 'Start React Native Project',
     secondaryCTA: 'View Cross-Platform Apps',
-    heroImage: '⚛️'
+    heroImage: '/image/Services/react-native-development.webp'
   },
   overview: {
     title: 'React Native Cross-Platform Development',

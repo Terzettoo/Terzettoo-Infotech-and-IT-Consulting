@@ -34,7 +34,7 @@ const TeamSection = () => {
       social: {
         github: 'https://github.com/jigar8849',
         linkedin: 'https://www.linkedin.com/in/jigarkumar-prajapati-a6a7b9237/',
-        globe: '#'
+        globe: 'https://portfolio-khaki-chi-11.vercel.app/'
       }
     }
   ]

@@ -9,7 +9,7 @@ const socialMediaMarketingContent: ServiceContent = {
     description: 'Strategic social media marketing to build brand awareness, engage your audience, and drive conversions.',
     primaryCTA: 'Start Social Media Campaign',
     secondaryCTA: 'View Our Work',
-    heroImage: '📱'
+    heroImage: '/image/Services/Social-media-marketing.png'
   },
   overview: {
     title: 'Comprehensive Social Media Marketing',

@@ -9,7 +9,7 @@ const flutterDevelopmentContent: ServiceContent = {
     description: 'Build beautiful, natively compiled applications for mobile, web, and desktop from a single codebase using Flutter.',
     primaryCTA: 'Start Flutter Project',
     secondaryCTA: 'View Flutter Apps',
-    heroImage: '🦋'
+    heroImage: '/image/Services/flutter-app-developent.webp'
   },
   overview: {
     title: 'Comprehensive Flutter Development',

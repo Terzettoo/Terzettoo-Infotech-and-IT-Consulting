@@ -9,7 +9,7 @@ const wordpressDevelopmentContent: ServiceContent = {
     description: 'Build scalable, secure, and SEO-friendly WordPress websites tailored to your business needs.',
     primaryCTA: 'Start WordPress Project',
     secondaryCTA: 'View WordPress Portfolio',
-    heroImage: '📝'
+    heroImage: '/image/Services/wordpress.jpg'
   },
   overview: {
     title: 'Comprehensive WordPress Development',

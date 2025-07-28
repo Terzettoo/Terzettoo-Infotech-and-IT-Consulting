@@ -9,7 +9,7 @@ const phpDevelopmentContent: ServiceContent = {
     description: 'Build secure, scalable, and high-performance web applications using PHP tailored to your business needs.',
     primaryCTA: 'Start PHP Project',
     secondaryCTA: 'View PHP Solutions',
-    heroImage: '🐘'
+    heroImage: '/image/Services/php-web-development.jpg'
   },
   overview: {
     title: 'Comprehensive PHP Development',

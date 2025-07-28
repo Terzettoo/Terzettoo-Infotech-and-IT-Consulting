@@ -9,7 +9,7 @@ const webDevelopmentContent: ServiceContent = {
     description: 'Create fast, scalable, and SEO-friendly websites tailored to your business goals using the latest web technologies.',
     primaryCTA: 'Start Web Development Project',
     secondaryCTA: 'View Web Portfolio',
-    heroImage: '🌐'
+    heroImage: '/image/Services/web-development.jpg'
   },
   overview: {
     title: 'Comprehensive Web Development Services',

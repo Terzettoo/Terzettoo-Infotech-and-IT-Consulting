@@ -1,10 +1,12 @@
 // src/components/templates/ServicePageTemplate.tsx
 'use client'
 
-import { motion } from 'framer-motion'
+import { motion, useAnimation, useInView } from 'framer-motion'
 import { ArrowRight, CheckCircle } from 'lucide-react'
 import Link from 'next/link'
 import { LucideIcon } from 'lucide-react'
+import Image from 'next/image'
+import { useEffect, useRef } from 'react'
 
 export interface ServiceContent {
   hero: {
@@ -69,11 +71,63 @@ interface ServicePageTemplateProps {
   content: ServiceContent
 }
 
+const AnimatedCounter = ({ value }: { value: string }) => {
+  const controls = useAnimation()
+  const ref = useRef<HTMLSpanElement>(null)
+  const isInView = useInView(ref, { once: true })
+
+  useEffect(() => {
+    if (isInView && ref.current) {
+      // Extract numeric value and any suffix (like % or +)
+      const matches = value.match(/(\d+)([^\d]*)/)
+      if (!matches) return
+
+      const numericPart = matches[1]
+      const suffix = matches[2] || ''
+      const numValue = parseInt(numericPart.replace(/,/g, ''))
+
+      const duration = 2 // seconds
+      const frameDuration = 1000 / 60 // 60 fps
+      const totalFrames = Math.round(duration * 1000 / frameDuration)
+
+      controls.start({
+        scale: [1, 1.2, 1],
+        transition: { duration: 0.5 }
+      })
+
+      let frame = 0
+      const counter = setInterval(() => {
+        frame++
+        const progress = frame / totalFrames
+        const currentValue = Math.round(numValue * progress)
+
+        if (ref.current) {
+          ref.current.textContent = currentValue.toLocaleString() + suffix
+        }
+
+        if (frame === totalFrames) {
+          clearInterval(counter)
+        }
+      }, frameDuration)
+    }
+  }, [isInView, value, controls])
+
+  return (
+    <motion.span
+      ref={ref}
+      animate={controls}
+      className="text-4xl font-bold text-[#d90429] mb-2 block"
+    >
+      0{value.replace(/\d+/g, '')}
+    </motion.span>
+  )
+}
+
 export default function ServicePageTemplate({ content }: ServicePageTemplateProps) {
   return (
-    <div className="bg-[#edf2f4] text-[#2b2d42]">
+    <div className="bg-[#edf2f4] text-[#2b2d42] mt-16">
       {/* Hero Section */}
-      <section className="pt-20 pb-16 bg-gradient-to-br from-[#edf2f4] to-[#d1d9db]">
+      <section className="pt-20 pb-16 bg-gradient-to-br bg-[#d90429]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <motion.div
@@ -81,20 +135,20 @@ export default function ServicePageTemplate({ content }: ServicePageTemplateProp
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
             >
-              <h1 className="text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+              <h1 className="text-5xl lg:text-6xl font-bold mb-6 leading-tight !text-white">
                 {content.hero.title}
               </h1>
-              <h2 className="text-2xl text-[#d90429] font-semibold mb-4">
+              <h2 className="text-2xl font-semibold mb-4 !text-gray-100">
                 {content.hero.subtitle}
               </h2>
-              <p className="text-xl text-[#8d99ae] mb-8 leading-relaxed">
+              <p className="text-xl text-[#ffffff] mb-8 leading-relaxed">
                 {content.hero.description}
               </p>
-              
+
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link
                   href="/contact"
-                  className="inline-flex items-center justify-center px-8 py-4 bg-[#d90429] !text-white font-bold rounded-xl hover:bg-[#ef233c] transition-all duration-300 transform hover:scale-105 shadow-lg"
+                  className="inline-flex items-center justify-center px-8 py-4 bg-[#ffffff] !text-[d90429] font-bold rounded-xl hover:bg-[#ef233c] transition-all duration-300 transform hover:scale-105 shadow-lg"
                 >
                   {content.hero.primaryCTA}
                   <ArrowRight className="ml-2 h-5 w-5" />
@@ -114,9 +168,21 @@ export default function ServicePageTemplate({ content }: ServicePageTemplateProp
               transition={{ duration: 0.8, delay: 0.2 }}
               className="relative"
             >
-              <div className="bg-white rounded-2xl p-8 shadow-xl">
-                <div className="w-full h-64 bg-gradient-to-br from-[#d90429] to-[#ef233c] rounded-xl flex items-center justify-center text-white text-6xl font-bold">
-                  {content.hero.heroImage || '🚀'}
+              <div className="bg-white rounded-2xl p-1 shadow-xl">
+                <div className="w-full h-80 bg-gradient-to-br from-[#d90429] to-[#ef233c] rounded-xl flex items-center justify-center text-white text-6xl font-bold relative">
+                  {content.hero.heroImage ? (
+                    <Image
+                      src={content.hero.heroImage}
+                      alt="Hero Image"
+                      layout="fill"
+                      objectFit="cover"
+                      className="rounded-xl"
+                    />
+                  ) : (
+                    <div className="w-full h-full flex items-center justify-center text-white text-2xl">
+                      No Image Available
+                    </div>
+                  )}
                 </div>
               </div>
             </motion.div>
@@ -132,7 +198,6 @@ export default function ServicePageTemplate({ content }: ServicePageTemplateProp
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
-              className="mb-16"
             >
               <h2 className="text-4xl font-bold mb-6 text-center">{content.writtenContent.title}</h2>
               {content.writtenContent.paragraphs.map((para, idx) => (
@@ -140,21 +205,13 @@ export default function ServicePageTemplate({ content }: ServicePageTemplateProp
                   {para}
                 </p>
               ))}
-              <div className="grid md:grid-cols-2 gap-8 mt-12 max-w-4xl mx-auto">
-                {content.writtenContent.facts.map((fact, idx) => (
-                  <div key={idx} className="bg-[#edf2f4] p-6 rounded-lg shadow-md text-center">
-                    <div className="text-3xl font-bold text-[#d90429] mb-2">{fact.value}</div>
-                    <div className="text-[#2b2d42] font-semibold">{fact.label}</div>
-                  </div>
-                ))}
-              </div>
             </motion.div>
           </div>
         </section>
       )}
 
       {/* Stats Section */}
-      <section className="py-16 bg-white">
+      <section className="py-12 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             {content.stats.map((stat, index) => (
@@ -165,7 +222,7 @@ export default function ServicePageTemplate({ content }: ServicePageTemplateProp
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 viewport={{ once: true }}
               >
-                <div className="text-4xl font-bold text-[#d90429] mb-2">{stat.number}</div>
+                <AnimatedCounter value={stat.number} />
                 <div className="text-[#8d99ae]">{stat.label}</div>
               </motion.div>
             ))}
@@ -174,7 +231,7 @@ export default function ServicePageTemplate({ content }: ServicePageTemplateProp
       </section>
 
       {/* Overview Section */}
-      <section className="py-20">
+      <section className="py-20 bg-[#d90429]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -183,15 +240,15 @@ export default function ServicePageTemplate({ content }: ServicePageTemplateProp
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl font-bold mb-6">{content.overview.title}</h2>
-            <p className="text-xl text-[#8d99ae] max-w-3xl mx-auto mb-8">
+            <h2 className="text-4xl font-bold mb-6 !text-white">{content.overview.title}</h2>
+            <p className="text-xl text-gray-100 max-w-3xl mx-auto mb-8">
               {content.overview.description}
             </p>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {content.overview.keyPoints.map((point, index) => (
                 <div key={index} className="flex items-center">
-                  <CheckCircle className="h-5 w-5 text-[#d90429] mr-3 flex-shrink-0" />
-                  <span>{point}</span>
+                  <CheckCircle className="h-5 w-5 text-[#90EE90] mr-3 flex-shrink-0" />
+                  <span className='text-[#ffffff]'>{point}</span>
                 </div>
               ))}
             </div>
@@ -212,7 +269,7 @@ export default function ServicePageTemplate({ content }: ServicePageTemplateProp
             <h2 className="text-4xl font-bold mb-4">{content.features.title}</h2>
           </motion.div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 ">
             {content.features.items.map((feature, index) => (
               <motion.div
                 key={index}
@@ -220,9 +277,9 @@ export default function ServicePageTemplate({ content }: ServicePageTemplateProp
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: index * 0.1 }}
                 viewport={{ once: true }}
-                className="bg-[#edf2f4] p-8 rounded-2xl"
+                className="bg-red-50 p-8 rounded-2xl hover:shadow-lg transition-all duration-300"
               >
-                <div className="p-3 bg-[#ef233c]/10 rounded-xl w-fit mb-4">
+                <div className="p-3 bg-white rounded-xl w-fit mb-4 shadow-sm hover:shadow-md transition-shadow duration-300">
                   <feature.icon className="h-6 w-6 text-[#d90429]" />
                 </div>
                 <h3 className="text-xl font-semibold mb-3">{feature.title}</h3>
@@ -234,7 +291,7 @@ export default function ServicePageTemplate({ content }: ServicePageTemplateProp
       </section>
 
       {/* Process Section */}
-      <section className="py-20">
+      <section className="py-20 bg-[#d90429]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -243,7 +300,7 @@ export default function ServicePageTemplate({ content }: ServicePageTemplateProp
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl font-bold mb-4">{content.process.title}</h2>
+            <h2 className="text-4xl font-bold mb-4 !text-white">{content.process.title}</h2>
           </motion.div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -256,11 +313,11 @@ export default function ServicePageTemplate({ content }: ServicePageTemplateProp
                 viewport={{ once: true }}
                 className="text-center"
               >
-                <div className="w-16 h-16 bg-[#d90429] text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">
+                <div className="w-16 h-16 bg-[#ffffff] text-[#d90429] rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">
                   {step.number}
                 </div>
-                <h3 className="text-xl font-semibold mb-3">{step.title}</h3>
-                <p className="text-[#8d99ae]">{step.description}</p>
+                <h3 className="text-xl font-semibold mb-3 !text-white">{step.title}</h3>
+                <p className="text-[#eaeaea]">{step.description}</p>
               </motion.div>
             ))}
           </div>
@@ -269,7 +326,7 @@ export default function ServicePageTemplate({ content }: ServicePageTemplateProp
 
       {/* Technologies Section */}
       {content.technologies && (
-        <section className="py-20 bg-white">
+        <section className="py-10 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
@@ -278,7 +335,7 @@ export default function ServicePageTemplate({ content }: ServicePageTemplateProp
               viewport={{ once: true }}
               className="text-center mb-16"
             >
-              <h2 className="text-4xl font-bold mb-8">{content.technologies.title}</h2>
+              <h2 className="text-4xl font-bold">{content.technologies.title}</h2>
               <div className="flex flex-wrap justify-center gap-4">
                 {content.technologies.items.map((tech, index) => (
                   <span
@@ -294,8 +351,9 @@ export default function ServicePageTemplate({ content }: ServicePageTemplateProp
         </section>
       )}
 
+
       {/* Benefits Section */}
-      <section className="py-20">
+      <section className="py-16 bg-gradient-to-br from-[#f8f9fa] to-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -304,21 +362,53 @@ export default function ServicePageTemplate({ content }: ServicePageTemplateProp
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl font-bold mb-4">{content.benefits.title}</h2>
+            <h2 className="text-4xl font-bold mb-4 text-[#2b2d42] relative inline-block">
+              {content.benefits.title}
+              <motion.span
+                initial={{ scaleX: 0 }}
+                whileInView={{ scaleX: 1 }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+                viewport={{ once: true }}
+                className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-[#d90429] to-[#ef233c]"
+              />
+            </h2>
           </motion.div>
 
           <div className="grid md:grid-cols-2 gap-8">
             {content.benefits.items.map((benefit, index) => (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, x: index % 2 === 0 ? -30 : 30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8, delay: index * 0.1 }}
-                viewport={{ once: true }}
-                className="bg-white p-8 rounded-2xl shadow-md"
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{
+                  duration: 0.6,
+                  delay: index * 0.15,
+                  type: "spring",
+                  stiffness: 100
+                }}
+                viewport={{ once: true, margin: "-100px" }}
+                whileHover={{
+                  y: -5,
+                  boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)"
+                }}
+                className="group bg-white p-8 rounded-2xl shadow-lg border border-gray-100 relative overflow-hidden transition-all duration-300"
               >
-                <h3 className="text-xl font-semibold mb-3">{benefit.title}</h3>
-                <p className="text-[#8d99ae]">{benefit.description}</p>
+                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#d90429] to-[#ef233c] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+
+                <div className="flex items-start mb-4">
+                  <div className="p-2 mr-4 bg-[#ef233c]/10 rounded-lg group-hover:bg-[#d90429]/20 transition-colors duration-300">
+                    <CheckCircle className="h-6 w-6 text-[#d90429] group-hover:scale-110 transition-transform duration-300" />
+                  </div>
+                  <h3 className="text-2xl font-bold text-[#2b2d42] mt-1">{benefit.title}</h3>
+                </div>
+
+                <p className="text-[#6c757d] pl-14 group-hover:text-[#495057] transition-colors duration-300">
+                  {benefit.description}
+                </p>
+
+                <div className="absolute bottom-0 right-0 p-2 opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-300">
+                  
+                </div>
               </motion.div>
             ))}
           </div>

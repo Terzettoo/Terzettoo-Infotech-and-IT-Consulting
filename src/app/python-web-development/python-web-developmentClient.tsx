@@ -9,7 +9,7 @@ const pythonWebDevelopmentContent: ServiceContent = {
     description: 'Build powerful, scalable, and secure web applications using Python frameworks tailored to your business needs.',
     primaryCTA: 'Start Python Web Project',
     secondaryCTA: 'View Python Web Portfolio',
-    heroImage: '🐍'
+    heroImage: '/image/Services/python-development.jpg'
   },
   overview: {
     title: 'Comprehensive Python Web Development',

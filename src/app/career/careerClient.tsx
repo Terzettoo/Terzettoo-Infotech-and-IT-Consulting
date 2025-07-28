@@ -110,20 +110,16 @@ const jobOpenings: JobOpening[] = [
     },
 ];
 
-// Util to animate count
 const useAnimatedCounter = (target: string, duration = 1000) => {
     const [value, setValue] = useState('0');
 
     useEffect(() => {
         const numericPart = parseFloat(target);
-        const isPercent = target.includes('%');
-        const isRating = target.includes('/');
-        const isPlus = target.includes('+');
-
-        let start = 0;
+        // Removed unused variables isPercent, isRating, isPlus
         const end = isNaN(numericPart) ? 0 : numericPart;
         const increment = end / (duration / 16);
 
+        // Removed unused 'start' variable
         let current = 0;
         const step = () => {
             current += increment;
@@ -142,20 +138,33 @@ const useAnimatedCounter = (target: string, duration = 1000) => {
 };
 
 export const CareerClient = () => {
+    // Explicitly call useAnimatedCounter for each growthStat to comply with hooks rules
+    const animatedValue0 = useAnimatedCounter(growthStats[0].value);
+    const animatedValue1 = useAnimatedCounter(growthStats[1].value);
+    const animatedValue2 = useAnimatedCounter(growthStats[2].value);
+    const animatedValue3 = useAnimatedCounter(growthStats[3].value);
+
     return (
         <>
             <section className="mb-16">
                 <h2 className="text-3xl font-bold mb-8 text-center text-red-600">Employee Growth & Success</h2>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 text-center">
-                    {growthStats.map((stat, index) => {
-                        const animatedValue = useAnimatedCounter(stat.value);
-                        return (
-                            <div key={index} className="bg-white p-6 rounded-lg border border-gray-100">
-                                <p className="text-4xl font-bold text-red-600 mb-2">{animatedValue}</p>
-                                <p className="text-gray-600">{stat.label}</p>
-                            </div>
-                        );
-                    })}
+                    <div className="bg-white p-6 rounded-lg border border-gray-100">
+                        <p className="text-4xl font-bold text-red-600 mb-2">{animatedValue0}</p>
+                        <p className="text-gray-600">{growthStats[0].label}</p>
+                    </div>
+                    <div className="bg-white p-6 rounded-lg border border-gray-100">
+                        <p className="text-4xl font-bold text-red-600 mb-2">{animatedValue1}</p>
+                        <p className="text-gray-600">{growthStats[1].label}</p>
+                    </div>
+                    <div className="bg-white p-6 rounded-lg border border-gray-100">
+                        <p className="text-4xl font-bold text-red-600 mb-2">{animatedValue2}</p>
+                        <p className="text-gray-600">{growthStats[2].label}</p>
+                    </div>
+                    <div className="bg-white p-6 rounded-lg border border-gray-100">
+                        <p className="text-4xl font-bold text-red-600 mb-2">{animatedValue3}</p>
+                        <p className="text-gray-600">{growthStats[3].label}</p>
+                    </div>
                 </div>
             </section>
 
@@ -201,9 +210,9 @@ export const CareerClient = () => {
             </section>
 
             <section className="bg-white p-8 rounded-lg text-center border border-red-100">
-                <h2 className="text-3xl font-bold mb-4 text-red-600">Interested But Don't See Your Role?</h2>
+                <h2 className="text-3xl font-bold mb-4 text-red-600">Interested But Don&apos;t See Your Role?</h2>
                 <p className="text-xl text-gray-600 mb-6 max-w-3xl mx-auto">
-                    We're always looking for talented individuals. Send us your resume and we'll contact you when a matching position opens up.
+                    We&apos;re always looking for talented individuals. Send us your resume and we&apos;ll contact you when a matching position opens up.
                 </p>
                 <button className="cursor-not-allowed bg-red-600 hover:bg-red-700 text-white px-8 py-3 rounded-md text-lg font-medium transition-colors">
                     Submit Your Resume

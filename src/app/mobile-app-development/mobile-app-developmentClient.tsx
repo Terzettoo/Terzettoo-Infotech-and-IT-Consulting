@@ -9,7 +9,7 @@ const mobileAppDevelopmentContent: ServiceContent = {
     description: 'Create engaging and high-performance mobile applications tailored to your business needs. Our expert developers build apps for iOS and Android platforms with seamless user experiences.',
     primaryCTA: 'Start Your Mobile App',
     secondaryCTA: 'Explore Our Portfolio',
-    heroImage: '📱'
+    heroImage: '/image/Services/mobile-app_development.jpg'
   },
   overview: {
     title: 'Comprehensive Mobile App Development',

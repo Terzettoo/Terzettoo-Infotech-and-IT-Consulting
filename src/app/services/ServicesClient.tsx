@@ -87,7 +87,7 @@ const services = [
 
 export default function ServicesClient() {
   return (
-    <div className="pt-20 pb-16 bg-[#edf2f4] text-[#2b2d42]">
+    <div className="pt-20 pb-16 bg-[#edf2f4] text-[#2b2d42] mt-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Page Header */}
         <motion.div

@@ -9,7 +9,7 @@ const ecommercePortalDevelopmentContent: ServiceContent = {
     description: 'Build feature-rich, scalable, and secure ecommerce portals tailored to your business needs to enhance customer experience and drive sales.',
     primaryCTA: 'Start Ecommerce Project',
     secondaryCTA: 'View Ecommerce Solutions',
-    heroImage: '🛒'
+    heroImage: '/image/Services/Ecommerce-Website-Development.jpg'
   },
   overview: {
     title: 'Comprehensive Ecommerce Portal Development',

@@ -9,7 +9,7 @@ const javaDevelopmentContent: ServiceContent = {
     description: 'Build secure, scalable, and high-performance Java applications tailored to your business needs.',
     primaryCTA: 'Start Java Project',
     secondaryCTA: 'View Java Solutions',
-    heroImage: '☕'
+    heroImage: '/image/Services/java-development.jpeg'
   },
   overview: {
     title: 'Comprehensive Java Development',

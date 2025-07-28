@@ -9,7 +9,7 @@ const dotnetWebDevelopmentContent: ServiceContent = {
     description: 'Build secure, scalable, and high-performance web applications using Microsoft .NET technologies tailored to your business needs.',
     primaryCTA: 'Start .NET Project',
     secondaryCTA: 'View .NET Solutions',
-    heroImage: '🖥️'
+    heroImage: '/image/Services/asp-net.webp'
   },
   overview: {
     title: 'Comprehensive .NET Web Development',

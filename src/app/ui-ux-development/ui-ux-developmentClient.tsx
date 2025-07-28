@@ -9,7 +9,7 @@ const uiUxDevelopmentContent: ServiceContent = {
     description: 'Create intuitive and visually appealing user interfaces that enhance user engagement and satisfaction.',
     primaryCTA: 'Start UI/UX Project',
     secondaryCTA: 'View Design Portfolio',
-    heroImage: '🎨'
+    heroImage: '/image/Services/UI-UX-Designer.jpg'
   },
   overview: {
     title: 'Comprehensive UI/UX Development',

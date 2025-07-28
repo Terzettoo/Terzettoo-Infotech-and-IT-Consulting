@@ -9,7 +9,7 @@ const ipadAppDevelopmentContent: ServiceContent = {
     description: 'Develop tailored iPad applications with seamless performance and intuitive user experience for all iPad models.',
     primaryCTA: 'Start iPad Project',
     secondaryCTA: 'View iPad Apps',
-    heroImage: '📱'
+    heroImage: '/image/Services/ipad-app-development.jpg'
   },
   overview: {
     title: 'Comprehensive iPad App Development',

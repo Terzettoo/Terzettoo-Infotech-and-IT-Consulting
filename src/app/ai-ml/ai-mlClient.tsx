@@ -9,7 +9,7 @@ const aiMlContent: ServiceContent = {
     description: 'Harness the power of artificial intelligence and machine learning to transform your business processes and drive innovation.',
     primaryCTA: 'Start AI Project',
     secondaryCTA: 'Explore AI Solutions',
-    heroImage: '🤖'
+    heroImage: '/image/Services/ai_ml.png'
   },
   overview: {
     title: 'Comprehensive AI & Machine Learning Services',

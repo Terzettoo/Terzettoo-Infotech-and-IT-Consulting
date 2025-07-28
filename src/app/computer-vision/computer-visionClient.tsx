@@ -9,7 +9,7 @@ const computerVisionContent: ServiceContent = {
     description: 'Leverage computer vision technologies to extract meaningful information from images and videos, enabling automation and enhanced decision-making.',
     primaryCTA: 'Start Computer Vision Project',
     secondaryCTA: 'Explore Solutions',
-    heroImage: '📷'
+    heroImage: '/image/Services/computer_vision.webp'
   },
   overview: {
     title: 'Comprehensive Computer Vision Services',

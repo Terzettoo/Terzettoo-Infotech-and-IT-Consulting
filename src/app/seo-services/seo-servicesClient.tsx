@@ -9,7 +9,7 @@ const seoServicesContent: ServiceContent = {
     description: 'Comprehensive SEO strategies to improve your website’s visibility, drive organic traffic, and increase conversions.',
     primaryCTA: 'Start SEO Campaign',
     secondaryCTA: 'View SEO Results',
-    heroImage: '🔍'
+    heroImage: '/image/Services/seo-services.png'
   },
   overview: {
     title: 'Comprehensive SEO Services',
