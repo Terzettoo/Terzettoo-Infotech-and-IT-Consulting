@@ -111,8 +111,8 @@ const shoppingCartDevelopmentContent: ServiceContent = {
   stats: [
     { number: '100+', label: 'Shopping Carts Delivered' },
     { number: '95%', label: 'Client Satisfaction' },
-    { number: '20+', label: 'Ecommerce Experts' },
-    { number: '7+', label: 'Years of Experience' }
+    { number: '5+', label: 'Ecommerce Experts' },
+    { number: '3+', label: 'Years of Experience' }
   ],
   writtenContent: {
     title: 'Why Choose Our Shopping Cart Development Services?',

@@ -6,7 +6,7 @@ const mobileAppDevelopmentContent: ServiceContent = {
   hero: {
     title: 'Mobile App Development',
     subtitle: 'Innovative Mobile Solutions',
-    description: 'Create engaging and high-performance mobile applications tailored to your business needs. Our expert developers build apps for iOS and Android platforms with seamless user experiences.',
+    description: 'Create engaging and high-performance mobile applications for your business needs. Our expert developers build apps for iOS and Android platforms with seamless user experiences.',
     primaryCTA: 'Start Your Mobile App',
     secondaryCTA: 'Explore Our Portfolio',
     heroImage: '/image/Services/mobile-app_development.jpg'
@@ -111,8 +111,8 @@ const mobileAppDevelopmentContent: ServiceContent = {
   stats: [
     { number: '100+', label: 'Mobile Apps Delivered' },
     { number: '95%', label: 'Client Satisfaction' },
-    { number: '50+', label: 'Expert Developers' },
-    { number: '10+', label: 'Years of Experience' }
+    { number: '10+', label: 'Expert Developers' },
+    { number: '3+', label: 'Years of Experience' }
   ],
   writtenContent: {
     title: 'Why Choose Our Mobile App Development Services?',

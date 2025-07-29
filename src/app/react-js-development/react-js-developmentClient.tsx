@@ -111,8 +111,8 @@ const reactJsDevelopmentContent: ServiceContent = {
   stats: [
     { number: '120+', label: 'React JS Projects Delivered' },
     { number: '98%', label: 'Client Satisfaction' },
-    { number: '35+', label: 'React Experts' },
-    { number: '8+', label: 'Years of Experience' }
+    { number: '5+', label: 'React Experts' },
+    { number: '3+', label: 'Years of Experience' }
   ],
   writtenContent: {
     title: 'Why Choose Our React JS Development Services?',

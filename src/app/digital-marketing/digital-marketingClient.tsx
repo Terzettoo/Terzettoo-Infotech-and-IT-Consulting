@@ -111,8 +111,8 @@ const digitalMarketingContent: ServiceContent = {
   stats: [
     { number: '500+', label: 'Campaigns Delivered' },
     { number: '92%', label: 'Client Satisfaction' },
-    { number: '30+', label: 'Marketing Experts' },
-    { number: '6+', label: 'Years of Experience' }
+    { number: '5+', label: 'Marketing Experts' },
+    { number: '3+', label: 'Years of Experience' }
   ],
   writtenContent: {
     title: 'Why Choose Our Digital Marketing Services?',

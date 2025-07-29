@@ -111,8 +111,8 @@ const ipadAppDevelopmentContent: ServiceContent = {
   stats: [
     { number: '70+', label: 'iPad Apps Delivered' },
     { number: '93%', label: 'Client Satisfaction' },
-    { number: '15+', label: 'iPad Experts' },
-    { number: '6+', label: 'Years of Experience' }
+    { number: '5+', label: 'iPad Experts' },
+    { number: '3+', label: 'Years of Experience' }
   ],
   writtenContent: {
     title: 'Why Choose Our iPad App Development Services?',

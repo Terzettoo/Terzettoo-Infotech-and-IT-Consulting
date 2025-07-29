@@ -111,8 +111,8 @@ const graphicDesignServicesContent: ServiceContent = {
   stats: [
     { number: '250+', label: 'Design Projects Completed' },
     { number: '98%', label: 'Client Satisfaction' },
-    { number: '15+', label: 'Creative Designers' },
-    { number: '7+', label: 'Years of Experience' }
+    { number: '5+', label: 'Creative Designers' },
+    { number: '3+', label: 'Years of Experience' }
   ],
   writtenContent: {
     title: 'Why Choose Our Graphic Design Services?',

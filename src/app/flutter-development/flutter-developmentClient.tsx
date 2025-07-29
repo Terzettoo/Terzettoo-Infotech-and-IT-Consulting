@@ -111,8 +111,8 @@ const flutterDevelopmentContent: ServiceContent = {
   stats: [
     { number: '80+', label: 'Flutter Apps Delivered' },
     { number: '96%', label: 'Client Satisfaction' },
-    { number: '25+', label: 'Flutter Experts' },
-    { number: '5+', label: 'Years of Experience' }
+    { number: '5+', label: 'Flutter Experts' },
+    { number: '3+', label: 'Years of Experience' }
   ],
   writtenContent: {
     title: 'Why Choose Our Flutter Development Services?',

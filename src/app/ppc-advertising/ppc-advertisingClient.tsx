@@ -111,8 +111,8 @@ const ppcAdvertisingContent: ServiceContent = {
   stats: [
     { number: '200+', label: 'PPC Campaigns Managed' },
     { number: '90%', label: 'Client Satisfaction' },
-    { number: '15+', label: 'PPC Experts' },
-    { number: '7+', label: 'Years of Experience' }
+    { number: '5+', label: 'PPC Experts' },
+    { number: '3+', label: 'Years of Experience' }
   ],
   writtenContent: {
     title: 'Why Choose Our PPC Advertising Services?',

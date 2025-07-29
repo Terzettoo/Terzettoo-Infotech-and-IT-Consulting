@@ -106,8 +106,8 @@ const erpImplementationContent: ServiceContent = {
   stats: [
     { number: '75+', label: 'ERP Projects Delivered' },
     { number: '90%', label: 'Client Satisfaction' },
-    { number: '15+', label: 'ERP Experts' },
-    { number: '10+', label: 'Years of Experience' }
+    { number: '5+', label: 'ERP Experts' },
+    { number: '3+', label: 'Years of Experience' }
   ],
   writtenContent: {
     title: 'Why Choose Our ERP Implementation Services?',

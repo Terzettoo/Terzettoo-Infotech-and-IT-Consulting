@@ -111,8 +111,8 @@ const aiMlContent: ServiceContent = {
   stats: [
     { number: '200+', label: 'AI Projects Delivered' },
     { number: '97%', label: 'Client Satisfaction' },
-    { number: '30+', label: 'AI Experts' },
-    { number: '8+', label: 'Years of Experience' }
+    { number: '7+', label: 'AI Experts' },
+    { number: '4+', label: 'Years of Experience' }
   ],
   writtenContent: {
     title: 'Why Choose Our AI & Machine Learning Services?',

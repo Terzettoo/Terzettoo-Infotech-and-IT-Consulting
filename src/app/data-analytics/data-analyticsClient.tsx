@@ -111,8 +111,8 @@ const dataAnalyticsContent: ServiceContent = {
   stats: [
     { number: '150+', label: 'Analytics Projects Delivered' },
     { number: '95%', label: 'Client Satisfaction' },
-    { number: '25+', label: 'Data Experts' },
-    { number: '10+', label: 'Years of Experience' }
+    { number: '5+', label: 'Data Experts' },
+    { number: '2+', label: 'Years of Experience' }
   ],
   writtenContent: {
     title: 'Why Choose Our Data Analytics Services?',

@@ -111,8 +111,8 @@ const phpDevelopmentContent: ServiceContent = {
   stats: [
     { number: '85+', label: 'PHP Projects Delivered' },
     { number: '93%', label: 'Client Satisfaction' },
-    { number: '20+', label: 'PHP Experts' },
-    { number: '10+', label: 'Years of Experience' }
+    { number: '3+', label: 'PHP Experts' },
+    { number: '3+', label: 'Years of Experience' }
   ],
   writtenContent: {
     title: 'Why Choose Our PHP Development Services?',

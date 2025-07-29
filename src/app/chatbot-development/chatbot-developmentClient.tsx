@@ -111,8 +111,8 @@ const chatbotDevelopmentContent: ServiceContent = {
   stats: [
     { number: '120+', label: 'Chatbots Delivered' },
     { number: '96%', label: 'Client Satisfaction' },
-    { number: '25+', label: 'AI Experts' },
-    { number: '7+', label: 'Years of Experience' }
+    { number: '5+', label: 'AI Experts' },
+    { number: '3+', label: 'Years of Experience' }
   ],
   writtenContent: {
     title: 'Why Choose Our Chatbot Development Services?',

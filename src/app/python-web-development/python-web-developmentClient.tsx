@@ -111,8 +111,8 @@ const pythonWebDevelopmentContent: ServiceContent = {
   stats: [
     { number: '80+', label: 'Python Web Projects Delivered' },
     { number: '95%', label: 'Client Satisfaction' },
-    { number: '20+', label: 'Python Experts' },
-    { number: '10+', label: 'Years of Experience' }
+    { number: '5+', label: 'Python Experts' },
+    { number: '3+', label: 'Years of Experience' }
   ],
   writtenContent: {
     title: 'Why Choose Our Python Web Development Services?',

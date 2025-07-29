@@ -111,8 +111,8 @@ const ecommercePortalDevelopmentContent: ServiceContent = {
   stats: [
     { number: '120+', label: 'Ecommerce Portals Delivered' },
     { number: '93%', label: 'Client Satisfaction' },
-    { number: '30+', label: 'Development Experts' },
-    { number: '8+', label: 'Years of Experience' }
+    { number: '5+', label: 'Development Experts' },
+    { number: '3+', label: 'Years of Experience' }
   ],
   writtenContent: {
     title: 'Why Choose Our Ecommerce Portal Development Services?',

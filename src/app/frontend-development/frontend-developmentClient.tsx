@@ -111,8 +111,8 @@ const frontendDevelopmentContent: ServiceContent = {
   stats: [
     { number: '150+', label: 'Frontend Projects Delivered' },
     { number: '97%', label: 'Client Satisfaction' },
-    { number: '40+', label: 'Frontend Experts' },
-    { number: '10+', label: 'Years of Experience' }
+    { number: '3+', label: 'Frontend Experts' },
+    { number: '3+', label: 'Years of Experience' }
   ],
   writtenContent: {
     title: 'Why Choose Our Frontend Development Services?',

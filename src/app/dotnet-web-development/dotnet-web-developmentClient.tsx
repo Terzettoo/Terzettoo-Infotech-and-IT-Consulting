@@ -111,8 +111,8 @@ const dotnetWebDevelopmentContent: ServiceContent = {
   stats: [
     { number: '80+', label: '.NET Projects Delivered' },
     { number: '94%', label: 'Client Satisfaction' },
-    { number: '25+', label: 'Expert Developers' },
-    { number: '10+', label: 'Years of Experience' }
+    { number: '5+', label: 'Expert Developers' },
+    { number: '3+', label: 'Years of Experience' }
   ],
   writtenContent: {
     title: 'Why Choose Our .NET Web Development Services?',

@@ -111,8 +111,8 @@ const webDevelopmentContent: ServiceContent = {
   stats: [
     { number: '200+', label: 'Web Projects Delivered' },
     { number: '98%', label: 'Client Satisfaction' },
-    { number: '40+', label: 'Web Experts' },
-    { number: '12+', label: 'Years of Experience' }
+    { number: '5+', label: 'Web Experts' },
+    { number: '3+', label: 'Years of Experience' }
   ],
   writtenContent: {
     title: 'Why Choose Our Web Development Services?',

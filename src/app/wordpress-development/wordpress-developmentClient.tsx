@@ -111,8 +111,8 @@ const wordpressDevelopmentContent: ServiceContent = {
   stats: [
     { number: '120+', label: 'WordPress Sites Delivered' },
     { number: '97%', label: 'Client Satisfaction' },
-    { number: '30+', label: 'WordPress Experts' },
-    { number: '10+', label: 'Years of Experience' }
+    { number: '5+', label: 'WordPress Experts' },
+    { number: '3+', label: 'Years of Experience' }
   ],
   writtenContent: {
     title: 'Why Choose Our WordPress Development Services?',

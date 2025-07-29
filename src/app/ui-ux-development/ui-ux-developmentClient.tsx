@@ -111,8 +111,8 @@ const uiUxDevelopmentContent: ServiceContent = {
   stats: [
     { number: '150+', label: 'UI/UX Projects Delivered' },
     { number: '98%', label: 'Client Satisfaction' },
-    { number: '25+', label: 'Design Experts' },
-    { number: '10+', label: 'Years of Experience' }
+    { number: '5+', label: 'Design Experts' },
+    { number: '3+', label: 'Years of Experience' }
   ],
   writtenContent: {
     title: 'Why Choose Our UI/UX Development Services?',

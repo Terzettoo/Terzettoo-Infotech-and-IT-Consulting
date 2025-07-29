@@ -111,8 +111,8 @@ const awsDevelopmentContent: ServiceContent = {
   stats: [
     { number: '100+', label: 'AWS Projects Delivered' },
     { number: '98%', label: 'Client Satisfaction' },
-    { number: '20+', label: 'AWS Certified Experts' },
-    { number: '8+', label: 'Years of Experience' }
+    { number: '3+', label: 'AWS Certified Experts' },
+    { number: '4+', label: 'Years of Experience' }
   ],
   writtenContent: {
     title: 'Why Choose Our AWS Development Services?',

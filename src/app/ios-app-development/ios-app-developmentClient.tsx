@@ -111,8 +111,8 @@ const iosAppDevelopmentContent: ServiceContent = {
   stats: [
     { number: '90+', label: 'iOS Apps Delivered' },
     { number: '95%', label: 'Client Satisfaction' },
-    { number: '20+', label: 'iOS Experts' },
-    { number: '8+', label: 'Years of Experience' }
+    { number: '3+', label: 'iOS Experts' },
+    { number: '3+', label: 'Years of Experience' }
   ],
   writtenContent: {
     title: 'Why Choose Our iOS App Development Services?',

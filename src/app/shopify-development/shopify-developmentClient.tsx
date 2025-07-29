@@ -111,8 +111,8 @@ const shopifyDevelopmentContent: ServiceContent = {
   stats: [
     { number: '150+', label: 'Shopify Stores Delivered' },
     { number: '96%', label: 'Client Satisfaction' },
-    { number: '25+', label: 'Shopify Experts' },
-    { number: '7+', label: 'Years of Experience' }
+    { number: '5+', label: 'Shopify Experts' },
+    { number: '3+', label: 'Years of Experience' }
   ],
   writtenContent: {
     title: 'Why Choose Our Shopify Development Services?',

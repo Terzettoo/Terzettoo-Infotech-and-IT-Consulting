@@ -148,14 +148,14 @@ export default function ServicePageTemplate({ content }: ServicePageTemplateProp
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link
                   href="/contact"
-                  className="inline-flex items-center justify-center px-8 py-4 bg-[#ffffff] !text-[d90429] font-bold rounded-xl hover:bg-[#ef233c] transition-all duration-300 transform hover:scale-105 shadow-lg"
+                  className="inline-flex items-center justify-center px-8 py-4 bg-[#ffffff] !text-[d90429] font-bold rounded-xl hover:bg-[#dfdddd] transition-all duration-300 transform shadow-lg"
                 >
                   {content.hero.primaryCTA}
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Link>
                 <Link
                   href="/company/portfolio"
-                  className="inline-flex items-center justify-center px-8 py-4 border-2 border-[#d90429] text-[#d90429] font-semibold rounded-xl hover:bg-[#ef233c]/10 transition-all duration-300"
+                  className="inline-flex items-center justify-center px-8 py-4 border-2 border-white !text-white font-semibold rounded-xl hover:bg-white/10 transition-all duration-300"
                 >
                   {content.hero.secondaryCTA}
                 </Link>
@@ -407,7 +407,7 @@ export default function ServicePageTemplate({ content }: ServicePageTemplateProp
                 </p>
 
                 <div className="absolute bottom-0 right-0 p-2 opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-300">
-                  
+
                 </div>
               </motion.div>
             ))}
@@ -424,7 +424,7 @@ export default function ServicePageTemplate({ content }: ServicePageTemplateProp
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-4xl font-bold mb-6">Ready to Start Your Project?</h2>
+            <h2 className="text-4xl !text-white font-bold mb-6">Ready to Start Your Project?</h2>
             <p className="text-xl mb-8 opacity-90">
               Let&apos;s discuss your requirements and create something amazing together.
             </p>

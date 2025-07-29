@@ -111,8 +111,8 @@ const computerVisionContent: ServiceContent = {
   stats: [
     { number: '100+', label: 'Computer Vision Projects' },
     { number: '95%', label: 'Client Satisfaction' },
-    { number: '20+', label: 'AI Experts' },
-    { number: '7+', label: 'Years of Experience' }
+    { number: '5+', label: 'AI Experts' },
+    { number: '3+', label: 'Years of Experience' }
   ],
   writtenContent: {
     title: 'Why Choose Our Computer Vision Services?',

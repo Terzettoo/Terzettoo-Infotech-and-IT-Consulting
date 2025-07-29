@@ -111,8 +111,8 @@ const javaDevelopmentContent: ServiceContent = {
   stats: [
     { number: '90+', label: 'Java Projects Delivered' },
     { number: '95%', label: 'Client Satisfaction' },
-    { number: '30+', label: 'Java Experts' },
-    { number: '12+', label: 'Years of Experience' }
+    { number: '5+', label: 'Java Experts' },
+    { number: '3+', label: 'Years of Experience' }
   ],
   writtenContent: {
     title: 'Why Choose Our Java Development Services?',

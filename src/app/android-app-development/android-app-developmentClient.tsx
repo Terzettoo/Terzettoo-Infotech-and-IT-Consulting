@@ -111,8 +111,8 @@ const androidAppDevelopmentContent: ServiceContent = {
   stats: [
     { number: '150+', label: 'Android Apps Delivered' },
     { number: '98%', label: 'Client Satisfaction' },
-    { number: '40+', label: 'Expert Developers' },
-    { number: '12+', label: 'Years of Experience' }
+    { number: '5+', label: 'Expert Developers' },
+    { number: '3+', label: 'Years of Experience' }
   ],
   writtenContent: {
     title: 'Why Choose Our Android App Development Services?',

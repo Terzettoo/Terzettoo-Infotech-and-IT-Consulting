@@ -111,8 +111,8 @@ const seoServicesContent: ServiceContent = {
   stats: [
     { number: '400+', label: 'SEO Campaigns Delivered' },
     { number: '92%', label: 'Client Satisfaction' },
-    { number: '25+', label: 'SEO Experts' },
-    { number: '10+', label: 'Years of Experience' }
+    { number: '5+', label: 'SEO Experts' },
+    { number: '3+', label: 'Years of Experience' }
   ],
   writtenContent: {
     title: 'Why Choose Our SEO Services?',

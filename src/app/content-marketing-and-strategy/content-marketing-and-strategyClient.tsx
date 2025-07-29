@@ -111,8 +111,8 @@ const contentMarketingContent: ServiceContent = {
   stats: [
     { number: '300+', label: 'Content Pieces Created' },
     { number: '90%', label: 'Client Satisfaction' },
-    { number: '20+', label: 'Marketing Experts' },
-    { number: '5+', label: 'Years of Experience' }
+    { number: '5+', label: 'Marketing Experts' },
+    { number: '3+', label: 'Years of Experience' }
   ],
   writtenContent: {
     title: 'Why Choose Our Content Marketing Services?',

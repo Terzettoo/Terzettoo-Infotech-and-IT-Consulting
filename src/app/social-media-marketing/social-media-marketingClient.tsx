@@ -111,8 +111,8 @@ const socialMediaMarketingContent: ServiceContent = {
   stats: [
     { number: '300+', label: 'Social Campaigns Delivered' },
     { number: '94%', label: 'Client Satisfaction' },
-    { number: '20+', label: 'Social Media Experts' },
-    { number: '7+', label: 'Years of Experience' }
+    { number: '5+', label: 'Social Media Experts' },
+    { number: '3+', label: 'Years of Experience' }
   ],
   writtenContent: {
     title: 'Why Choose Our Social Media Marketing Services?',
