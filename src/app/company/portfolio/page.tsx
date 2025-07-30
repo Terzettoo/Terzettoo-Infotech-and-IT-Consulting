@@ -7,7 +7,10 @@ export const metadata = {
   openGraph: {
     title: 'Portfolio | Terzettoo Projects & Case Studies',
     description: 'Explore Terzettoo\'s portfolio of successful software projects, web and mobile app solutions, and digital transformation case studies.',
-  }
+  },
+  alternates: {
+    canonical: 'https://terzettoo.com/company/portfolio',
+  },
 }
 
 export default function PortfolioPage() {

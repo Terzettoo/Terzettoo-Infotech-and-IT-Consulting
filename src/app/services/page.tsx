@@ -7,7 +7,10 @@ export const metadata = {
   openGraph: {
     title: 'Services | Terzettoo Software Development & Digital Solutions',
     description: 'Discover Terzettoo\'s full range of software development services, including web development, mobile apps, API integration, DevOps, and consulting.',
-  }
+  },
+  alternates: {
+    canonical: 'https://terzettoo.com/services',
+  },
 }
 
 export default function ServicesPage() {

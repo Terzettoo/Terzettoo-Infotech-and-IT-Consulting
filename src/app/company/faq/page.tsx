@@ -7,7 +7,10 @@ export const metadata = {
   openGraph: {
     title: 'FAQ | Terzettoo Frequently Asked Questions & Support',
     description: 'Find answers to common questions about Terzettoo\'s software services, pricing, process, and support. Get the information you need to start your project.',
-  }
+  },
+  alternates: {
+    canonical: 'https://terzettoo.com/company/faq',
+  },
 }
 
 export default function FAQPage() {

@@ -15,9 +15,22 @@ export const metadata = {
     title: "Terzettoo - Innovative Software Solutions for Modern Businesses",
     description:
       "Transform your business with Terzettoo's premium software solutions. Expert developers delivering cutting-edge digital solutions.",
+    images: [
+      {
+        url: 'https://terzettoo.com/Terzettoo_logo_remove_BG.png',
+        width: 1200,
+        height: 630,
+        alt: 'Terzettoo - Infotech and IT Consulting Solutions',
+      },
+    ],
+    siteName: 'Terzettoo',
+    url: 'https://terzettoo.com/',
   },
   icons: {
     icon: "/Terzettoo_logo_remove_BG.png",
+  },
+  alternates: {
+    canonical: 'https://terzettoo.com/',
   },
 };
 

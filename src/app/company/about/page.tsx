@@ -7,7 +7,10 @@ export const metadata = {
   openGraph: {
     title: 'About Terzettoo | Meet Our Software Team & Vision',
     description: 'Learn about Terzettoo, our mission, vision, and the expert team behind our innovative software solutions. Discover our values and commitment to client success.',
-  }
+  },
+  alternates: {
+    canonical: 'https://terzettoo.com/company/about',
+  },
 }
 
 export default function AboutPage() {
