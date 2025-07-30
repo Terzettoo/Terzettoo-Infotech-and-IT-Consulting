@@ -23,7 +23,7 @@ export const metadata = {
     description: 'Terzettoo is your trusted partner for premium software solutions. Transform your business with our expert digital services.',
     images: [
       {
-        url: '/og-image.jpg',
+        url: '/Terzettoo_logo_remove_BG.png',
         width: 1200,
         height: 630,
         alt: 'Terzettoo - Premium Software Solutions',
@@ -34,7 +34,7 @@ export const metadata = {
     card: 'summary_large_image',
     title: 'Terzettoo - Premium Software Solutions',
     description: 'Terzettoo is your trusted partner for premium software solutions. Transform your business with our expert digital services.',
-    images: ['/og-image.jpg'],
+    images: ['/Terzettoo_logo_remove_BG.png'],
   },
   robots: {
     index: true,
@@ -91,4 +91,3 @@ export default function RootLayout({
     </html>
   )
 }
-
