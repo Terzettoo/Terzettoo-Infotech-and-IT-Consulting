@@ -7,11 +7,11 @@ import { Menu, X, ChevronDown } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 
 const Navbar = () => {
-  const pathname = usePathname();
-  const excludedPages = ['/company/portfolio', '/career', '/company/faq', '/contact'];
+  const pathname = usePathname()
+  const excludedPages = ['/company/portfolio', '/career', '/company/faq', '/contact']
 
   // TRUE for all pages EXCEPT those in excludedPages
-  const isSpecialPage = !excludedPages.includes(pathname);
+  const isSpecialPage = !excludedPages.includes(pathname)
 
   // Scroll threshold in pixels - adjust this value as needed
   const SCROLL_THRESHOLD = 100
@@ -66,7 +66,14 @@ const Navbar = () => {
     'Enterprise Solutions': [
       { label: 'ERP Implementation', href: '/erp-implementation-and-customization' },
       { label: 'Shopping Cart Development', href: '/shopping-cart-development' },
-    ]
+    ],
+    'IT Consulting': [
+      { label: 'Technical Product Roadmaps', href: '/technical-product-roadmaps' },
+      { label: 'MVP Planning', href: '/mvp-planning' },
+      { label: 'SaaS Strategy', href: '/saas-strategy-and-advisory' },
+      { label: 'Tech Stack Recommendations', href: '/tech-stack-recommendations' },
+      { label: 'Client-Vendor Matching', href: '/client-vendor-matching' },
+    ],
   }
 
   // Handle scroll behavior for special pages
@@ -210,11 +217,11 @@ const Navbar = () => {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -10 }}
                     transition={{ duration: 0.2 }}
-                    className="absolute top-full left-1/2 transform -translate-x-1/2 w-[800px] bg-white border border-[#8d99ae]/30 rounded-lg shadow-xl p-6"
+                    className="absolute top-full left-1/2 transform -translate-x-1/2 w-[900px] bg-white border border-[#8d99ae]/30 rounded-lg shadow-xl p-6"
                   >
-                    <div className="grid grid-cols-3 gap-6">
+                    <div className="grid grid-cols-4 gap-6">
                       {Object.entries(serviceCategories).map(([category, services]) => (
-                        <div key={category}>
+                        <div key={category} className="mb-4">
                           <h4 className="font-semibold text-[#d90429] mb-3 text-sm">
                             {category}
                           </h4>

@@ -86,7 +86,8 @@ const Footer = () => {
                 'Mobile Apps',
                 'API Development',
                 'DevOps',
-                'Testing & QA'
+                'Testing & QA',
+                'IT Consulting'
               ].map((service) => (
                 <li key={service}>
                   <Link

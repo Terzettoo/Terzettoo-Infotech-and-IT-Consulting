@@ -6,15 +6,15 @@ import CTASection from "@/components/sections/CTASection";
 import StatsSection from "@/components/sections/StatsSection";
 
 export const metadata = {
-  title: "Terzettoo - Innovative Software Solutions for Modern Businesses",
+  title: "Terzettoo - Infotech & IT Consulting Solutions",
   description:
-    "Transform your business with Terzettoo's premium software solutions. We deliver cutting-edge web development, mobile apps, and digital transformation services tailored to your needs.",
+    "Empower your business with Terzettoo's comprehensive Infotech and IT consulting solutions. We deliver innovative software, digital transformation, and expert technology consulting for modern enterprises.",
   keywords:
-    "Terzettoo, software development, digital transformation, custom software, web development, mobile apps, business solutions, technology consulting",
+    "Infotech, IT consulting, software solutions, digital transformation, technology consulting, business IT services, custom software, web development, mobile apps, enterprise IT, Terzettoo, IT strategy, IT support, IT solutions, IT partner",
   openGraph: {
-    title: "Terzettoo - Innovative Software Solutions for Modern Businesses",
+    title: "Terzettoo - Infotech & IT Consulting Solutions",
     description:
-      "Transform your business with Terzettoo's premium software solutions. Expert developers delivering cutting-edge digital solutions.",
+      "Empower your business with Terzettoo's Infotech and IT consulting expertise. Innovative software, digital transformation, and technology solutions for growth.",
     images: [
       {
         url: 'https://terzettoo.com/Terzettoo_logo_remove_BG.png',
