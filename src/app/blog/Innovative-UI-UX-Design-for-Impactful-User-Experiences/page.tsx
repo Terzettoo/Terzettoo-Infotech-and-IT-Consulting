@@ -1,5 +1,3 @@
-// app/blog/ui-ux-design-impactful-experiences/page.tsx
-
 import { Metadata } from "next";
 import BlogPostLayout from "@/components/templates/BlogPostTemplate";
 
@@ -55,14 +53,14 @@ export default function Page() {
       tags={["design", "UI/UX", "user experience", "conversion", "product design"]}
     >
       <p className="lead">
-        In today's digital landscape, exceptional UI/UX design isn't just about aesthetics—it's a strategic business tool that 
+        In today&apos;s digital landscape, exceptional UI/UX design isn&apos;t just about aesthetics&mdash;it&apos;s a strategic business tool that 
         reduces friction, builds trust, and guides users toward meaningful actions. At Terzettoo, we approach design as a 
         science-backed art form that bridges user needs with business objectives.
       </p>
 
       <h2>The Power of Intentional Design</h2>
       <p>
-        Every pixel, interaction, and microcopy decision in our designs serves a purpose. We've seen how thoughtful UI/UX can:
+        Every pixel, interaction, and microcopy decision in our designs serves a purpose. We&apos;ve seen how thoughtful UI/UX can:
       </p>
       <ul>
         <li>Increase conversion rates by 200-400%</li>
@@ -84,7 +82,7 @@ export default function Page() {
 
       <h3>1. Human-Centered Problem Solving</h3>
       <p>
-        We begin every project with deep user research—not just demographics, but psychographics, behavioral patterns, 
+        We begin every project with deep user research&mdash;not just demographics, but psychographics, behavioral patterns, 
         and emotional triggers. Our toolkit includes:
       </p>
       <ul>
@@ -146,7 +144,7 @@ export default function Page() {
         <div>
           <h3 className="text-xl font-bold mb-2">Cognitive Load Management</h3>
           <p>
-            We minimize mental effort through chunking information, progressive disclosure, and strategic defaults—helping 
+            We minimize mental effort through chunking information, progressive disclosure, and strategic defaults&mdash;helping 
             users focus on what matters most.
           </p>
         </div>
@@ -168,10 +166,14 @@ export default function Page() {
       </div>
 
       <blockquote>
-        "Terzettoo's redesign of our onboarding flow increased completion rates from 42% to 78% in just two weeks. 
-        Their attention to psychological triggers made all the difference."
+        &ldquo;Terzettoo&apos;s redesign of our onboarding flow increased completion rates from 42% to 78% in just two weeks. 
+        Their attention to psychological triggers made all the difference.&rdquo;
         <footer>— Product Lead, SaaS Platform</footer>
       </blockquote>
+
+
+
+
 
       <h2>The Business Impact of Good Design</h2>
       <p>
@@ -185,9 +187,10 @@ export default function Page() {
 
       <h2>Ready to Transform Your User Experience?</h2>
       <p>
-        Whether you're building a new product or optimizing an existing one, our design team brings both creative vision 
-        and analytical rigor to every project. Let's create experiences that users love and that drive measurable business results.
+        Whether you&apos;re building a new product or optimizing an existing one, our design team brings both creative vision 
+        and analytical rigor to every project. Let&apos;s create experiences that users love and that drive measurable business results.
       </p>
+
     </BlogPostLayout>
   );
 }

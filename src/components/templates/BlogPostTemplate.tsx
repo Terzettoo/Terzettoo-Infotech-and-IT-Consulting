@@ -2,6 +2,7 @@
 
 import React, { ReactNode } from "react";
 import { usePathname } from "next/navigation";
+import Image from "next/image";
 
 interface BlogPostLayoutProps {
   title: string;
@@ -31,10 +32,14 @@ export default function BlogPostLayout({
     <article className="max-w-4xl mx-auto bg-white rounded-xl shadow-lg p-6 md:p-10 mt-14 mb-16">
       {imageUrl && (
         <div className="relative h-72 md:h-96 rounded-xl overflow-hidden mb-8">
-          <img
+          <Image
             src={imageUrl}
             alt={title}
             className="w-full h-full object-cover"
+            fill
+            sizes="(max-width: 768px) 100vw,
+                   (max-width: 1200px) 50vw,
+                   33vw"
           />
         </div>
       )}

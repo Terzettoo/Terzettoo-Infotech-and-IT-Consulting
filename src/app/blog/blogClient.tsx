@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 
 interface BlogPost {
   id: number;
@@ -70,11 +71,13 @@ const BlogClient: React.FC = () => {
               <div className="flex flex-col md:flex-row gap-8">
                 <div className="md:w-1/3">
                   <div className="bg-white/20 h-full rounded-lg flex items-center justify-center overflow-hidden">
-                    <img
+                    <Image
                       src="/image/blog/EmpoweringStartupswithScalableWebDevelopment.png"
                       alt="Preview: Empowering Startups with Scalable Web Development"
                       loading="lazy"
                       className="rounded-lg object-cover w-full h-full"
+                      width={400}
+                      height={300}
                     />
                   </div>
                 </div>

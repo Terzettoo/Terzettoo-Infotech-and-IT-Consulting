@@ -58,15 +58,15 @@ export default function Page() {
       <p className="lead">
         In the fast-moving world of startups, adaptability and a digital-first
         approach are paramount. At <strong>Terzettoo</strong>, we understand
-        that a startup's website is not just its online address—it's the
+        that a startup&apos;s website is not just its online address&mdash;it&apos;s the
         foundation of its brand, customer engagement, and future growth.
       </p>
 
       <h2>The Startup Scaling Challenge</h2>
       <p>
         Startups face unique digital challenges that established companies
-        don't. When you're moving at lightning speed—pivoting business models,
-        scaling teams, and entering new markets—your website can't be a static
+        don&apos;t. When you&apos;re moving at lightning speed&mdash;pivoting business models,
+        scaling teams, and entering new markets&mdash;your website can&apos;t be a static
         brochure. It needs to be a dynamic growth engine that evolves with you.
       </p>
 
@@ -89,7 +89,7 @@ export default function Page() {
           </tr>
           <tr>
             <td className="px-4 py-2">International expansion</td>
-            <td className="px-4 py-2">Limited localization & payments</td>
+            <td className="px-4 py-2">Limited localization &amp; payments</td>
           </tr>
           <tr className="bg-gray-50">
             <td className="px-4 py-2">Complex user roles</td>
@@ -98,9 +98,9 @@ export default function Page() {
         </tbody>
       </table>
 
-      <h2>Why Scalability Isn't Optional</h2>
+      <h2>Why Scalability Isn&apos;t Optional</h2>
       <p>
-        Scalable architecture isn't about future-proofing—it's about enabling
+        Scalable architecture isn&apos;t about future-proofing&mdash;it&apos;s about enabling
         present-day agility. Consider these real-world scaling scenarios:
       </p>
 
@@ -137,7 +137,7 @@ export default function Page() {
           <tr>
             <td className="px-4 py-2">Next.js Framework</td>
             <td className="px-4 py-2">
-              Server-side rendering + static generation for speed & SEO
+              Server-side rendering + static generation for speed &amp; SEO
             </td>
           </tr>
           <tr className="bg-gray-50">
@@ -147,7 +147,7 @@ export default function Page() {
           <tr>
             <td className="px-4 py-2">Headless CMS (Contentful/Sanity)</td>
             <td className="px-4 py-2">
-              Multi-channel content distribution & flexibility
+              Multi-channel content distribution &amp; flexibility
             </td>
           </tr>
           <tr className="bg-gray-50">
@@ -176,7 +176,7 @@ export default function Page() {
           <h3>Performance Optimization</h3>
           <p>
             Websites load under 1.5s with optimized bundles, image compression,
-            and CDN distribution—critical for conversion rates.
+            and CDN distribution&mdash;critical for conversion rates.
           </p>
         </div>
 
@@ -198,7 +198,7 @@ export default function Page() {
       </div>
 
       <h2>Scaling Metrics That Matter</h2>
-      <p>We don't just build—we measure success through growth indicators:</p>
+      <p>We don&apos;t just build&mdash;we measure success through growth indicators:</p>
       <table className="metrics-table table-auto w-full mb-6 text-left">
         <thead>
           <tr className="bg-gray-100">
@@ -243,11 +243,12 @@ export default function Page() {
       </ul>
 
       <blockquote>
-        "Terzettoo's architecture handled our 800% Black Friday traffic surge
+        &ldquo;Terzettoo&apos;s architecture handled our 800% Black Friday traffic surge
         without breaking a sweat. Their scalability planning saved us $250k in
-        emergency infrastructure costs."
+        emergency infrastructure costs.&rdquo;
         <footer>— CTO, FashionTech Startup</footer>
       </blockquote>
+
 
       <h2>Getting Started with Scalable Development</h2>
       <p>Our onboarding process focuses on your growth trajectory:</p>
