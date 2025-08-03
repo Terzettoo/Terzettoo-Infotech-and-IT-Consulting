@@ -36,7 +36,7 @@ export default function CareerPage() {
               Build Your Future With Us
             </h1>
             <p className="mt-6 max-w-3xl mx-auto text-xl text-red-200">
-              Join our team of innovators and problem-solvers. We're committed to your growth and success while delivering exceptional products to our customers.
+              Join our team of innovators and problem-solvers. We&apos;re committed to your growth and success while delivering exceptional products to our customers.
             </p>
             <div className="mt-10 flex flex-col sm:flex-row justify-center gap-4">
               <a

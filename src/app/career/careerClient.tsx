@@ -116,8 +116,11 @@ const jobOpenings: JobOpening[] = [
 
 const useAnimatedCounter = (target: string, duration = 1000) => {
     const [value, setValue] = useState('0');
+    const [isClient, setIsClient] = useState(false);
 
     useEffect(() => {
+        setIsClient(true);
+        
         const numericPart = parseFloat(target);
         const end = isNaN(numericPart) ? 0 : numericPart;
         const increment = end / (duration / 16);
@@ -136,7 +139,27 @@ const useAnimatedCounter = (target: string, duration = 1000) => {
         requestAnimationFrame(step);
     }, [target, duration]);
 
-    return value;
+    return isClient ? value : target;
+};
+
+interface StatItemProps {
+    stat: GrowthStat;
+    index: number;
+}
+
+const StatItem = ({ stat, index }: StatItemProps) => {
+    const animatedValue = useAnimatedCounter(stat.value);
+    
+    return (
+        <div className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow border border-red-100">
+            <p className="text-4xl font-bold text-red-600 mb-2">
+                {animatedValue}
+                {index === 1 && <span className="text-xl">/5</span>}
+                {index === 0 && <span className="text-xl"></span>}
+            </p>
+            <p className="text-gray-600 text-sm">{stat.label}</p>
+        </div>
+    );
 };
 
 export const CareerClient = () => {
@@ -153,22 +176,12 @@ export const CareerClient = () => {
             <section className="py-12  rounded-2xl mb-16">
                 <div className="max-w-4xl mx-auto text-center">
                     <h2 className="text-3xl font-bold text-gray-900 mb-2">Employee Growth & Success</h2>
-                    <p className="text-lg text-gray-700 mb-8">We invest in our team's development and celebrate their achievements</p>
+                    <p className="text-lg text-gray-700 mb-8">We invest in our team&apos;s development and celebrate their achievements</p>
 
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-                        {growthStats.map((stat, index) => {
-                            const animatedValue = useAnimatedCounter(stat.value);
-                            return (
-                                <div key={index} className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow border border-red-100">
-                                    <p className="text-4xl font-bold text-red-600 mb-2">
-                                        {animatedValue}
-                                        {index === 1 && <span className="text-xl">/5</span>}
-                                        {index === 0 && <span className="text-xl"></span>}
-                                    </p>
-                                    <p className="text-gray-600 text-sm">{stat.label}</p>
-                                </div>
-                            );
-                        })}
+                        {growthStats.map((stat, index) => (
+                            <StatItem key={index} stat={stat} index={index} />
+                        ))}
                     </div>
                 </div>
             </section>
@@ -247,7 +260,7 @@ export const CareerClient = () => {
             <section className="mb-20 bg-gradient-to-br from-red-50 to-red-100 rounded-2xl p-8">
                 <div className="max-w-3xl mx-auto text-center mb-12">
                     <h2 className="text-3xl font-bold text-gray-900 mb-4">Why Join Our Team?</h2>
-                    <p className="text-lg text-gray-700">We're committed to creating an environment where our team can thrive both professionally and personally.</p>
+                    <p className="text-lg text-gray-700">We&apos;re committed to creating an environment where our team can thrive both professionally and personally.</p>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -269,9 +282,9 @@ export const CareerClient = () => {
             <section className="bg-white rounded-2xl shadow-sm overflow-hidden border border-red-100">
                 <div className="bg-red-600 py-12 px-6 text-center">
                     <div className="max-w-3xl mx-auto">
-                        <h2 className="text-3xl font-bold !text-white mb-4">Don't See Your Dream Role?</h2>
+                        <h2 className="text-3xl font-bold !text-white mb-4">Don&apos;t See Your Dream Role?</h2>
                         <p className="text-xl text-red-100 mb-8">
-                            We're always looking for talented individuals. Send us your resume and we'll contact you when a matching position opens up.
+                            We&apos;re always looking for talented individuals. Send us your resume and we&apos;ll contact you when a matching position opens up.
                         </p>
                         <div className="flex flex-col sm:flex-row justify-center gap-4">
                             

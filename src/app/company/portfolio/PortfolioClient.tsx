@@ -3,8 +3,8 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import {
-  ExternalLink, Github, Globe, Smartphone, Database, Zap,
-  ArrowRight, Filter, LayoutGrid, Star, BarChart2, Rocket
+  ExternalLink, Globe, Smartphone, Database, Zap,
+  ArrowRight, Filter
 } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -101,19 +101,10 @@ const categories = ['All', 'Web Development', 'Mobile Development', 'Full Stack'
 
 export default function PortfolioClient() {
   const [selectedCategory, setSelectedCategory] = useState('All');
-  const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 50) {
-        setScrolled(true);
-      } else {
-        setScrolled(false);
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    // This effect is intentionally left empty as it was only used for the scrolled state
+    // which has been removed
   }, []);
 
   const filteredProjects =
@@ -307,7 +298,7 @@ export default function PortfolioClient() {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">Ready to Start Your Project?</h2>
           <p className="text-lg max-w-2xl mx-auto mb-8 opacity-90">
-            Let's collaborate to create something amazing. Our team is ready to bring your ideas to life.
+            Let&apos;s collaborate to create something amazing. Our team is ready to bring your ideas to life.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <Link href="/contact" passHref legacyBehavior>
