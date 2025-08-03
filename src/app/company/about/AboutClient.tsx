@@ -5,7 +5,7 @@ import { Globe, Rocket, Shield, Sparkles } from 'lucide-react'
 
 import TeamSection from '@/components/sections/TeamSection'
 import StatsSection from '@/components/sections/StatsSection'
-
+import TestimonialsSection from "@/components/sections/TestimonialsSection";
 
 // Main AboutClient component
 export default function AboutClient() {
@@ -168,6 +168,9 @@ export default function AboutClient() {
           </div>
         </div>
       </section>
+
+      <TestimonialsSection />
+
     </div>
   )
 }

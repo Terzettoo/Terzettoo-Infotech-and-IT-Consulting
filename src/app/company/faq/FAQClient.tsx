@@ -3,6 +3,63 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { ChevronDown, MessageCircle, DollarSign, Code, Shield, Database, Phone } from 'lucide-react'
+import LatestArticlesSection from "@/components/sections/LatestArticlesSection";
+interface BlogPost {
+  id: number;
+  title: string;
+  date: string;
+  summary: string;
+  category?: string;
+  readTime?: string;
+  imageUrl?: string;
+  buttonUrl?: string;
+}
+
+const blogPosts: BlogPost[] = [
+  {
+    id: 1,
+    title: "Empowering Startups with Scalable Web Development",
+    date: "June 1, 2024",
+    category: "Web Development",
+    readTime: "5 min read",
+    summary:
+      "Discover how Terzettoo helps startups build customized, scalable websites that grow with their business needs through modern technologies and agile methodologies.",
+  },
+  {
+    id: 2,
+    imageUrl: "/image/blog/Innovative-UI-UX-Design-for-Impactful-User-Experiences.png",
+    title: "Innovative UI/UX Design for Impactful User Experiences",
+    date: "June 10, 2024",
+    category: "Design",
+    readTime: "4 min read",
+    buttonUrl: "/blog/Innovative-UI-UX-Design-for-Impactful-User-Experiences",
+    summary:
+      "Learn about our approach to blending creativity and technology to deliver user-centric designs that drive engagement and improve conversion rates.",
+  },
+  {
+    id: 3,
+    imageUrl: "/image/blog/seo-digital-marketing-strategies.png",
+    title: "Boost Your Online Presence with Expert SEO & Digital Marketing",
+    date: "June 15, 2024",
+    category: "Marketing",
+    readTime: "6 min read",
+    buttonUrl: "/blog/seo-digital-marketing-strategies",
+    summary:
+      "Explore strategies Terzettoo uses to enhance visibility and attract customers through tailored SEO and marketing solutions that deliver measurable results.",
+  },
+  {
+    id: 4,
+    imageUrl: "/image/blog/trusted-tech-partner.png",
+    title: "Your Trusted Tech Partner: From Idea to Execution",
+    date: "June 20, 2024",
+    category: "Company",
+    readTime: "7 min read",
+    buttonUrl: "/blog/trusted-tech-partner",
+    summary:
+      "How Terzettoo collaborates with businesses to turn innovative ideas into high-performing digital solutions through our comprehensive development process.",
+  },
+];
+
 
 const faqCategories = [
   {
@@ -155,14 +212,14 @@ export default function FAQClient() {
             Frequently Asked Questions
           </h1>
           <p className="text-xl text-[#5f6c7b] max-w-3xl mx-auto">
-            Everything you need to know about working with Terzettoo. Can&apos;t find what you&apos;re looking for? 
+            Everything you need to know about working with Terzettoo. Can&apos;t find what you&apos;re looking for?
             <a href="/contact" className="text-[#d90429] hover:underline ml-1">Contact us directly.</a>
           </p>
         </motion.div>
 
         {/* Grid with Sidebar + Content */}
         <div className="grid lg:grid-cols-5 gap-8">
-          
+
           {/* Sidebar Filters */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
@@ -179,15 +236,13 @@ export default function FAQClient() {
                     setSelectedCategory(category.id)
                     setOpenFAQ(null)
                   }}
-                  className={`w-full flex items-center p-4 rounded-xl transition-all text-left group ${
-                    selectedCategory === category.id
-                      ? 'bg-gradient-to-r from-[#d90429] to-[#ef233c] text-white shadow-lg'
-                      : 'bg-white border border-[#e2e8f0] text-[#2b2d42] hover:border-[#d90429]/30 hover:shadow-md'
-                  }`}
+                  className={`w-full flex items-center p-4 rounded-xl transition-all text-left group ${selectedCategory === category.id
+                    ? 'bg-gradient-to-r from-[#d90429] to-[#ef233c] text-white shadow-lg'
+                    : 'bg-white border border-[#e2e8f0] text-[#2b2d42] hover:border-[#d90429]/30 hover:shadow-md'
+                    }`}
                 >
-                  <category.icon className={`h-5 w-5 mr-3 ${
-                    selectedCategory === category.id ? 'text-white' : 'text-[#d90429] group-hover:text-[#ef233c]'
-                  }`} />
+                  <category.icon className={`h-5 w-5 mr-3 ${selectedCategory === category.id ? 'text-white' : 'text-[#d90429] group-hover:text-[#ef233c]'
+                    }`} />
                   <span className="font-medium">{category.title}</span>
                 </button>
               ))}
@@ -237,9 +292,8 @@ export default function FAQClient() {
                                   {faq.question}
                                 </h3>
                                 <ChevronDown
-                                  className={`h-5 w-5 text-[#d90429] transition-transform duration-300 ${
-                                    openFAQ === key ? 'rotate-180' : ''
-                                  }`}
+                                  className={`h-5 w-5 text-[#d90429] transition-transform duration-300 ${openFAQ === key ? 'rotate-180' : ''
+                                    }`}
                                 />
                               </button>
 
@@ -275,7 +329,7 @@ export default function FAQClient() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
-          className="mt-20"
+          className="mt-20 mb-20"
         >
           <div className="bg-gradient-to-r bg-white shadow-2xl text-[#ff0000] rounded-2xl p-10 text-center ">
             <h3 className="text-3xl font-bold mb-4">Still have questions?</h3>
@@ -299,6 +353,9 @@ export default function FAQClient() {
             </div>
           </div>
         </motion.div>
+
+        {/* Latest Articles Section */}
+        <LatestArticlesSection blogPosts={blogPosts} />
       </div>
     </div>
   )

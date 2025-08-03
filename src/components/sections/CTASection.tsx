@@ -2,6 +2,7 @@
 import { motion } from "framer-motion";
 import { ArrowRight, MessageSquare, Calendar, CheckCircle } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 
 const CTASection = () => {
   const benefits = [
@@ -126,16 +127,54 @@ const CTASection = () => {
 
                 {/* Footer: Trust Badges or Logos */}
                 <div className="mt-6 pt-6 border-t border-[#8d99ae]/20 text-center">
-                  <p className="text-xs text-[#8d99ae] mb-2">
+                  <p className="text-xs text-[#8d99ae] mb-4">
                     Trusted by 50+ companies
                   </p>
-                  <div className="flex justify-center space-x-2">
-                    {[...Array(5)].map((_, i) => (
-                      <div
-                        key={i}
-                        className="w-8 h-8 bg-[#d90429]/10 border border-[#8d99ae]/20 rounded-lg"
-                      />
-                    ))}
+                  <div className="flex flex-wrap justify-center gap-4">
+                    {/* Company 1 */}
+                    <Image
+                      src="/image/Others/gujarat-terce-laboratories-ltd.png"
+                      alt="Company 1"
+                      width={80}
+                      height={32}
+                      className="h-8 w-auto object-contain opacity-80 hover:opacity-100 transition-opacity"
+                    />
+
+                    {/* Company 2 */}
+                    <Image
+                      src="/image/Others/usp.jpg"
+                      alt="Company 2"
+                      width={80}
+                      height={32}
+                      className="h-8 w-auto object-contain opacity-80 hover:opacity-100 transition-opacity"
+                    />
+
+                    {/* Company 3 */}
+                    <Image
+                      src="/image/Others/datec.png"
+                      alt="Company 3"
+                      width={80}
+                      height={32}
+                      className="h-8 w-auto object-contain opacity-80 hover:opacity-100 transition-opacity"
+                    />
+
+                    {/* Company 4 */}
+                    <Image
+                      src="/image/Others/Nordic.png"
+                      alt="Company 4"
+                      width={80}
+                      height={32}
+                      className="h-8 w-auto object-contain opacity-80 hover:opacity-100 transition-opacity"
+                    />
+
+                    {/* Company 5 */}
+                    <Image
+                      src="/image/Others/sms.png"
+                      alt="Company 5"
+                      width={80}
+                      height={32}
+                      className="h-8 w-auto object-contain opacity-80 hover:opacity-100 transition-opacity"
+                    />
                   </div>
                 </div>
               </div>
