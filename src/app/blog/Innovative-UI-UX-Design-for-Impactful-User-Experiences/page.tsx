@@ -48,7 +48,7 @@ export default function Page() {
       subtitle="Learn about our approach to blending creativity and technology to deliver user-centric designs that drive engagement and improve conversion rates."
       author="Terzettoo Design Team"
       date="June 10, 2024"
-      imageUrl="/images/ui-ux-design.jpg"
+      imageUrl="/image/blog/Innovative-UI-UX-Design-for-Impactful-User-Experiences.png"
       readingTime="4 min"
       tags={["design", "UI/UX", "user experience", "conversion", "product design"]}
     >

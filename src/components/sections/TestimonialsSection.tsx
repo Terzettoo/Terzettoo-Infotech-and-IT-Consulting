@@ -108,7 +108,7 @@ const TestimonialsSection = () => {
   }
 
   return (
-    <section className="py-20 bg-[#edf2f4] text-[#2b2d42] overflow-hidden">
+    <section className="py-20 bg-[#edf2f4] text-[#2b2d42] overflow-hidden" id="testimonials">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Heading */}
         <motion.div

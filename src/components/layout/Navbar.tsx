@@ -3,7 +3,7 @@ import Image from "next/image";
 import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, X, ChevronDown } from "lucide-react";
+import { Menu, X, ChevronDown, ChevronRight } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const Navbar = () => {
@@ -14,95 +14,75 @@ const Navbar = () => {
     "/company/faq",
     "/contact",
     "/blog/Empowering-Startups-with-Scalable-Web-Development",
+    "/blog/Innovative-UI-UX-Design-for-Impactful-User-Experiences",
+    "/blog/seo-digital-marketing-strategies",
+    "/blog/trusted-tech-partner",
   ];
 
-  // TRUE for all pages EXCEPT those in excludedPages
   const isSpecialPage = !excludedPages.includes(pathname);
-
-  // Scroll threshold in pixels - adjust this value as needed
   const SCROLL_THRESHOLD = 100;
 
   const [isOpen, setIsOpen] = useState(false);
   const [isServicesOpen, setIsServicesOpen] = useState(false);
   const [isCompanyOpen, setIsCompanyOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(!isSpecialPage);
+  const [activeService, setActiveService] = useState("Mobile Development");
   const servicesRef = useRef<HTMLDivElement>(null);
   const companyRef = useRef<HTMLDivElement>(null);
-  const [mobileServiceOpen, setMobileServiceOpen] = useState<
-    Record<string, boolean>
-  >({});
+  const [mobileServiceOpen, setMobileServiceOpen] = useState<Record<string, boolean>>({});
 
   const serviceCategories = {
     "Mobile Development": [
-      { label: "Mobile App Development", href: "/mobile-app-development" },
-      { label: "Android App Development", href: "/android-app-development" },
-      { label: "iOS App Development", href: "/ios-app-development" },
-      { label: "iPad App Development", href: "/ipad-app-development" },
-      { label: "React Native Development", href: "/react-app-development" },
-      { label: "Flutter Development", href: "/flutter-development" },
+      { label: "Mobile App Development", href: "/mobile-app-development", icon: "/image/icons/mobile.png" },
+      { label: "Android App Development", href: "/android-app-development", icon: "/image/icons/android.png" },
+      { label: "iOS App Development", href: "/ios-app-development", icon: "/image/icons/ios.png" },
+      { label: "iPad App Development", href: "/ipad-app-development", icon: "/image/icons/ipad.png" },
+      { label: "React Native Development", href: "/react-app-development", icon: "/image/icons/react.png" },
+      { label: "Flutter Development", href: "/flutter-development", icon: "/image/icons/flutter.png" },
     ],
     "Web Development": [
-      { label: "Web Development", href: "/web-development" },
-      { label: "Frontend Development", href: "/frontend-development" },
-      { label: "React.js Development", href: "/react-js-development" },
-      {
-        label: "E-commerce Development",
-        href: "/ecommerce-portal-development",
-      },
-      { label: "Shopify Development", href: "/shopify-development" },
-      { label: "WordPress Development", href: "/wordpress-development" },
+      { label: "Web Development", href: "/web-development", icon: "/image/icons/web.png" },
+      { label: "Frontend Development", href: "/frontend-development", icon: "/image/icons/frontend.png" },
+      { label: "React.js Development", href: "/react-js-development", icon: "/image/icons/react.png" },
+      { label: "E-commerce Development", href: "/ecommerce-portal-development", icon: "/image/icons/ecommerce.png" },
+      { label: "Shopify Development", href: "/shopify-development", icon: "/image/icons/shopify.png" },
+      { label: "WordPress Development", href: "/wordpress-development", icon: "/image/icons/wordpress.png" },
     ],
     "Backend & Technologies": [
-      { label: "Java Development", href: "/java-development" },
-      { label: "PHP Development", href: "/php-development" },
-      { label: ".NET Development", href: "/dotnet-web-development" },
-      { label: "Python Development", href: "/python-web-development" },
-      {
-        label: "AWS Development",
-        href: "/amazon-web-services-aws-development",
-      },
+      { label: "Java Development", href: "/java-development", icon: "/image/icons/java.png" },
+      { label: "PHP Development", href: "/php-development", icon: "/image/icons/php.png" },
+      { label: ".NET Development", href: "/dotnet-web-development", icon: "/image/icons/dotnet.png" },
+      { label: "Python Development", href: "/python-web-development", icon: "/image/icons/python.png" },
+      { label: "AWS Development", href: "/amazon-web-services-aws-development", icon: "/image/icons/aws.png" },
     ],
     "AI & Advanced Tech": [
-      { label: "AI/ML Solutions", href: "/ai-ml" },
-      { label: "Data Analytics", href: "/data-analytics" },
-      { label: "Computer Vision", href: "/computer-vision" },
-      { label: "Chatbot Development", href: "/chatbot-development" },
+      { label: "AI/ML Solutions", href: "/ai-ml", icon: "/image/icons/ai.png" },
+      { label: "Data Analytics", href: "/data-analytics", icon: "/image/icons/analytics.png" },
+      { label: "Computer Vision", href: "/computer-vision", icon: "/image/icons/vision.png" },
+      { label: "Chatbot Development", href: "/chatbot-development", icon: "/image/icons/chatbot.png" },
     ],
     "Design & Marketing": [
-      { label: "UI/UX Development", href: "/ui-ux-development" },
-      { label: "Digital Marketing", href: "/digital-marketing" },
-      { label: "SEO Services", href: "/seo-services" },
-      { label: "PPC Advertising", href: "/ppc-advertising" },
-      { label: "Social Media Marketing", href: "/social-media-marketing" },
-      { label: "Content Marketing", href: "/content-marketing-and-strategy" },
-      { label: "Graphic Design", href: "/graphic-design-services" },
+      { label: "UI/UX Development", href: "/ui-ux-development", icon: "/image/icons/design.png" },
+      { label: "Digital Marketing", href: "/digital-marketing", icon: "/image/icons/marketing.png" },
+      { label: "SEO Services", href: "/seo-services", icon: "/image/icons/seo.png" },
+      { label: "PPC Advertising", href: "/ppc-advertising", icon: "/image/icons/ads.png" },
+      { label: "Social Media Marketing", href: "/social-media-marketing", icon: "/image/icons/social.png" },
+      { label: "Content Marketing", href: "/content-marketing-and-strategy", icon: "/image/icons/content.png" },
+      { label: "Graphic Design", href: "/graphic-design-services", icon: "/image/icons/graphic.png" },
     ],
     "Enterprise Solutions": [
-      {
-        label: "ERP Implementation",
-        href: "/erp-implementation-and-customization",
-      },
-      {
-        label: "Shopping Cart Development",
-        href: "/shopping-cart-development",
-      },
+      { label: "ERP Implementation", href: "/erp-implementation-and-customization", icon: "/image/icons/erp.png" },
+      { label: "Shopping Cart Development", href: "/shopping-cart-development", icon: "/image/icons/cart.png" },
     ],
     "IT Consulting": [
-      {
-        label: "Technical Product Roadmaps",
-        href: "/technical-product-roadmaps",
-      },
-      { label: "MVP Planning", href: "/mvp-planning" },
-      { label: "SaaS Strategy", href: "/saas-strategy-and-advisory" },
-      {
-        label: "Tech Stack Recommendations",
-        href: "/tech-stack-recommendations",
-      },
-      { label: "Client-Vendor Matching", href: "/client-vendor-matching" },
+      { label: "Technical Product Roadmaps", href: "/technical-product-roadmaps", icon: "/image/icons/roadmap.png" },
+      { label: "MVP Planning", href: "/mvp-planning", icon: "/image/icons/mvp.png" },
+      { label: "SaaS Strategy", href: "/saas-strategy-and-advisory", icon: "/image/icons/saas.png" },
+      { label: "Tech Stack Recommendations", href: "/tech-stack-recommendations", icon: "/image/icons/tech.png" },
+      { label: "Client-Vendor Matching", href: "/client-vendor-matching", icon: "/image/icons/vendor.png" },
     ],
   };
 
-  // Handle scroll behavior for special pages
   useEffect(() => {
     if (!isSpecialPage) {
       setIsScrolled(true);
@@ -113,26 +93,17 @@ const Navbar = () => {
       setIsScrolled(window.scrollY > SCROLL_THRESHOLD);
     };
 
-    // Set initial state
     handleScroll();
-
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, [isSpecialPage, pathname]);
 
-  // Close dropdowns when clicking outside
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
-      if (
-        servicesRef.current &&
-        !servicesRef.current.contains(e.target as Node)
-      ) {
+      if (servicesRef.current && !servicesRef.current.contains(e.target as Node)) {
         setIsServicesOpen(false);
       }
-      if (
-        companyRef.current &&
-        !companyRef.current.contains(e.target as Node)
-      ) {
+      if (companyRef.current && !companyRef.current.contains(e.target as Node)) {
         setIsCompanyOpen(false);
       }
     };
@@ -141,7 +112,6 @@ const Navbar = () => {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  // Toggle mobile service category
   const toggleMobileCategory = (category: string) => {
     setMobileServiceOpen((prev) => ({
       ...prev,
@@ -149,7 +119,6 @@ const Navbar = () => {
     }));
   };
 
-  // Determine navbar styles based on route and scroll state
   const navbarBackground = isSpecialPage
     ? isScrolled
       ? "bg-white text-[#2b2d42] shadow-md"
@@ -158,29 +127,29 @@ const Navbar = () => {
 
   const logoStyles = isSpecialPage
     ? {
-        width: isScrolled ? 0 : 32,
-        opacity: isScrolled ? 0 : 1,
-        marginRight: isScrolled ? 0 : 8,
-      }
+      width: isScrolled ? 0 : 32,
+      opacity: isScrolled ? 0 : 1,
+      marginRight: isScrolled ? 0 : 8,
+    }
     : {
-        width: 32,
-        opacity: 1,
-        marginRight: 8,
-      };
+      width: 32,
+      opacity: 1,
+      marginRight: 8,
+    };
 
   const textStyles = isSpecialPage
     ? {
-        marginLeft: isScrolled ? -1 : 0,
-        color: isScrolled ? "text-[#d90429]" : "text-white",
-      }
+      marginLeft: isScrolled ? -1 : 0,
+      color: isScrolled ? "text-[#d90429]" : "text-white",
+    }
     : {
-        marginLeft: 0,
-        color: "text-[#d90429]",
-      };
+      marginLeft: 0,
+      color: "text-[#d90429]",
+    };
 
   return (
     <nav
-      className={`fixed top-0 left-0 w-full z-50 transition-colors duration-300 ${navbarBackground}`}
+      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${navbarBackground}`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
@@ -219,39 +188,39 @@ const Navbar = () => {
           <div className="hidden lg:flex items-center space-x-8">
             <Link
               href="/"
-              className={`transition-colors ${
-                isSpecialPage
-                  ? isScrolled
-                    ? "text-[#6b7280] hover:text-[#2b2d42]"
-                    : "!text-white hover:opacity-80"
-                  : "text-[#6b7280] hover:text-[#2b2d42]"
-              }`}
+              className={`transition-colors ${isSpecialPage
+                ? isScrolled
+                  ? "text-[#6b7280] hover:text-[#2b2d42]"
+                  : "!text-white hover:opacity-80"
+                : "text-[#6b7280] hover:text-[#2b2d42]"
+                }`}
             >
               Home
             </Link>
 
-            {/* Services Mega Menu */}
+            {/* Enhanced Services Mega Menu */}
             <div
               className="relative"
               ref={servicesRef}
-              onMouseEnter={() => setIsServicesOpen(true)}
+              onMouseEnter={() => {
+                setIsServicesOpen(true);
+                setActiveService("Mobile Development");
+              }}
               onMouseLeave={() => setIsServicesOpen(false)}
             >
               <button
                 onClick={() => setIsServicesOpen(!isServicesOpen)}
-                className={`flex items-center transition-colors ${
-                  isSpecialPage
-                    ? isScrolled
-                      ? "text-[#6b7280] hover:text-[#2b2d42]"
-                      : "text-white hover:opacity-80"
-                    : "text-[#6b7280] hover:text-[#2b2d42]"
-                }`}
+                className={`flex items-center transition-colors ${isSpecialPage
+                  ? isScrolled
+                    ? "text-[#6b7280] hover:text-[#2b2d42]"
+                    : "text-white hover:opacity-80"
+                  : "text-[#6b7280] hover:text-[#2b2d42]"
+                  }`}
               >
                 Services
                 <ChevronDown
-                  className={`ml-1 h-4 w-4 transition-transform ${
-                    isServicesOpen ? "rotate-180" : ""
-                  }`}
+                  className={`ml-1 h-4 w-4 transition-transform ${isServicesOpen ? "rotate-180" : ""
+                    }`}
                 />
               </button>
 
@@ -263,31 +232,74 @@ const Navbar = () => {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -10 }}
                     transition={{ duration: 0.2 }}
-                    className="absolute top-full left-1/2 transform -translate-x-1/2 w-[900px] bg-white border border-[#8d99ae]/30 rounded-lg shadow-xl p-6"
+                    className="absolute mt-3 top-full left-1/2 transform -translate-x-1/2 w-[800px] bg-white border border-[#8d99ae]/30 rounded-lg shadow-xl overflow-hidden"
                   >
-                    <div className="grid grid-cols-4 gap-6">
-                      {Object.entries(serviceCategories).map(
-                        ([category, services]) => (
-                          <div key={category} className="mb-4">
-                            <h4 className="font-semibold text-[#d90429] mb-3 text-sm">
-                              {category}
-                            </h4>
-                            <ul className="space-y-2">
-                              {services.map((service, idx) => (
-                                <li key={idx}>
-                                  <Link
-                                    href={service.href}
-                                    className="text-sm text-[#2b2d42] hover:text-[#d90429] transition block py-1"
-                                    onClick={() => setIsServicesOpen(false)}
-                                  >
+                    <div className="flex">
+                      {/* Left Side - Main Services */}
+                      <div className="w-1/3 bg-gray-50 p-4 border-r border-gray-200">
+                        <h3 className="font-bold text-lg text-[#d90429] mb-4 px-2">
+                          Our Services
+                        </h3>
+                        <ul className="space-y-1">
+                          {Object.keys(serviceCategories).map((category) => (
+                            <li key={category}>
+                              <button
+                                className={`cursor-pointer w-full text-left px-3 py-2 rounded-md flex items-center justify-between transition-all ${activeService === category
+                                  ? "bg-[#d90429] text-white"
+                                  : "text-gray-700 hover:bg-gray-100"
+                                  }`}
+                                onMouseEnter={() => setActiveService(category)}
+                              >
+                                <span>{category}</span>
+                                {activeService === category && (
+                                  <ChevronRight className="h-4 w-4" />
+                                )}
+                              </button>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+
+                      {/* Right Side - Sub Services */}
+                      <div className="w-2/3 p-6">
+                        <h3 className="font-bold text-lg text-[#d90429] mb-4">
+                          {activeService}
+                        </h3>
+                        <div className="grid grid-cols-2 gap-4">
+                          {serviceCategories[activeService as keyof typeof serviceCategories].map(
+                            (service, idx) => (
+                              <Link
+                                key={idx}
+                                href={service.href}
+                                className="group flex items-start p-3 rounded-lg hover:bg-[#d90429]/10 transition-colors"
+                                onClick={() => setIsServicesOpen(false)}
+                              >
+                                <div className="rounded-md mr-3 transition-colors flex items-center justify-center">
+                                  {service.icon ? (
+                                    <Image
+                                      src={service.icon}
+                                      alt={service.label}
+                                      width={24}
+                                      height={24}
+                                      className="w-10 h-10 object-contain"
+                                    />
+                                  ) : (
+                                    <div className="w-6 h-6 bg-[#d90429] rounded-sm opacity-80 group-hover:opacity-100 transition-opacity" />
+                                  )}
+                                </div>
+                                <div>
+                                  <h4 className="font-medium text-gray-900 group-hover:text-[#d90429] transition-colors">
                                     {service.label}
-                                  </Link>
-                                </li>
-                              ))}
-                            </ul>
-                          </div>
-                        )
-                      )}
+                                  </h4>
+                                  <p className="text-xs text-gray-500 mt-1">
+                                    Expert solutions tailored to your needs
+                                  </p>
+                                </div>
+                              </Link>
+                            )
+                          )}
+                        </div>
+                      </div>
                     </div>
                   </motion.div>
                 )}
@@ -303,19 +315,17 @@ const Navbar = () => {
             >
               <button
                 onClick={() => setIsCompanyOpen(!isCompanyOpen)}
-                className={`flex items-center transition-colors ${
-                  isSpecialPage
-                    ? isScrolled
-                      ? "text-[#6b7280] hover:text-[#2b2d42]"
-                      : "text-white hover:opacity-80"
-                    : "text-[#6b7280] hover:text-[#2b2d42]"
-                }`}
+                className={`flex items-center transition-colors ${isSpecialPage
+                  ? isScrolled
+                    ? "text-[#6b7280] hover:text-[#2b2d42]"
+                    : "text-white hover:opacity-80"
+                  : "text-[#6b7280] hover:text-[#2b2d42]"
+                  }`}
               >
                 Company
                 <ChevronDown
-                  className={`ml-1 h-4 w-4 transition-transform ${
-                    isCompanyOpen ? "rotate-180" : ""
-                  }`}
+                  className={`ml-1 h-4 w-4 transition-transform ${isCompanyOpen ? "rotate-180" : ""
+                    }`}
                 />
               </button>
 
@@ -338,13 +348,12 @@ const Navbar = () => {
                       <Link
                         key={idx}
                         href={item.href}
-                        className={`block px-4 py-2 text-[#2b2d42] hover:bg-[#ef233c]/10 hover:text-[#d90429] transition ${
-                          idx === 0
-                            ? "rounded-t-lg"
-                            : idx === 3
+                        className={`block px-4 py-2 text-[#2b2d42] hover:bg-[#ef233c]/10 hover:text-[#d90429] transition ${idx === 0
+                          ? "rounded-t-lg"
+                          : idx === 3
                             ? "rounded-b-lg"
                             : ""
-                        }`}
+                          }`}
                         onClick={() => setIsCompanyOpen(false)}
                       >
                         {item.label}
@@ -357,42 +366,39 @@ const Navbar = () => {
 
             <Link
               href="/blog"
-              className={`transition-colors ${
-                isSpecialPage
-                  ? isScrolled
-                    ? "text-[#6b7280] hover:text-[#2b2d42]"
-                    : "!text-white hover:opacity-80"
-                  : "text-[#6b7280] hover:text-[#2b2d42]"
-              }`}
+              className={`transition-colors ${isSpecialPage
+                ? isScrolled
+                  ? "text-[#6b7280] hover:text-[#2b2d42]"
+                  : "!text-white hover:opacity-80"
+                : "text-[#6b7280] hover:text-[#2b2d42]"
+                }`}
             >
               Blog
             </Link>
 
-            {/* CTA Button */}
+            {/* Enhanced CTA Button */}
             <Link
               href="/contact"
-              className={`px-4 py-2 rounded-lg font-medium transition ${
-                isSpecialPage
-                  ? isScrolled
-                    ? "bg-[#d90429] !text-white hover:bg-[#ef233c]"
-                    : "bg-white text-[#d90429] hover:bg-gray-100"
-                  : "bg-[#d90429] !text-white hover:bg-[#ef233c]"
-              }`}
+              className={`px-4 py-2 rounded-lg font-medium transition-all duration-300 transform hover:scale-105 ${isSpecialPage
+                ? isScrolled
+                  ? "bg-[#d90429] !text-white hover:bg-[#ef233c] shadow-lg hover:shadow-[#d90429]/40"
+                  : "bg-white text-[#d90429] hover:bg-gray-100 shadow-lg hover:shadow-white/40"
+                : "bg-[#d90429] !text-white hover:bg-[#ef233c] shadow-lg hover:shadow-[#d90429]/40"
+                }`}
             >
-              Contact
+              Contact Us
             </Link>
           </div>
 
           {/* Mobile Toggle */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className={`lg:hidden p-2 rounded-lg transition ${
-              isSpecialPage
-                ? isScrolled
-                  ? "text-[#2b2d42]"
-                  : "text-white"
-                : "text-[#2b2d42]"
-            }`}
+            className={`lg:hidden p-2 rounded-lg transition ${isSpecialPage
+              ? isScrolled
+                ? "text-[#2b2d42]"
+                : "text-white"
+              : "text-[#2b2d42]"
+              }`}
             aria-label="Toggle menu"
           >
             {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
@@ -400,7 +406,7 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* Mobile Menu */}
+      {/* Enhanced Mobile Menu */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
@@ -408,45 +414,42 @@ const Navbar = () => {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3 }}
-            className={`lg:hidden ${
-              isSpecialPage
-                ? isScrolled
-                  ? "bg-white"
-                  : "bg-[#d90429]"
-                : "bg-white"
-            } border-t ${
-              isSpecialPage
+            className={`lg:hidden ${isSpecialPage
+              ? isScrolled
+                ? "bg-white"
+                : "bg-[#d90429]"
+              : "bg-white"
+              } border-t ${isSpecialPage
                 ? isScrolled
                   ? "border-[#8d99ae]/30"
                   : "border-white/20"
                 : "border-[#8d99ae]/30"
-            } shadow-xl`}
+              } shadow-xl`}
           >
             <div className="px-4 py-4 space-y-2 max-h-[80vh] overflow-y-auto">
               <Link
                 href="/"
-                className={`block px-4 py-2 rounded-lg transition ${
-                  isSpecialPage
-                    ? isScrolled
-                      ? "!text-[#6b7280] hover:text-[#2b2d42] hover:bg-[#d90429]/10"
-                      : "!text-white hover:bg-white/10"
-                    : "text-[#6b7280] hover:text-[#2b2d42] hover:bg-[#d90429]/10"
-                }`}
+                className={`block px-4 py-2 rounded-lg transition ${isSpecialPage
+                  ? isScrolled
+                    ? "!text-[#6b7280] hover:text-[#2b2d42] hover:bg-[#d90429]/10"
+                    : "!text-white hover:bg-white/10"
+                  : "text-[#6b7280] hover:text-[#2b2d42] hover:bg-[#d90429]/10"
+                  }`}
                 onClick={() => setIsOpen(false)}
               >
                 Home
               </Link>
 
               {/* Mobile Services */}
+              {/* Mobile Services */}
               <div className="space-y-1">
                 <div
-                  className={`px-4 py-2 font-semibold text-sm ${
-                    isSpecialPage
-                      ? isScrolled
-                        ? "text-[#d90429]"
-                        : "text-white"
-                      : "text-[#d90429]"
-                  }`}
+                  className={`px-4 py-2 font-semibold text-sm ${isSpecialPage
+                    ? isScrolled
+                      ? "text-[#d90429]"
+                      : "!text-white"
+                    : "text-[#d90429]"
+                    }`}
                 >
                   SERVICES
                 </div>
@@ -454,29 +457,26 @@ const Navbar = () => {
                   ([category, services]) => (
                     <div
                       key={category}
-                      className={`border-b ${
-                        isSpecialPage
-                          ? isScrolled
-                            ? "border-[#8d99ae]/20"
-                            : "border-white/20"
-                          : "border-[#8d99ae]/20"
-                      } last:border-0`}
+                      className={`border-b ${isSpecialPage
+                        ? isScrolled
+                          ? "border-[#8d99ae]/20"
+                          : "border-white/20"
+                        : "border-[#8d99ae]/20"
+                        } last:border-0`}
                     >
                       <button
-                        className={`flex items-center justify-between w-full px-4 py-2 text-left transition rounded ${
-                          isSpecialPage
-                            ? isScrolled
-                              ? "text-[#6b7280] hover:text-[#2b2d42] hover:bg-[#d90429]/10"
-                              : "text-white hover:bg-white/10"
-                            : "text-[#6b7280] hover:text-[#2b2d42] hover:bg-[#d90429]/10"
-                        }`}
+                        className={`flex items-center justify-between w-full px-4 py-2 text-left transition rounded ${isSpecialPage
+                          ? isScrolled
+                            ? "text-[#2b2d42] hover:bg-[#d90429]/10"
+                            : "text-white hover:bg-white/20"
+                          : "text-[#2b2d42] hover:bg-[#d90429]/10"
+                          }`}
                         onClick={() => toggleMobileCategory(category)}
                       >
                         <span className="text-sm font-medium">{category}</span>
                         <ChevronDown
-                          className={`h-4 w-4 transition-transform ${
-                            mobileServiceOpen[category] ? "rotate-180" : ""
-                          }`}
+                          className={`h-4 w-4 transition-transform ${mobileServiceOpen[category] ? "rotate-180" : ""
+                            }`}
                         />
                       </button>
                       {mobileServiceOpen[category] && (
@@ -485,13 +485,12 @@ const Navbar = () => {
                             <Link
                               key={idx}
                               href={service.href}
-                              className={`block px-4 py-1 text-sm transition rounded ${
-                                isSpecialPage
-                                  ? isScrolled
-                                    ? "text-[#6b7280] hover:text-[#2b2d42] hover:bg-[#d90429]/10"
-                                    : "text-white/80 hover:bg-white/10 hover:text-white"
-                                  : "text-[#6b7280] hover:text-[#2b2d42] hover:bg-[#d90429]/10"
-                              }`}
+                              className={`block px-4 py-1 text-sm transition rounded ${isSpecialPage
+                                ? isScrolled
+                                  ? "text-[#2b2d42] hover:bg-[#d90429]/10"
+                                  : "text-white/90 hover:bg-white/20 hover:text-white"
+                                : "text-[#2b2d42] hover:bg-[#d90429]/10"
+                                }`}
                               onClick={() => setIsOpen(false)}
                             >
                               {service.label}
@@ -503,68 +502,62 @@ const Navbar = () => {
                   )
                 )}
               </div>
-
               <Link
                 href="/company/about"
-                className={`block px-4 py-2 rounded-lg transition ${
-                  isSpecialPage
-                    ? isScrolled
-                      ? "text-[#6b7280] hover:text-[#2b2d42] hover:bg-[#d90429]/10"
-                      : "!text-white hover:bg-white/10"
-                    : "text-[#6b7280] hover:text-[#2b2d42] hover:bg-[#d90429]/10"
-                }`}
+                className={`block px-4 py-2 rounded-lg transition ${isSpecialPage
+                  ? isScrolled
+                    ? "text-[#6b7280] hover:text-[#2b2d42] hover:bg-[#d90429]/10"
+                    : "!text-white hover:bg-white/10"
+                  : "text-[#6b7280] hover:text-[#2b2d42] hover:bg-[#d90429]/10"
+                  }`}
                 onClick={() => setIsOpen(false)}
               >
                 About Us
               </Link>
               <Link
                 href="/company/portfolio"
-                className={`block px-4 py-2 rounded-lg transition ${
-                  isSpecialPage
-                    ? isScrolled
-                      ? "text-[#6b7280] hover:text-[#2b2d42] hover:bg-[#d90429]/10"
-                      : "!text-white hover:bg-white/10"
-                    : "text-[#6b7280] hover:text-[#2b2d42] hover:bg-[#d90429]/10"
-                }`}
+                className={`block px-4 py-2 rounded-lg transition ${isSpecialPage
+                  ? isScrolled
+                    ? "text-[#6b7280] hover:text-[#2b2d42] hover:bg-[#d90429]/10"
+                    : "!text-white hover:bg-white/10"
+                  : "text-[#6b7280] hover:text-[#2b2d42] hover:bg-[#d90429]/10"
+                  }`}
                 onClick={() => setIsOpen(false)}
               >
                 Portfolio
               </Link>
               <Link
                 href="/career"
-                className={`block px-4 py-2 rounded-lg transition ${
-                  isSpecialPage
-                    ? isScrolled
-                      ? "text-[#6b7280] hover:text-[#2b2d42] hover:bg-[#d90429]/10"
-                      : "!text-white hover:bg-white/10"
-                    : "text-[#6b7280] hover:text-[#2b2d42] hover:bg-[#d90429]/10"
-                }`}
+                className={`block px-4 py-2 rounded-lg transition ${isSpecialPage
+                  ? isScrolled
+                    ? "text-[#6b7280] hover:text-[#2b2d42] hover:bg-[#d90429]/10"
+                    : "!text-white hover:bg-white/10"
+                  : "text-[#6b7280] hover:text-[#2b2d42] hover:bg-[#d90429]/10"
+                  }`}
                 onClick={() => setIsOpen(false)}
               >
                 Career
               </Link>
               <Link
                 href="/blog"
-                className={`block px-4 py-2 rounded-lg transition ${
-                  isSpecialPage
-                    ? isScrolled
-                      ? "text-[#6b7280] hover:text-[#2b2d42] hover:bg-[#d90429]/10"
-                      : "!text-white hover:bg-white/10"
-                    : "text-[#6b7280] hover:text-[#2b2d42] hover:bg-[#d90429]/10"
-                }`}
+                className={`block px-4 py-2 rounded-lg transition ${isSpecialPage
+                  ? isScrolled
+                    ? "text-[#6b7280] hover:text-[#2b2d42] hover:bg-[#d90429]/10"
+                    : "!text-white hover:bg-white/10"
+                  : "text-[#6b7280] hover:text-[#2b2d42] hover:bg-[#d90429]/10"
+                  }`}
                 onClick={() => setIsOpen(false)}
               >
                 Blog
               </Link>
               <Link
                 href="/company/faq"
-                className={`block px-4 py-2 rounded-lg transition ${
-                  isSpecialPage
-                    ? isScrolled
-                      ? "text-[#6b7280] hover:text-[#2b2d42] hover:bg-[#d90429]/10"
-                      : "!text-white hover:bg-white/10"
-                    : "text-[#6b7280] hover:text-[#2b2d42] hover:bg-[#d90429]/10"
-                }`}
+                className={`block px-4 py-2 rounded-lg transition ${isSpecialPage
+                  ? isScrolled
+                    ? "text-[#6b7280] hover:text-[#2b2d42] hover:bg-[#d90429]/10"
+                    : "!text-white hover:bg-white/10"
+                  : "text-[#6b7280] hover:text-[#2b2d42] hover:bg-[#d90429]/10"
+                  }`}
                 onClick={() => setIsOpen(false)}
               >
                 FAQ
@@ -572,13 +565,12 @@ const Navbar = () => {
 
               <Link
                 href="/contact"
-                className={`block px-4 py-2 text-center font-medium rounded-lg transition ${
-                  isSpecialPage
-                    ? isScrolled
-                      ? "bg-[#d90429] !text-white hover:bg-[#ef233c]"
-                      : "!bg-white text-[#d90429] hover:bg-gray-100"
-                    : "bg-[#d90429] text-white hover:bg-[#ef233c]"
-                }`}
+                className={`block px-4 py-2 text-center font-medium rounded-lg transition ${isSpecialPage
+                  ? isScrolled
+                    ? "bg-[#d90429] !text-white hover:bg-[#ef233c]"
+                    : "!bg-white text-[#d90429] hover:bg-gray-100"
+                  : "bg-[#d90429] text-white hover:bg-[#ef233c]"
+                  }`}
                 onClick={() => setIsOpen(false)}
               >
                 Contact
