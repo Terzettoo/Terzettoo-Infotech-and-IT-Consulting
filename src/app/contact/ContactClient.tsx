@@ -38,13 +38,36 @@ export default function ContactClient() {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const { register, handleSubmit, formState: { errors }, reset } = useForm<FormData>()
 
-  const onSubmit = async () => {
+  const onSubmit = async (data: FormData) => {
     setIsSubmitting(true)
-    await new Promise(resolve => setTimeout(resolve, 2000))
-    setIsSubmitted(true)
-    setIsSubmitting(false)
-    reset()
-    setTimeout(() => setIsSubmitted(false), 5000)
+    
+    try {
+      const response = await fetch('https://formsubmit.co/ajax/admin@terzettoo.com', {
+        method: 'POST',
+        headers: { 
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          ...data,
+          _cc: 'mauryajatin45@gmail.com',
+          _subject: `New Contact Form Submission from ${data.name}`,
+          _template: 'table',
+          _autoresponse: `Thank you for contacting us, ${data.name}! We've received your message and will get back to you within 24 hours.`
+        })
+      })
+
+      const result = await response.json()
+      if (result.success === 'true') {
+        setIsSubmitted(true)
+        reset()
+        setTimeout(() => setIsSubmitted(false), 5000)
+      }
+    } catch (error) {
+      console.error('Form submission error:', error)
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   return (
@@ -52,14 +75,14 @@ export default function ContactClient() {
       {/* Hero Section */}
       <div className="relative h-[45vh] mt-16 w-full">
         <Image
-          src="/image/Others/contactHero.jpg" // Replace with your actual image path
+          src="/image/Others/contactHero.jpg"
           alt="Contact Header"
           className="object-cover w-full h-full"
           fill
           priority
         />
         <div className="absolute inset-0 bg-black/40 flex flex-col justify-center items-center text-white px-4 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold !text-white mb-2">Thank you for your interest. Let’s Talk!</h2>
+          <h2 className="text-3xl md:text-4xl font-bold !text-white mb-2">Thank you for your interest. Let&apos;s Talk!</h2>
           <p className="text-base md:text-lg max-w-2xl">
             Please fill the below form and we will get in touch with you within 24 hours.
           </p>
@@ -115,8 +138,6 @@ export default function ContactClient() {
                   Our expert team is always available to guide you — feel free to connect anytime.
                 </p>
               </div>
-
-
             </div>
 
             {/* RIGHT SIDE: Contact Form */}
@@ -134,9 +155,9 @@ export default function ContactClient() {
                 >
                   <CheckCircle className="text-green-500 w-16 h-16 mx-auto mb-4" />
                   <h3 className="text-2xl font-bold mb-2">Thank You!</h3>
-          <p className="text-[#8d99ae]">
-            We&apos;ve received your message and will get back to you within 24 hours.
-          </p>
+                  <p className="text-[#8d99ae]">
+                    We&apos;ve received your message and will get back to you within 24 hours.
+                  </p>
                 </motion.div>
               ) : (
                 <form onSubmit={handleSubmit(onSubmit)} className="space-y-6 text-[#2b2d42]">
@@ -219,6 +240,9 @@ export default function ContactClient() {
                     />
                     {errors.message && <p className="text-sm text-red-600 mt-1">{errors.message.message}</p>}
                   </div>
+
+                  {/* Honeypot field */}
+                  <input type="text" name="_honey" style={{ display: 'none' }} />
 
                   {/* Submit */}
                   <button
