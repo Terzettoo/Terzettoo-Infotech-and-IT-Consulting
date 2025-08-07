@@ -80,6 +80,7 @@ const Navbar = () => {
       { label: "SaaS Strategy", href: "/saas-strategy-and-advisory", icon: "/image/icons/saas.png" },
       { label: "Tech Stack Recommendations", href: "/tech-stack-recommendations", icon: "/image/icons/tech.png" },
       { label: "Client-Vendor Matching", href: "/client-vendor-matching", icon: "/image/icons/vendor.png" },
+      { label: "Project oversight and quality monitoring", href: "/project-oversight-and-quality-monitoring", icon: "/image/icons/oversight.png" },
     ],
   };
 
