@@ -7,9 +7,9 @@ import Footer from '@/components/layout/Footer'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
-  title: 'Terzettoo - Premium Software Solutions',
-  description: 'Terzettoo is your trusted partner for premium software solutions. We specialize in custom web development, mobile apps, API integration, and DevOps solutions. Transform your business with our expert digital services.',
-  keywords: 'Terzettoo, software development company, web development, mobile apps, API development, DevOps, custom software solutions, digital transformation, software consulting, IT services',
+  title: 'Terzettoo - Infotech & IT Consulting Solutions',
+  description: 'Empower your business with Terzettoo\'s comprehensive Infotech and IT consulting solutions. We deliver innovative software, digital transformation, and expert technology consulting for modern enterprises.',
+  keywords: 'Infotech, IT consulting, software solutions, digital transformation, technology consulting, business IT services, custom software, web development, mobile apps, enterprise IT, Terzettoo, IT strategy, IT support, IT solutions, IT partner',
   authors: [{ name: 'Terzettoo' }],
   icons: {
     icon: '/Terzettoo_logo_remove_BG.png',
@@ -19,21 +19,21 @@ export const metadata = {
     locale: 'en_US',
     url: 'https://terzettoo.com',
     siteName: 'Terzettoo',
-    title: 'Terzettoo - Premium Software Solutions',
-    description: 'Terzettoo is your trusted partner for premium software solutions. Transform your business with our expert digital services.',
+    title: 'Terzettoo - Infotech & IT Consulting Solutions',
+    description: 'Empower your business with Terzettoo\'s Infotech and IT consulting expertise. Innovative software, digital transformation, and technology solutions for growth.',
     images: [
       {
         url: '/Terzettoo_logo_remove_BG.png',
         width: 1200,
         height: 630,
-        alt: 'Terzettoo - Premium Software Solutions',
+        alt: 'Terzettoo - Infotech and IT Consulting Solutions',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Terzettoo - Premium Software Solutions',
-    description: 'Terzettoo is your trusted partner for premium software solutions. Transform your business with our expert digital services.',
+    title: 'Terzettoo - Infotech & IT Consulting Solutions',
+    description: 'Empower your business with Terzettoo\'s Infotech and IT consulting expertise. Innovative software, digital transformation, and technology solutions for growth.',
     images: ['/Terzettoo_logo_remove_BG.png'],
   },
   robots: {
