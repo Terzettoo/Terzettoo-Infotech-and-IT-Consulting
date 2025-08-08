@@ -489,7 +489,7 @@ const Navbar = () => {
                               className={`block px-4 py-1 text-sm transition rounded ${isSpecialPage
                                 ? isScrolled
                                   ? "text-[#2b2d42] hover:bg-[#d90429]/10"
-                                  : "text-white/90 hover:bg-white/20 hover:text-white"
+                                  : "!text-white/90 hover:bg-white/20 hover:text-white"
                                 : "text-[#2b2d42] hover:bg-[#d90429]/10"
                                 }`}
                               onClick={() => setIsOpen(false)}

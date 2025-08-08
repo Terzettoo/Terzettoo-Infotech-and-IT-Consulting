@@ -17,20 +17,20 @@ export const metadata = {
       "Empower your business with Terzettoo's Infotech and IT consulting expertise. Innovative software, digital transformation, and technology solutions for growth.",
     images: [
       {
-        url: 'https://terzettoo.com/Terzettoo_logo_remove_BG.png',
+        url: 'https://www.terzettoo.com/Terzettoo_logo_remove_BG.png',
         width: 1200,
         height: 630,
         alt: 'Terzettoo - Infotech and IT Consulting Solutions',
       },
     ],
     siteName: 'Terzettoo',
-    url: 'https://terzettoo.com/',
+    url: 'https://www.terzettoo.com/',
   },
   icons: {
     icon: "/Terzettoo_logo_remove_BG.png",
   },
   alternates: {
-    canonical: 'https://terzettoo.com/',
+    canonical: 'https://www.terzettoo.com/',
   },
 };
 

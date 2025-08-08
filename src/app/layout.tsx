@@ -17,7 +17,7 @@ export const metadata = {
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://terzettoo.com',
+    url: 'https://www.terzettoo.com',
     siteName: 'Terzettoo',
     title: 'Terzettoo - Infotech & IT Consulting Solutions',
     description: 'Empower your business with Terzettoo\'s Infotech and IT consulting expertise. Innovative software, digital transformation, and technology solutions for growth.',
@@ -50,7 +50,7 @@ export const metadata = {
   verification: {
     google: 'add-your-google-site-verification-here',
   },
-  metadataBase: new URL('https://terzettoo.com'),
+  metadataBase: new URL('https://www.terzettoo.com'),
 }
 
 export const viewport = {

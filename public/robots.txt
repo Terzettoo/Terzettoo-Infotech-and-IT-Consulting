@@ -1,4 +1,3 @@
 User-agent: *
 Allow: /
-
-Sitemap: https://terzettoo.com/sitemap.xml
+Sitemap: https://www.terzettoo.com/sitemap.xml
