@@ -1,137 +1,178 @@
 'use client'
 
-import { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
-import {
-  ExternalLink, Globe, Smartphone, Database, Zap,
-  ArrowRight, Filter
-} from 'lucide-react';
-import Image from 'next/image';
-import Link from 'next/link';
-import TestimonialsSection from "@/components/sections/TestimonialsSection";
+import { useState, useEffect } from 'react'
+import { motion } from 'framer-motion'
+import { ExternalLink, ArrowRight } from 'lucide-react'
+import Image from 'next/image'
+import Link from 'next/link'
+import TestimonialsSection from '@/components/sections/TestimonialsSection'
 
+type Project = {
+  id: number
+  title: string
+  category: 'Web Development' | 'Full Stack' | 'Mobile Development'
+  description: string
+  technologies: string[]
+  features: string[]
+  liveUrl: string
+  image: string // NEW: background image for the card header
+  imageAlt?: string
+  results?: {
+    metric1?: string
+    metric2?: string
+    metric3?: string
+  }
+}
 
-const projects = [
+const projects: Project[] = [
   {
     id: 1,
-    title: 'E-Commerce Platform',
+    title: 'Rosyz E-commerce Website',
     category: 'Web Development',
     description:
-      'A comprehensive e-commerce solution with advanced inventory management and payment integration.',
-    technologies: ['Next.js', 'Node.js', 'MongoDB', 'Stripe'],
+      'Rosyz is a stylish e-commerce website featuring trendy clothing, accessories, and home decor with a clean, user-friendly design.',
+    technologies: ['Next.js', 'React', 'Tailwind CSS', 'Stripe', 'Vercel'],
     features: [
-      'Real-time inventory',
-      'Payment processing',
-      'Admin dashboard',
-      'Mobile responsive',
+      'Modern product catalog',
+      'Fast server-side rendering',
+      'Secure checkout with Stripe',
+      'Responsive, mobile-first UI',
     ],
-    liveUrl: 'https://example.com',
-    githubUrl: 'https://github.com/example',
-    icon: Globe,
+    liveUrl: 'https://ecommerce-rosyz.vercel.app/',
+    image: '/image/Portfolio/Rozy.webp',
+    imageAlt: 'Rosyz e-commerce storefront preview',
     results: {
-      metric1: '40% increase in sales',
-      metric2: '25% faster checkout',
-      metric3: '99.9% uptime',
+      metric1: '40% faster navigation',
+      metric2: 'A/B tested product pages',
+      metric3: 'Optimized CLS & LCP',
     },
   },
   {
     id: 2,
-    title: 'Fitness Tracking App',
-    category: 'Mobile Development',
+    title: 'Job Portal',
+    category: 'Web Development',
     description:
-      'Cross-platform mobile app for fitness tracking with social features and workout plans.',
-    technologies: ['React Native', 'Firebase', 'Redux', 'Expo'],
-    features: ['Workout tracking', 'Social sharing', 'Progress analytics', 'Custom plans'],
-    liveUrl: 'https://appstore.com/app',
-    githubUrl: 'https://github.com/example',
-    icon: Smartphone,
+      'A modern job portal connecting candidates with employers, offering easy search, job listings, and a seamless application process.',
+    technologies: ['Next.js', 'Node.js', 'MongoDB', 'Tailwind CSS'],
+    features: [
+      'Advanced job search & filters',
+      'Employer dashboards',
+      'Resume upload & tracking',
+      'Role-based access',
+    ],
+    liveUrl: 'https://jobportal-shivaurica.vercel.app/',
+    image: '/image/Portfolio/job-portal.webp',
+    imageAlt: 'Job portal platform interface',
     results: {
-      metric1: '10K+ downloads',
-      metric2: '4.8/5 rating',
-      metric3: '80% user retention',
+      metric1: '10K+ monthly searches',
+      metric2: 'High application completion',
+      metric3: 'SEO-friendly listings',
     },
   },
   {
     id: 3,
-    title: 'Restaurant Management System',
+    title: 'CareerCraft',
     category: 'Full Stack',
-    description:
-      'Complete restaurant management solution with POS, inventory, and customer management.',
-    technologies: ['React', 'Express.js', 'PostgreSQL', 'Socket.io'],
-    features: [
-      'POS integration',
-      'Inventory tracking',
-      'Order management',
-      'Real-time updates',
+    description: `CareerCraft is a comprehensive career development platform by Team QUAD that helps users assess skills, prepare for interviews, build resumes`,
+    technologies: [
+      'Node.js',
+      'Express.js',
+      'MongoDB',
+      'Cloudinary',
+      'Gemini-2.0-flash',
     ],
-    liveUrl: 'https://demo.example.com',
-    githubUrl: 'https://github.com/example',
-    icon: Database,
+    features: [
+      'AI career advisor',
+      'PDF resume parsing',
+      'Mentor network',
+    ],
+    liveUrl: 'https://careercraftt.vercel.app/',
+    image: '/image/Portfolio/careercraft.png',
+    imageAlt: 'CareerCraft dashboard and AI advisor',
     results: {
-      metric1: '60% faster orders',
-      metric2: '30% cost reduction',
-      metric3: 'Real-time sync',
+      metric1: 'Faster interview prep',
+      metric2: 'Higher resume scores',
+      metric3: 'Personalized learning paths',
     },
   },
   {
     id: 4,
-    title: 'IoT Dashboard',
+    title: 'Eat Smile Bakery',
     category: 'Web Development',
     description:
-      'Real-time IoT device monitoring dashboard with advanced analytics and alerts.',
-    technologies: ['Vue.js', 'Python', 'InfluxDB', 'WebSocket'],
+      'A delightful bakery storefront with online ordering, seasonal menus, and pickup scheduling — designed for mouth-watering visuals and conversions.',
+    technologies: ['Next.js', 'React', 'Tailwind CSS', 'SSR/ISR'],
     features: [
-      'Real-time monitoring',
-      'Custom alerts',
-      'Data visualization',
-      'Device management',
+      'Beautiful product galleries',
+      'Order & pickup scheduling',
+      'Promo banners & seasonal menus',
+      'Optimized images for speed',
     ],
-    liveUrl: 'https://dashboard.example.com',
-    githubUrl: 'https://github.com/example',
-    icon: Zap,
+    liveUrl: 'https://eat-smile-bakery-gilt.vercel.app/',
+    image: '/image/Portfolio/eat-smile-bakery.png',
+    imageAlt: 'Eat Smile Bakery website hero showing pastries',
     results: {
-      metric1: 'Real-time data',
-      metric2: '99% accuracy',
-      metric3: '24/7 monitoring',
+      metric1: 'High Lighthouse score',
+      metric2: 'Reduced bounce rate',
+      metric3: 'Streamlined checkout UX',
     },
   },
-];
+  {
+    id: 5,
+    title: 'Terzettoo',
+    category: 'Web Development',
+    description:
+      'The official Terzettoo website showcasing services across product engineering, AI/ML, and design — built for speed, SEO, and lead generation.',
+    technologies: ['Next.js', 'React', 'Tailwind CSS', 'OG Tags', 'Vercel'],
+    features: [
+      'Marketing site & blog',
+      'SEO-friendly routing',
+      'Open Graph & social cards',
+      'Conversion-focused CTAs',
+    ],
+    liveUrl: 'https://www.terzettoo.com',
+    image: '/image/Portfolio/terzettoo.png',
+    imageAlt: 'Terzettoo website landing preview',
+    results: {
+      metric1: 'Improved organic traffic',
+      metric2: 'Faster TTFB & LCP',
+      metric3: 'Increased lead capture',
+    },
+  },
+]
 
-const categories = ['All', 'Web Development', 'Mobile Development', 'Full Stack'];
+const categories = ['All', 'Web Development', 'Mobile Development', 'Full Stack']
 
 export default function PortfolioClient() {
-  const [selectedCategory, setSelectedCategory] = useState('All');
+  const [selectedCategory, setSelectedCategory] = useState<string>('All')
 
   useEffect(() => {
-    // This effect is intentionally left empty as it was only used for the scrolled state
-    // which has been removed
-  }, []);
+    // Reserved for future side-effects (e.g., analytics on filter change)
+  }, [])
 
   const filteredProjects =
     selectedCategory === 'All'
       ? projects
-      : projects.filter((project) => project.category === selectedCategory);
+      : projects.filter((p) => p.category === selectedCategory)
 
   return (
-    <div className=" bg-[#d90429] text-[#2b2d42]">
-
+    <div className="bg-[#d90429] text-[#2b2d42]">
       {/* Hero Section */}
       <div className="relative pt-32 pb-20 overflow-hidden h-[vh] max-h-[800px]">
-        {/* Background Image with overlay */}
         <div className="absolute inset-0 z-0">
           <Image
-            src="/image/Portfolio/Project_Hero.webp" // Replace with your image path
+            src="/image/Portfolio/Project_Hero.webp"
             alt="Digital technology background"
             fill
             className="object-cover"
-            priority // Important for above-the-fold images
+            priority
             quality={90}
+            sizes="100vw"
           />
-          <div className="absolute inset-0 bg-black/50" /> {/* Dark overlay for better text contrast */}
+          <div className="absolute inset-0 bg-black/50" />
           <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-[#d90429]/30 to-transparent" />
         </div>
 
-        {/* Content */}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 h-full flex flex-col justify-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -139,7 +180,6 @@ export default function PortfolioClient() {
             transition={{ duration: 0.8 }}
             className="text-center"
           >
-
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 max-w-3xl mx-auto !text-white">
               Transforming Ideas into <span className="text-[#ffffff]">Digital Success</span>
             </h1>
@@ -172,7 +212,7 @@ export default function PortfolioClient() {
       {/* Portfolio Section */}
       <div id="portfolio" className="py-16 bg-white relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
+          <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
               Our <span className="text-[#d90429]">Featured Projects</span>
             </h2>
@@ -181,36 +221,7 @@ export default function PortfolioClient() {
             </p>
           </div>
 
-          {/* Category Filter */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            className="flex justify-center mb-16"
-          >
-            <div className="inline-flex bg-[#edf2f4] border border-[#8d99ae]/20 rounded-xl p-1">
-              <div className="flex items-center px-4 text-[#8d99ae]">
-                <Filter className="h-4 w-4 mr-2" />
-                <span>Filter by:</span>
-              </div>
-              {categories.map((category) => (
-                <motion.button
-                  key={category}
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  onClick={() => setSelectedCategory(category)}
-                  className={`px-6 py-2 rounded-xl font-medium transition-all duration-300 ${selectedCategory === category
-                    ? 'bg-[#d90429] text-white shadow-md'
-                    : 'text-[#2b2d42] hover:bg-[#ef233c]/10'
-                    }`}
-                >
-                  {category}
-                </motion.button>
-              ))}
-            </div>
-          </motion.div>
-
-          {/* Projects Grid - Now 3 columns on large screens */}
+          {/* Projects Grid - 3 columns on large screens */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {filteredProjects.map((project, index) => (
               <motion.div
@@ -218,35 +229,42 @@ export default function PortfolioClient() {
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: index * 0.1 }}
-                whileHover={{ y: -10 }}
+                whileHover={{ y: -8 }}
                 className="group bg-[#edf2f4] rounded-2xl overflow-hidden border border-[#8d99ae]/20 transition-all duration-300 hover:shadow-xl hover:border-[#d90429]/30 flex flex-col"
               >
-                {/* Project Header */}
-                <div className="relative h-48 bg-gradient-to-r from-[#d90429] to-[#ef233c] flex items-center justify-center">
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <project.icon className="h-16 w-16 text-white opacity-20" />
-                  </div>
-                  <div className="absolute top-4 right-4">
-                    <span className="px-3 py-1 bg-white/20 text-white text-sm rounded-full backdrop-blur-sm">
+                {/* Card Header with Background Image (NEW) */}
+                <div className="relative h-48">
+                  <Image
+                    src={project.image}
+                    alt={project.imageAlt || project.title}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    priority={index < 2}
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/25 to-transparent" />
+                  <div className="absolute top-3 right-3">
+                    <span className="px-3 py-1 bg-white/80 text-[#2b2d42] text-xs rounded-full backdrop-blur">
                       {project.category}
                     </span>
                   </div>
-                  <h3 className="text-2xl font-bold text-white relative z-10 px-4 text-center">
+                  <h3 className="absolute bottom-3 left-3 right-3 text-xl font-semibold !text-white drop-shadow">
                     {project.title}
                   </h3>
                 </div>
 
+                {/* Card Body */}
                 <div className="p-6 flex-grow flex flex-col">
                   {/* Description */}
-                  <p className="text-[#8d99ae] mb-6 flex-grow">{project.description}</p>
+                  <p className="text-[#2b2d42]/80 mb-6 whitespace-pre-line">{project.description}</p>
 
                   {/* Technologies */}
                   <div className="flex flex-wrap gap-2 mb-6">
                     {project.technologies.map((tech) => (
                       <motion.span
                         key={`${project.id}-${tech}`}
-                        whileHover={{ scale: 1.1 }}
-                        className="px-3 py-1 bg-white text-[#d90429] text-sm rounded-lg border border-[#8d99ae]/20"
+                        whileHover={{ scale: 1.06 }}
+                        className="px-3 py-1 bg-white text-[#d90429] text-xs rounded-lg border border-[#8d99ae]/20"
                       >
                         {tech}
                       </motion.span>
@@ -254,26 +272,28 @@ export default function PortfolioClient() {
                   </div>
 
                   {/* Features */}
-                  <div className="mb-6">
-                    <h4 className="font-semibold mb-3 text-[#2b2d42] flex items-center">
-                      <span className="w-2 h-2 bg-[#d90429] rounded-full mr-2"></span>
-                      Key Features:
-                    </h4>
-                    <ul className="grid grid-cols-1 gap-2 text-sm text-[#2b2d42]">
-                      {project.features.map((feature) => (
-                        <li key={feature} className="flex items-center">
-                          <span className="w-1.5 h-1.5 bg-[#d90429] rounded-full mr-2" />
-                          {feature}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
+                  {project.features?.length > 0 && (
+                    <div className="mb-6">
+                      <h4 className="font-semibold mb-3 text-[#2b2d42] flex items-center">
+                        <span className="w-2 h-2 bg-[#d90429] rounded-full mr-2"></span>
+                        Key Features
+                      </h4>
+                      <ul className="grid grid-cols-1 gap-2 text-sm text-[#2b2d42]">
+                        {project.features.map((feature) => (
+                          <li key={feature} className="flex items-center">
+                            <span className="w-1.5 h-1.5 bg-[#d90429] rounded-full mr-2" />
+                            {feature}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
 
-                  {/* Single Live Demo Button */}
-                  <div className="mt-auto pt-4">
+                  {/* Live Demo Button */}
+                  <div className="mt-auto pt-2">
                     <motion.a
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
+                      whileHover={{ scale: 1.03 }}
+                      whileTap={{ scale: 0.97 }}
                       href={project.liveUrl}
                       target="_blank"
                       rel="noopener noreferrer"
@@ -324,5 +344,5 @@ export default function PortfolioClient() {
         </div>
       </div>
     </div>
-  );
+  )
 }

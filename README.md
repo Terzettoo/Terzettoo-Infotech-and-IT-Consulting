@@ -59,27 +59,6 @@ terzettoo-website/
 - **E-commerce Solutions**: Online store development
 - **Enterprise Solutions**: ERP, CRM, and business applications
 
-## 🚀 Getting Started
-
-### Prerequisites
-- Node.js 18+ 
-- npm or yarn package manager
-
-### Installation
-```bash
-git clone [repository-url]
-cd terzettoo-website
-npm install
-npm run dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) in your browser.
-
-### Build for Production
-```bash
-npm run build
-npm start
-```
 
 ## 📊 SEO & Metadata
 
@@ -98,8 +77,9 @@ npm start
 
 ## 📞 Contact & Support
 
-- **Website**: [https://terzettoo.com](https://terzettoo.com)
-- **Email**: Contact through the website's contact form
+- **Website**: [https://www.terzettoo.com](https://www.terzettoo.com)
+- **Email**: admin@terzettoo.com
+- **Mobile Number**: 7016569676
 
 ## 📄 License
 
