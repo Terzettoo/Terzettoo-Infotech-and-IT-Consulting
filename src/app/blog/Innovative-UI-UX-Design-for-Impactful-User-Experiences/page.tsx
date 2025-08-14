@@ -12,7 +12,8 @@ export const metadata: Metadata = {
     "digital product design",
     "Terzettoo",
     "conversion optimization",
-    "interaction design"
+    "interaction design",
+    "Terzettoo"
   ],
   authors: [{ name: "Terzettoo Design Team" }],
   openGraph: {

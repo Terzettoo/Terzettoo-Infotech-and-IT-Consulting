@@ -14,6 +14,7 @@ export const metadata: Metadata = {
     "headless CMS",
     "agile web development",
     "custom software for startups",
+    "Terzettoo"
   ],
   authors: [{ name: "Terzettoo Team" }],
   openGraph: {

@@ -4,12 +4,12 @@ import ClientVendorMatchingClient from './client-vendor-matchingClient'
 export const metadata: Metadata = {
   title: 'Client–Vendor Matching | RFP, Shortlisting, Due Diligence | Terzettoo',
   description:
-    'We run vendor discovery, RFPs, and due diligence to match you with the right implementation partners—on budget, on time, on quality.',
-  alternates: { canonical: 'https://terzettoo.com/client-vendor-matching' },
+    'At Terzettoo we run vendor discovery, RFPs, and due diligence to match you with the right implementation partners—on budget, on time, on quality.',
+  alternates: { canonical: 'https://www.terzettoo.com/client-vendor-matching' },
   openGraph: {
     title: 'Client–Vendor Matching | Terzettoo',
     description: 'Transparent selection, comparable bids, and accountable delivery.',
-    url: 'https://terzettoo.com/client-vendor-matching',
+    url: 'https://www.terzettoo.com/client-vendor-matching',
     siteName: 'Terzettoo',
     type: 'website',
   },

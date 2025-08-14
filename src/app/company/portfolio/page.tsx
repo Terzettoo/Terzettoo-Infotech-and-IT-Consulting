@@ -9,7 +9,7 @@ export const metadata = {
     description: 'Explore Terzettoo\'s portfolio of successful software projects, web and mobile app solutions, and digital transformation case studies.',
   },
   alternates: {
-    canonical: 'https://terzettoo.com/company/portfolio',
+    canonical: 'https://www.terzettoo.com/company/portfolio',
   },
 }
 

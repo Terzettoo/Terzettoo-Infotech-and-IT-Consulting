@@ -17,6 +17,7 @@ const Navbar = () => {
     "/blog/Innovative-UI-UX-Design-for-Impactful-User-Experiences",
     "/blog/seo-digital-marketing-strategies",
     "/blog/trusted-tech-partner",
+    "/services",
   ];
 
   const isSpecialPage = !excludedPages.includes(pathname);

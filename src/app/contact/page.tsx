@@ -9,7 +9,7 @@ export const metadata = {
     description: 'Contact Terzettoo for custom software development, web and mobile app solutions. Reach out to our team for consultations, quotes, and business inquiries.',
   },
   alternates: {
-    canonical: 'https://terzettoo.com/contact',
+    canonical: 'https://www.terzettoo.com/contact',
   },
 }
 

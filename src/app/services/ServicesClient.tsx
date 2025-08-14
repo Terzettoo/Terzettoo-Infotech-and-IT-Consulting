@@ -8,6 +8,9 @@ import {
   Shield,
   Cloud,
   Database,
+  Briefcase,
+  Lightbulb,
+  BarChart
 } from 'lucide-react'
 
 const services = [
@@ -83,6 +86,44 @@ const services = [
       'Backup Solutions',
     ],
   },
+
+  // --- IT Consulting Services ---
+  {
+    icon: Briefcase,
+    title: 'IT Strategy & Consulting',
+    description:
+      'Expert guidance to align technology investments with business goals for long-term success.',
+    features: [
+      'Technology Roadmaps',
+      'IT Governance',
+      'Process Optimization',
+      'Cost Efficiency Planning',
+    ],
+  },
+  {
+    icon: Lightbulb,
+    title: 'Digital Transformation Consulting',
+    description:
+      'Helping businesses modernize processes, adopt emerging technologies, and innovate effectively.',
+    features: [
+      'Workflow Automation',
+      'Cloud Migration Strategy',
+      'AI/ML Adoption',
+      'Change Management',
+    ],
+  },
+  {
+    icon: BarChart,
+    title: 'Business Intelligence & Analytics Consulting',
+    description:
+      'Data-driven decision-making through advanced analytics, BI tools, and performance tracking.',
+    features: [
+      'Custom BI Dashboards',
+      'KPI Tracking',
+      'Predictive Analytics',
+      'Data Visualization',
+    ],
+  },
 ]
 
 export default function ServicesClient() {
@@ -98,7 +139,8 @@ export default function ServicesClient() {
         >
           <h1 className="text-4xl md:text-5xl font-bold mb-4">Our Services</h1>
           <p className="text-xl text-[#8d99ae] max-w-3xl mx-auto">
-            We offer comprehensive software development services to help your business grow and succeed in the digital world.
+            We offer comprehensive software development and IT consulting services
+            to help your business grow and succeed in the digital world.
           </p>
         </motion.div>
 
@@ -140,4 +182,4 @@ export default function ServicesClient() {
       </div>
     </div>
   )
-} 
+}

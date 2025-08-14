@@ -1,30 +1,36 @@
-import Head from 'next/head'
-import Image from 'next/image'
+import { Metadata } from 'next'
 import { CareerClient } from './careerClient'
+
+export const metadata: Metadata = {
+  title: 'Career Opportunities | Join Our Team | Terzettoo',
+  description:
+    'Discover exciting career opportunities and join our innovative team at Terzettoo. We offer competitive benefits, growth opportunities, and a great work environment.',
+  keywords: 'careers, jobs, employment, work with us, tech jobs, Terzettoo careers',
+  authors: [{ name: 'Terzettoo' }],
+  openGraph: {
+    title: 'Career Opportunities | Join Our Team | Terzettoo',
+    description: 'Join our innovative team and build your future with Terzettoo.',
+    url: 'https://www.terzettoo.com/careers',
+    siteName: 'Terzettoo',
+    locale: 'en_US',
+    type: 'website',
+  },
+  alternates: {
+    canonical: 'https://www.terzettoo.com/careers',
+  },
+}
 
 export default function CareerPage() {
   return (
     <>
-      <Head>
-        <title>Career Opportunities | Join Our Team</title>
-        <meta name="description" content="Discover exciting career opportunities and join our innovative team. We offer competitive benefits, growth opportunities, and a great work environment." />
-        <meta name="keywords" content="careers, jobs, employment, work with us, tech jobs" />
-        <meta property="og:title" content="Career Opportunities | Join Our Team" />
-        <meta property="og:description" content="Discover exciting career opportunities and join our innovative team." />
-        <meta property="og:type" content="website" />
-      </Head>
-
       {/* Hero Section */}
       <div className="relative mt-16 bg-gray-900 overflow-hidden">
         {/* Background image with overlay */}
         <div className="absolute inset-0">
-          <Image
+          <img
             src="/image/Others/Careers.jpeg"
             alt="Diverse team collaborating in modern office"
-            fill
-            className="object-cover opacity-50"
-            priority
-            quality={100}
+            className="object-cover opacity-50 w-full h-full"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/70 to-gray-900/20" />
         </div>
@@ -78,38 +84,39 @@ export default function CareerPage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
               {
-                name: "Innovation",
-                description: "We challenge the status quo and continuously seek better solutions.",
+                name: 'Innovation',
+                description: 'We challenge the status quo and continuously seek better solutions.',
                 icon: (
                   <svg className="h-8 w-8 text-red-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13 10V3L4 14h7v7l9-11h-7z" />
                   </svg>
-                )
+                ),
               },
               {
-                name: "Collaboration",
-                description: "We believe the best results come from working together.",
+                name: 'Collaboration',
+                description: 'We believe the best results come from working together.',
                 icon: (
                   <svg className="h-8 w-8 text-red-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
                   </svg>
-                )
+                ),
               },
               {
-                name: "Integrity",
-                description: "We do the right thing, even when no one is watching.",
+                name: 'Integrity',
+                description: 'We do the right thing, even when no one is watching.',
                 icon: (
                   <svg className="h-8 w-8 text-red-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
                   </svg>
-                )
-              }
+                ),
+              },
             ].map((value, index) => (
-              <div key={index} className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow border border-red-100">
+              <div
+                key={index}
+                className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow border border-red-100"
+              >
                 <div className="flex items-center mb-4">
-                  <div className="bg-red-100 p-2 rounded-lg">
-                    {value.icon}
-                  </div>
+                  <div className="bg-red-100 p-2 rounded-lg">{value.icon}</div>
                   <h3 className="ml-3 text-xl font-semibold text-gray-900">{value.name}</h3>
                 </div>
                 <p className="text-gray-700">{value.description}</p>
@@ -120,4 +127,4 @@ export default function CareerPage() {
       </section>
     </>
   )
-} 
+}

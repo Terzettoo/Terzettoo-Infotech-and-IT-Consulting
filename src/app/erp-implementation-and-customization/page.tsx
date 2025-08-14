@@ -3,19 +3,19 @@ import ErpImplementationClient from './erp-implementation-and-customizationClien
 
 export const metadata: Metadata = {
   title: 'ERP Implementation and Customization Services | Streamline Business Operations | Terzettoo',
-  description: 'End-to-end ERP implementation and customization services tailored to your business needs for improved efficiency and productivity.',
-  keywords: 'ERP implementation, ERP customization, business process automation, ERP integration, ERP solutions',
+  description: 'End-to-end ERP implementation and customization services tailored to your business needs for improved efficiency and productivity with Terzettoo.',
+  keywords: 'ERP implementation, ERP customization, business process automation, ERP integration, ERP solutions, Terzettoo',
   authors: [{ name: 'Terzettoo' }],
   openGraph: {
     title: 'ERP Implementation and Customization Services | Terzettoo',
-    description: 'Implement and customize ERP solutions to optimize your business processes and drive growth.',
-    url: 'https://terzettoo.com/erp-implementation-and-customization',
+    description: 'Implement and customize ERP solutions to optimize your business processes and drive growth with Terzettoo.',
+    url: 'https://www.terzettoo.com/erp-implementation-and-customization',
     siteName: 'Terzettoo',
     locale: 'en_US',
     type: 'website',
   },
   alternates: {
-    canonical: 'https://terzettoo.com/erp-implementation-and-customization',
+    canonical: 'https://www.terzettoo.com/erp-implementation-and-customization',
   },
 }
 

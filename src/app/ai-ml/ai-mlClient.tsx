@@ -6,7 +6,7 @@ const aiMlContent: ServiceContent = {
   hero: {
     title: 'AI & Machine Learning',
     subtitle: 'Innovative AI Solutions',
-    description: 'Harness the power of artificial intelligence and machine learning to transform your business processes and drive innovation.',
+    description: 'Harness the power of artificial intelligence and machine learning to transform your business processes and drive innovation with Terzettoo.',
     primaryCTA: 'Start AI Project',
     secondaryCTA: 'Explore AI Solutions',
     heroImage: '/image/Services/ai_ml.png'

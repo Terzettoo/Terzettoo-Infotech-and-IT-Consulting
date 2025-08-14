@@ -40,8 +40,7 @@ const Footer = () => {
                 { icon: Linkedin, url: "https://linkedin.com/company/terzettoo", label: "LinkedIn" },
                 { icon: Instagram, url: "https://www.instagram.com/terzettoo_official/", label: "Instagram" },
                 { icon: Twitter, url: "https://twitter.com/terzettoo", label: "Twitter" },
-                { icon: Facebook, url: "https://facebook.com/terzettoo", label: "Facebook" },
-                { icon: Youtube, url: "https://youtube.com/terzettoo", label: "YouTube" }
+                { icon: Facebook, url: "https://www.facebook.com/profile.php?id=61578955508887", label: "Facebook" },
               ].map(({ icon: Icon, url, label }, index) => (
                 <Link
                   key={index}

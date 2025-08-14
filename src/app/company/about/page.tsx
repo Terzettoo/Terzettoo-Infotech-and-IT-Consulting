@@ -9,7 +9,7 @@ export const metadata = {
     description: 'Learn about Terzettoo, our mission, vision, and the expert team behind our innovative software solutions. Discover our values and commitment to client success.',
   },
   alternates: {
-    canonical: 'https://terzettoo.com/company/about',
+    canonical: 'https://www.terzettoo.com/company/about',
   },
 }
 

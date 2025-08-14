@@ -1,14 +1,43 @@
-import Head from 'next/head';
+import { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Privacy Policy | Terzettoo',
+  description: 'Privacy Policy for Terzettoo Infotech & IT Consultancy',
+  keywords: [
+    'Terzettoo',
+    'privacy policy',
+    'data protection',
+    'personal data',
+    'cookies',
+    'security'
+  ],
+  authors: [{ name: 'Terzettoo' }],
+  openGraph: {
+    title: 'Privacy Policy | Terzettoo',
+    description: 'Learn how Terzettoo collects, uses, and protects your information.',
+    url: 'https://www.terzettoo.com/privacy-policy',
+    siteName: 'Terzettoo',
+    locale: 'en_US',
+    type: 'website',
+  },
+  alternates: {
+    canonical: 'https://www.terzettoo.com/privacy-policy',
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+  twitter: {
+    card: 'summary',
+    title: 'Privacy Policy | Terzettoo',
+    description: 'Privacy Policy for Terzettoo Infotech & IT Consultancy',
+  },
+}
 
 export default function PrivacyPolicy() {
   return (
     <div className="min-h-screen bg-white text-[#2b2d42]">
-      <Head>
-        <title>Privacy Policy | Terzettoo</title>
-        <meta name="description" content="Privacy Policy for Terzettoo Infotech &amp; IT Consultancy" />
-      </Head>
-
-      <header className="bg-[#d90429]  mt-16  py-8">
+      <header className="bg-[#d90429] mt-16 py-8">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h1 className="text-3xl !text-white md:text-4xl font-bold">Privacy Policy</h1>
           <p className="mt-2 text-[#edf2f4]">Effective Date: July 29, 2025</p>
@@ -28,11 +57,9 @@ export default function PrivacyPolicy() {
 
           <section className="mb-12">
             <h2 className="text-2xl font-bold text-[#d90429] mb-4">2. Information We Collect</h2>
-            
+
             <h3 className="text-xl font-semibold mb-2">2.1 Personal Information</h3>
-            <p>
-              We may collect personally identifiable information when you:
-            </p>
+            <p>We may collect personally identifiable information when you:</p>
             <ul className="list-disc pl-6 space-y-2">
               <li>Contact us via forms, email, or phone</li>
               <li>Engage our services through contracts</li>
@@ -44,9 +71,7 @@ export default function PrivacyPolicy() {
             </p>
 
             <h3 className="text-xl font-semibold mb-2 mt-4">2.2 Non-Personal Information</h3>
-            <p>
-              We automatically collect certain technical data when you visit our website:
-            </p>
+            <p>We automatically collect certain technical data when you visit our website:</p>
             <ul className="list-disc pl-6 space-y-2">
               <li>Browser type and version</li>
               <li>IP address (anonymized where possible)</li>
@@ -57,9 +82,7 @@ export default function PrivacyPolicy() {
 
           <section className="mb-12">
             <h2 className="text-2xl font-bold text-[#d90429] mb-4">3. How We Use Your Information</h2>
-            <p>
-              We use collected information for legitimate business purposes including:
-            </p>
+            <p>We use collected information for legitimate business purposes including:</p>
             <ul className="list-disc pl-6 space-y-2">
               <li>Providing and maintaining our Services</li>
               <li>Processing transactions and delivering projects</li>
@@ -72,9 +95,7 @@ export default function PrivacyPolicy() {
 
           <section className="mb-12">
             <h2 className="text-2xl font-bold text-[#d90429] mb-4">4. Legal Basis for Processing</h2>
-            <p>
-              We process personal data based on:
-            </p>
+            <p>We process personal data based on:</p>
             <ul className="list-disc pl-6 space-y-2">
               <li><strong>Contractual necessity</strong> when providing services</li>
               <li><strong>Legitimate interests</strong> for business operations and security</li>
@@ -85,24 +106,18 @@ export default function PrivacyPolicy() {
 
           <section className="mb-12">
             <h2 className="text-2xl font-bold text-[#d90429] mb-4">5. Data Sharing and Disclosure</h2>
-            
+
             <h3 className="text-xl font-semibold mb-2">5.1 Service Providers</h3>
-            <p>
-              We may share information with third-party vendors who assist with:
-            </p>
+            <p>We may share information with third-party vendors who assist with:</p>
             <ul className="list-disc pl-6 space-y-2">
               <li>Payment processing (Razorpay, etc.)</li>
               <li>Cloud storage and hosting</li>
               <li>Analytics and performance monitoring</li>
             </ul>
-            <p className="mt-2">
-              All vendors are contractually obligated to maintain confidentiality and security.
-            </p>
+            <p className="mt-2">All vendors are contractually obligated to maintain confidentiality and security.</p>
 
             <h3 className="text-xl font-semibold mb-2 mt-4">5.2 Legal Requirements</h3>
-            <p>
-              We may disclose information when required by law or to:
-            </p>
+            <p>We may disclose information when required by law or to:</p>
             <ul className="list-disc pl-6 space-y-2">
               <li>Comply with legal processes</li>
               <li>Protect our rights or property</li>
@@ -119,9 +134,7 @@ export default function PrivacyPolicy() {
 
           <section className="mb-12">
             <h2 className="text-2xl font-bold text-[#d90429] mb-4">6. Data Security</h2>
-            <p>
-              We implement robust security measures including:
-            </p>
+            <p>We implement robust security measures including:</p>
             <ul className="list-disc pl-6 space-y-2">
               <li>Encryption of sensitive data in transit and at rest</li>
               <li>Access controls and authentication protocols</li>
@@ -136,9 +149,7 @@ export default function PrivacyPolicy() {
 
           <section className="mb-12">
             <h2 className="text-2xl font-bold text-[#d90429] mb-4">7. Data Retention</h2>
-            <p>
-              We retain personal data only as long as necessary for:
-            </p>
+            <p>We retain personal data only as long as necessary for:</p>
             <ul className="list-disc pl-6 space-y-2">
               <li>Active projects and service delivery</li>
               <li>Legal and tax compliance (typically 6 years)</li>
@@ -152,9 +163,7 @@ export default function PrivacyPolicy() {
 
           <section className="mb-12">
             <h2 className="text-2xl font-bold text-[#d90429] mb-4">8. Your Data Rights</h2>
-            <p>
-              Depending on your jurisdiction, you may have rights to:
-            </p>
+            <p>Depending on your jurisdiction, you may have rights to:</p>
             <ul className="list-disc pl-6 space-y-2">
               <li>Access and receive a copy of your personal data</li>
               <li>Rectify inaccurate or incomplete information</li>
@@ -188,9 +197,7 @@ export default function PrivacyPolicy() {
               Our website uses essential cookies for functionality and may use analytics cookies to improve services.
               You can manage preferences through browser settings or our Cookie Banner.
             </p>
-            <p className="mt-2">
-              We do not sell personal data or engage in cross-context behavioral advertising.
-            </p>
+            <p className="mt-2">We do not sell personal data or engage in cross-context behavioral advertising.</p>
           </section>
 
           <section className="mb-12">
@@ -219,17 +226,17 @@ export default function PrivacyPolicy() {
 
           <section>
             <h2 className="text-2xl font-bold text-[#d90429] mb-4">14. Contact Us</h2>
-            <p>
-              For privacy-related inquiries or to exercise your rights, contact our Data Protection Officer at:
-            </p>
+            <p>For privacy-related inquiries or to exercise your rights, contact our Data Protection Officer at:</p>
             <address className="not-italic mt-2">
               <p>Terzettoo</p>
               <p>Attn: Jatin Maurya</p>
-              <p>Email: <span className="text-[#d90429]">admin@terzettoo.com</span></p>
+              <p>
+                Email: <span className="text-[#d90429]">admin@terzettoo.com</span>
+              </p>
             </address>
           </section>
         </div>
       </main>
     </div>
-  );
+  )
 }

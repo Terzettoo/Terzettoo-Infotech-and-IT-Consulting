@@ -131,7 +131,7 @@ const SocialReviewsSection = () => {
       rating: 4.9,
       stars: '★★★★★',
       review: 'Exceptional service and attention to detail. Would highly recommend!',
-      link: '#'
+      link: 'https://clutch.co/profile/terzettoo'
     },
     {
       platform: 'GoodFirms',
@@ -163,7 +163,7 @@ const SocialReviewsSection = () => {
     <section className="bg-[#d90429] py-12 text-white relative rounded-b-3xl">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <h2 className="text-2xl md:text-3xl font-bold text-center mb-8 !text-white">Trusted by Clients Worldwide</h2>
-        
+
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
           {reviewData.map((review, index) => (
             <motion.div
@@ -178,30 +178,31 @@ const SocialReviewsSection = () => {
               <div className="flex items-center mb-4">
                 <div className="w-10 h-10 flex items-center justify-center bg-gray-100 rounded-lg mr-3">
                   {/* Use next/image for optimized loading */}
-                  <Image 
-                    src={review.iconUrl} 
-                    alt={`${review.platform} logo`} 
-                    width={24} 
+                  <Image
+                    src={review.iconUrl}
+                    alt={`${review.platform} logo`}
+                    width={24}
                     height={24}
                     className="object-contain"
                   />
                 </div>
                 <h3 className="font-bold text-lg text-gray-900">{review.platform}</h3>
               </div>
-              
+
               {/* Stars and rating */}
               <div className="flex items-center mb-4">
                 <span className="text-yellow-400 text-xl mr-2">{review.stars}</span>
                 <span className="font-bold text-gray-700">{review.rating.toFixed(1)}</span>
               </div>
-              
+
               {/* Review text */}
               <p className="text-gray-600 text-sm mb-4 italic">&quot;{review.review}&quot;</p>
-              
+
               {/* See full review link */}
-              <Link 
-                href={review.link} 
+              <Link
+                href={review.link}
                 className="text-sm font-medium text-[#d90429] hover:text-[#ef233c] flex items-center"
+                target='_blank'
               >
                 See full review
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -219,8 +220,8 @@ const SocialReviewsSection = () => {
           viewport={{ once: true }}
           className="text-center"
         >
-          <Link 
-            href="#" 
+          <Link
+            href="#"
             className="inline-block bg-white text-[#d90429] px-8 py-3 rounded-full font-bold hover:bg-gray-100 transition-colors text-sm md:text-base shadow-lg hover:shadow-xl"
           >
             See All Reviews →

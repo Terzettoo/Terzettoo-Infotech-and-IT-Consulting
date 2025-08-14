@@ -12,7 +12,8 @@ export const metadata: Metadata = {
     "technology solutions",
     "end-to-end development",
     "agile development",
-    "digital transformation"
+    "digital transformation",
+    "Terzettoo"
   ],
   authors: [{ name: "Terzettoo Leadership Team" }],
   openGraph: {

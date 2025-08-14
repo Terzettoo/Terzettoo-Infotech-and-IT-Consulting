@@ -9,7 +9,7 @@ export const metadata = {
     description: 'Find answers to common questions about Terzettoo\'s software services, pricing, process, and support. Get the information you need to start your project.',
   },
   alternates: {
-    canonical: 'https://terzettoo.com/company/faq',
+    canonical: 'https://www.terzettoo.com/company/faq',
   },
 }
 

@@ -14,7 +14,8 @@ export const metadata: Metadata = {
     "search engine optimization",
     "Terzettoo",
     "lead generation",
-    "social media marketing"
+    "social media marketing",
+    "Terzettoo"
   ],
   authors: [{ name: "Terzettoo Marketing Team" }],
   openGraph: {
