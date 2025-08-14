@@ -88,7 +88,7 @@ const TeamSection = () => {
                   {/* Name and Role */}
                   <div className="translate-y-8 group-hover:translate-y-0 transition-transform duration-500">
                     <h3 className="text-xl !text-white font-bold mb-1">{member.name}</h3>
-                    <p className="font-medium">{member.role}</p>
+                    {/* <p className="font-medium">{member.role}</p> */}
                   </div>
 
                   {/* Social Links */}
