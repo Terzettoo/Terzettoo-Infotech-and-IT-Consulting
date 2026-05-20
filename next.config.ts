@@ -1,6 +1,9 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  env: {
+    Chat_GPT_key: process.env.Chat_GPT_key,
+  },
   // Enable React strict mode for better development experience
   reactStrictMode: true,
 
@@ -49,7 +52,7 @@ const nextConfig: NextConfig = {
           },
           {
             key: 'Content-Security-Policy',
-            value: "default-src 'self'; script-src 'self' 'unsafe-eval' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline'; img-src 'self' blob: data: https://*.google.com https://www.google-analytics.com; font-src 'self' data:; frame-src 'self' https://www.google.com https://www.google.com/maps; connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://www.googletagmanager.com https://formsubmit.co; base-uri 'self'; form-action 'self' https://formsubmit.co;",
+            value: "default-src 'self'; script-src 'self' 'unsafe-eval' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://connect.facebook.net; style-src 'self' 'unsafe-inline'; img-src 'self' blob: data: https://*.google.com https://www.google-analytics.com https://www.facebook.com; font-src 'self' data:; frame-src 'self' https://www.google.com https://www.google.com/maps; connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://www.googletagmanager.com https://formsubmit.co https://www.facebook.com; base-uri 'self'; form-action 'self' https://formsubmit.co;",
           },
         ],
       },
