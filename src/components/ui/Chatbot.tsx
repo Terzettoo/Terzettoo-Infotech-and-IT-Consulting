@@ -3,6 +3,7 @@
 import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { MessageCircle, X, Send, Bot, User } from "lucide-react";
+import ReactMarkdown from 'react-markdown';
 
 export default function Chatbot() {
   const [isOpen, setIsOpen] = useState(false);
@@ -148,12 +149,27 @@ export default function Chatbot() {
                     <div className={`w-8 h-8 flex-shrink-0 rounded-full flex items-center justify-center ${m.role === 'user' ? 'bg-[#2b2d42] text-white' : 'bg-white border text-[#d90429]'}`}>
                       {m.role === 'user' ? <User size={16} /> : <Bot size={16} />}
                     </div>
-                    <div className={`p-3 rounded-2xl text-sm whitespace-pre-wrap leading-relaxed ${
+                    <div className={`p-3 rounded-2xl text-sm leading-relaxed ${
                       m.role === 'user' 
-                        ? 'bg-[#2b2d42] text-white rounded-br-sm shadow-md' 
+                        ? 'bg-[#2b2d42] text-white rounded-br-sm shadow-md whitespace-pre-wrap' 
                         : 'bg-white text-gray-800 rounded-bl-sm shadow-sm border border-gray-100'
                     }`}>
-                      {m.content}
+                      {m.role === 'user' ? (
+                        m.content
+                      ) : (
+                        <ReactMarkdown
+                          components={{
+                            a: ({ ...props }) => <a className="text-[#d90429] hover:underline" target="_blank" rel="noopener noreferrer" {...props} />,
+                            p: ({ ...props }) => <p className="mb-2 last:mb-0" {...props} />,
+                            ul: ({ ...props }) => <ul className="list-disc pl-5 mb-2 last:mb-0" {...props} />,
+                            ol: ({ ...props }) => <ol className="list-decimal pl-5 mb-2 last:mb-0" {...props} />,
+                            li: ({ ...props }) => <li className="mb-1" {...props} />,
+                            strong: ({ ...props }) => <strong className="font-semibold" {...props} />
+                          }}
+                        >
+                          {m.content}
+                        </ReactMarkdown>
+                      )}
                     </div>
                   </div>
                 </div>
