@@ -2,10 +2,12 @@
 
 import { motion } from 'framer-motion'
 import { Globe, Rocket, Shield, Sparkles } from 'lucide-react'
+import Image from 'next/image'
 
 import TeamSection from '@/components/sections/TeamSection'
 import StatsSection from '@/components/sections/StatsSection'
-import TestimonialsSection from "@/components/sections/TestimonialsSection";
+import TestimonialsSection from "@/components/sections/TestimonialsSection"
+import GlobalPresence from '@/components/sections/GlobalPresence'
 
 // Main AboutClient component
 export default function AboutClient() {
@@ -26,7 +28,7 @@ export default function AboutClient() {
           >
             <h1 className="text-5xl md:text-6xl font-bold mb-6 !text-white">Building Digital Excellence</h1>
             <p className="text-xl md:text-2xl max-w-4xl mx-auto leading-relaxed opacity-90">
-              We&apos;re a collective of passionate technologists dedicated to crafting exceptional digital experiences that drive real business impact.
+              Affordable, world-class IT solutions — delivered with precision, powered by innovation.
             </p>
           </motion.div>
         </div>
@@ -41,33 +43,68 @@ export default function AboutClient() {
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <motion.div
               initial={{ opacity: 0, x: -30 }}
-              animate={{ opacity: 1, x: 0 }}
+              whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
             >
               <h2 className="text-3xl md:text-4xl font-bold mb-6">Our Story</h2>
               <p className="text-lg text-[#6b7280] mb-6 leading-relaxed">
-                Founded in 2025, Terzettoo began as three friends with a shared passion for solving complex problems through technology.
-                Today, we&apos;ve grown into a full-service digital product agency trusted by startups and enterprises alike.
+                Founded in 2022, Terzettoo started with a clear mission — to build and deliver technology solutions at affordable rates without compromising on quality. Based out of Ahmedabad, India, we have since grown into a full-service IT consulting and software development company trusted by businesses across 10+ countries.
               </p>
-              <p className="text-lg text-[#6b7280] leading-relaxed">
-                What sets us apart is our commitment to deep technical expertise combined with a product mindset. We don&apos;t just write code -
-                we partner with you to build solutions that create real business value.
+              <p className="text-lg text-[#6b7280] mb-6 leading-relaxed">
+                With 50+ projects successfully delivered across industries like e-commerce, healthcare, fintech, and education, we bring deep technical expertise and a product-first mindset to every engagement. We don&apos;t just write code — we partner with you to build solutions that create real business value.
               </p>
+              <div className="flex items-center gap-4 pt-2">
+                <div className="h-1 w-16 bg-[#d90429] rounded-full" />
+                <p className="text-sm font-semibold text-[#d90429] uppercase tracking-wider">Since 2022</p>
+              </div>
             </motion.div>
             <motion.div
               initial={{ opacity: 0, x: 30 }}
-              animate={{ opacity: 1, x: 0 }}
+              whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
-              className="relative h-96 rounded-2xl overflow-hidden"
+              viewport={{ once: true }}
+              className="relative h-96 rounded-2xl overflow-hidden shadow-xl"
             >
-              <div className="absolute inset-0 bg-[url('/image/Company/Our_Story.png')] bg-cover bg-center opacity-95"></div>
+              <Image
+                src="/image/Company/Our_Story.png"
+                alt="Terzettoo team collaborating on software solutions"
+                fill
+                className="object-cover"
+                sizes="(max-width: 1024px) 100vw, 50vw"
+              />
             </motion.div>
           </div>
         </div>
       </section>
 
+      {/* Mission Section */}
+      <section className="py-16 bg-white">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="text-center max-w-4xl mx-auto"
+          >
+            <div className="inline-flex items-center justify-center px-4 py-1.5 bg-[#d90429]/10 rounded-full mb-6">
+              <span className="text-[#d90429] font-medium text-sm">Our Mission</span>
+            </div>
+            <h2 className="text-3xl md:text-4xl font-bold mb-6">
+              Build &amp; Deliver Solutions at Affordable Rates
+            </h2>
+            <p className="text-lg text-[#6b7280] leading-relaxed">
+              We believe great technology shouldn&apos;t come with a premium price tag. Our mission is to empower businesses of every size — from early-stage startups to scaling enterprises — with high-quality, production-ready software that drives growth, without breaking the bank.
+            </p>
+          </motion.div>
+        </div>
+      </section>
 
-      {/* Team Section - Using the new component */}
+      {/* Global Presence */}
+      <GlobalPresence />
+
+      {/* Team Section */}
       <TeamSection />
 
       {/* Values Section */}
@@ -77,8 +114,9 @@ export default function AboutClient() {
             <div className="bg-white rounded-3xl p-12">
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8 }}
+                viewport={{ once: true }}
                 className="text-center mb-16"
               >
                 <h2 className="text-3xl md:text-4xl font-bold mb-4">Our Core Values</h2>
@@ -90,8 +128,9 @@ export default function AboutClient() {
               <div className="grid md:grid-cols-2 gap-12">
                 <motion.div
                   initial={{ opacity: 0, x: -30 }}
-                  animate={{ opacity: 1, x: 0 }}
+                  whileInView={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.8 }}
+                  viewport={{ once: true }}
                   className="flex"
                 >
                   <div className="mr-6">
@@ -109,8 +148,9 @@ export default function AboutClient() {
 
                 <motion.div
                   initial={{ opacity: 0, x: 30 }}
-                  animate={{ opacity: 1, x: 0 }}
+                  whileInView={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.8, delay: 0.1 }}
+                  viewport={{ once: true }}
                   className="flex"
                 >
                   <div className="mr-6">
@@ -128,8 +168,9 @@ export default function AboutClient() {
 
                 <motion.div
                   initial={{ opacity: 0, x: -30 }}
-                  animate={{ opacity: 1, x: 0 }}
+                  whileInView={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.8, delay: 0.2 }}
+                  viewport={{ once: true }}
                   className="flex"
                 >
                   <div className="mr-6">
@@ -147,8 +188,9 @@ export default function AboutClient() {
 
                 <motion.div
                   initial={{ opacity: 0, x: 30 }}
-                  animate={{ opacity: 1, x: 0 }}
+                  whileInView={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.8, delay: 0.3 }}
+                  viewport={{ once: true }}
                   className="flex"
                 >
                   <div className="mr-6">
