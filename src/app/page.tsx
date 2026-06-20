@@ -4,6 +4,8 @@ import ServicesOverview from "@/components/sections/ServicesOverview";
 import TestimonialsSection from "@/components/sections/TestimonialsSection";
 import CTASection from "@/components/sections/CTASection";
 import StatsSection from "@/components/sections/StatsSection";
+import GlobalPresence from "@/components/sections/GlobalPresence";
+import FeaturedProjects from "@/components/sections/FeaturedProjects";
 
 export const metadata = {
   title: "Terzettoo - Infotech & IT Consulting Solutions",
@@ -38,7 +40,9 @@ export default function HomePage() {
   return (
     <>
       <HeroSection />
+      <GlobalPresence />
       <ServicesOverview />
+      <FeaturedProjects limit={3} hideFilters />
       <StatsSection />
       <TestimonialsSection />
       <CTASection />

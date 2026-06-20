@@ -78,10 +78,10 @@ const StatsSection = () => {
   }, [])
 
   const stats = [
-    { value: 150, label: 'Projects Delivered' },
+    { value: 50, label: 'Projects Delivered' },
     { value: 98, label: 'Client Retention' },
     { value: 4.9, label: 'Average Rating' },
-    { value: 24, label: 'Support Coverage' }
+    { value: 10, label: 'Countries Served' }
   ]
 
   return (
