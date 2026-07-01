@@ -14,7 +14,7 @@ const routeConfig = {
   },
   // Medium-high priority (company pages)
   mediumHigh: {
-    routes: ['/company/about', '/company/portfolio', '/career', '/blog'],
+    routes: ['/company/about', '/company/portfolio', '/career', '/blog', '/products/scrubb'],
     priority: 0.9,
     changeFrequency: 'weekly' as const,
   },
@@ -63,7 +63,7 @@ const routeConfig = {
   },
   // Lower priority (legal pages)
   low: {
-    routes: ['/company/faq', '/company/privacy', '/company/terms'],
+    routes: ['/company/faq', '/company/privacy', '/company/terms', '/products/scrubb/privacy'],
     priority: 0.5,
     changeFrequency: 'yearly' as const,
   },
