@@ -25,10 +25,12 @@ const Navbar = () => {
 
   const [isOpen, setIsOpen] = useState(false);
   const [isServicesOpen, setIsServicesOpen] = useState(false);
+  const [isProductsOpen, setIsProductsOpen] = useState(false);
   const [isCompanyOpen, setIsCompanyOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(!isSpecialPage);
   const [activeService, setActiveService] = useState("Mobile Development");
   const servicesRef = useRef<HTMLDivElement>(null);
+  const productsRef = useRef<HTMLDivElement>(null);
   const companyRef = useRef<HTMLDivElement>(null);
   const [mobileServiceOpen, setMobileServiceOpen] = useState<Record<string, boolean>>({});
 
@@ -104,6 +106,9 @@ const Navbar = () => {
     const handleClickOutside = (e: MouseEvent) => {
       if (servicesRef.current && !servicesRef.current.contains(e.target as Node)) {
         setIsServicesOpen(false);
+      }
+      if (productsRef.current && !productsRef.current.contains(e.target as Node)) {
+        setIsProductsOpen(false);
       }
       if (companyRef.current && !companyRef.current.contains(e.target as Node)) {
         setIsCompanyOpen(false);
@@ -308,6 +313,59 @@ const Navbar = () => {
               </AnimatePresence>
             </div>
 
+            {/* Products Dropdown */}
+            <div
+              className="relative"
+              ref={productsRef}
+              onMouseEnter={() => setIsProductsOpen(true)}
+              onMouseLeave={() => setIsProductsOpen(false)}
+            >
+              <button
+                onClick={() => setIsProductsOpen(!isProductsOpen)}
+                className={`flex items-center transition-colors ${isSpecialPage
+                  ? isScrolled
+                    ? "text-[#6b7280] hover:text-[#2b2d42]"
+                    : "text-white hover:opacity-80"
+                  : "text-[#6b7280] hover:text-[#2b2d42]"
+                  }`}
+              >
+                Products
+                <ChevronDown
+                  className={`ml-1 h-4 w-4 transition-transform ${isProductsOpen ? "rotate-180" : ""
+                    }`}
+                />
+              </button>
+
+              <AnimatePresence>
+                {isProductsOpen && (
+                  <motion.div
+                    key="products-dropdown"
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -10 }}
+                    transition={{ duration: 0.2 }}
+                    className="absolute top-full left-0 mt-2 w-64 bg-white border border-[#8d99ae]/30 rounded-lg shadow-xl overflow-hidden"
+                  >
+                    <Link
+                      href="/products/scrubb"
+                      className="flex items-center px-4 py-3 text-[#2b2d42] hover:bg-[#ef233c]/10 hover:text-[#d90429] transition rounded-lg group"
+                      onClick={() => setIsProductsOpen(false)}
+                    >
+                      <div className="w-8 h-8 relative mr-3 flex-shrink-0">
+                        <Image 
+                          src="/image/Scrubb/Scrubb_Logo_Transparent.png" 
+                          alt="Scrubb Logo" 
+                          fill 
+                          className="object-contain"
+                        />
+                      </div>
+                      <span className="font-medium group-hover:text-[#d90429] transition-colors">Scrubb (Apple 5.1.1 Delete)</span>
+                    </Link>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
+
             {/* Company Dropdown */}
             <div
               className="relative"
@@ -504,6 +562,18 @@ const Navbar = () => {
                   )
                 )}
               </div>
+              <Link
+                href="/products/scrubb"
+                className={`block px-4 py-2 rounded-lg transition ${isSpecialPage
+                  ? isScrolled
+                    ? "text-[#6b7280] hover:text-[#2b2d42] hover:bg-[#d90429]/10"
+                    : "!text-white hover:bg-white/10"
+                  : "text-[#6b7280] hover:text-[#2b2d42] hover:bg-[#d90429]/10"
+                  }`}
+                onClick={() => setIsOpen(false)}
+              >
+                Products: Scrubb
+              </Link>
               <Link
                 href="/company/about"
                 className={`block px-4 py-2 rounded-lg transition ${isSpecialPage
